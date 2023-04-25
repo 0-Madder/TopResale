@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TerminosActivity">
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="113dp"
+        android:layout_height="104dp"
+        android:contentDescription="Logo app"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062"
+        app:srcCompat="@drawable/captura_realizada_el_2023_04_24_03_02_59" />
+
+    <TextView
+        android:id="@+id/tituloTerminos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/terminosHeader"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+
+    <ScrollView
+        android:layout_width="385dp"
+        android:layout_height="508dp"
+        android:layout_below="@id/tituloTerminos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tituloTerminos"
+        app:layout_constraintVertical_bias="0.528">
+
+
+        <TextView
+            android:id="@+id/textoTerminos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#E8E6E6"
+            android:backgroundTint="#DCD4D4"
+            android:text="@string/terminosText"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tituloTerminos" />
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
