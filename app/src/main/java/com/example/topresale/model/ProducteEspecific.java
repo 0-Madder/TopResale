@@ -11,7 +11,6 @@ public class ProducteEspecific {
     private String estadistica;
     private ArrayList<Valoracio> llistaValoracio = new ArrayList<>();
     private String link;
-
     private int moda;
 
 
