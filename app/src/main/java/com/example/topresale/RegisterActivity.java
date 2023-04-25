@@ -46,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
         if(!textoContra.getText().toString().equals(textoRepetirContra.getText().toString())){
             Toast toast = Toast.makeText(this, "Las contraseñas no coinciden",Toast.LENGTH_SHORT);
             toast.show();
+            textoContra.setText("");
+            textoRepetirContra.setText("");
             parametrosCorrectos = false;
         }
 
