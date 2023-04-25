@@ -191,7 +191,7 @@
         app:layout_constraintVertical_bias="0.855" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/aceptarTerminos_checkBox"
         android:layout_width="30dp"
         android:layout_height="35dp"
         android:layout_marginBottom="92dp"
@@ -199,6 +199,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/repetirPassoword_EditText" />
+        app:layout_constraintTop_toBottomOf="@+id/repetirPassword_editText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
