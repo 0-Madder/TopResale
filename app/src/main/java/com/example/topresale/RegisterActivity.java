@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
             parametrosCorrectos = false;
         }
 
-        //En caso de que el nombre de usuario ya exista
+        //En caso de que el nombre de usuario ya exista (necesitamos la base de datos)
 
 
         //En caso de que no se hayan aceptado los terminos y condiciones
