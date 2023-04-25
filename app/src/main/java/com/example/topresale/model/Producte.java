@@ -46,4 +46,9 @@ public class Producte {
     public void setTendencia(boolean tendencia) {
         this.tendencia = tendencia;
     }
+
+    public void addProductEspecific(float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, int moda){
+        ProducteEspecific producteEspecific = new ProducteEspecific(preuB,preuC,preuV,descripcio,foto,estadistica,link,moda);
+        llistaProdEspe.add(producteEspecific);
+    }
 }

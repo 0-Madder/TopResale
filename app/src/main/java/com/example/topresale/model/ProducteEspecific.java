@@ -9,18 +9,22 @@ public class ProducteEspecific {
     private String descripcio;
     private String foto;
     private String estadistica;
-    private ArrayList<Valoracio> llistaValoracio;
+    private ArrayList<Valoracio> llistaValoracio = new ArrayList<>();
     private String link;
 
-    public ProducteEspecific(float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, ArrayList<Valoracio> llistaValoracio, String link) {
+    private int moda;
+
+
+
+    public ProducteEspecific(float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, int moda) {
         this.preuB = preuB;
         this.preuC = preuC;
         this.preuV = preuV;
         this.descripcio = descripcio;
         this.foto = foto;
         this.estadistica = estadistica;
-        this.llistaValoracio = llistaValoracio;
         this.link = link;
+        this.moda = moda;
     }
 
     public float getPreuB() {
@@ -86,6 +90,13 @@ public class ProducteEspecific {
     public void setLink(String link) {
         this.link = link;
     }
+    public int getModa() {
+        return moda;
+    }
+
+    public void setModa(int moda) {
+        this.moda = moda;
+    }
     public void addValoracio(String tipus, String valor){
         Valoracio valoracio = new Valoracio(tipus,valor);
         llistaValoracio.add(valoracio);
@@ -104,4 +115,5 @@ public class ProducteEspecific {
         }
         return mitjan / contador;
     }
+
 }
