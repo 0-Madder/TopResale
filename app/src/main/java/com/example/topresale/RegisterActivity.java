@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,6 +20,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText textoUsuario;
     private EditText textoContra;
     private EditText textoRepetirContra;
+
+    private CheckBox checkBoxAceptarCondiciones;
 
 
     @Override
@@ -31,16 +35,42 @@ public class RegisterActivity extends AppCompatActivity {
         textoUsuario = findViewById(R.id.usuario_editText);
         textoContra = findViewById(R.id.password_editText);
         textoRepetirContra = findViewById(R.id.repetirPassword_editText);
+        checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);
     }
 
     public void crearUsuario(View view) {
+        //Boolean para comprobar si los parámetros son correctos
+        boolean parametrosCorrectos = true;
 
+        //En caso de que Contraseña != Repite la contraseña
         if(!textoContra.getText().toString().equals(textoRepetirContra.getText().toString())){
             Toast toast = Toast.makeText(this, "Las contraseñas no coinciden",Toast.LENGTH_SHORT);
             toast.show();
+            parametrosCorrectos = false;
         }
 
-        else{
+        //En caso de que alguno de los EditText esten vacios
+        if(textoNombre.getText().toString().equals("") || textoCorreo.getText().toString().equals("")
+                || textoUsuario.getText().toString().equals("") || textoContra.getText().toString().equals("")
+                || textoRepetirContra.getText().toString().equals("")){
+            Toast toast = Toast.makeText(this, "Es obligatorio rellenar todos los campos.", Toast.LENGTH_SHORT);
+            toast.show();
+            parametrosCorrectos = false;
+        }
+
+        //En caso de que el nombre de usuario ya exista
+
+
+        //En caso de que no se hayan aceptado los terminos y condiciones
+        if(!checkBoxAceptarCondiciones.isChecked()){
+            Toast toast = Toast.makeText(this, "Acepte los términos y condiciones.", Toast.LENGTH_SHORT);
+            toast.show();
+            parametrosCorrectos = false;
+        }
+
+
+        //Terminar actividad en caso de que todos los parámetros sean correcto
+        if(parametrosCorrectos){
             finish();
         }
 
