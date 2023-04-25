@@ -24,6 +24,7 @@ public class PantallaDeCargaActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "button_clicked");
                 Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
                 startActivity(intent);
+                finish();
             }
 
             public void onTick(long millisUntilFinished) {
