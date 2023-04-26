@@ -74,6 +74,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Terminar actividad en caso de que todos los parámetros sean correcto
         if(parametrosCorrectos){
+
+            dataManager.registrarUsuario();
             finish();
         }
 
