@@ -13,11 +13,12 @@ public class UserManager {
     private FirebaseAuth mAuth;
 
     private FirebaseFirestore mdB;
-    private ArrayList<User> llistaUsuaris;
+    private ArrayList<User> llistaUsuaris = new ArrayList<>();
 
     public UserManager(FirebaseAuth mAuth, FirebaseFirestore mdB) {
-        this.mAuth = FirebaseAuth.getInstance();
-        this.mdB = FirebaseFirestore.getInstance();
+        this.mAuth = mAuth;
+        this.mdB = mdB;
+
     }
 
     public void registrarUsuario(String nomComplet, String correo, String nomUser, String pswd){
