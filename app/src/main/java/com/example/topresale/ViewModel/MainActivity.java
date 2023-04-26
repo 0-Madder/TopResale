@@ -12,8 +12,8 @@ import com.example.topresale.model.CustomAdapter;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listaTiposProducto;
-    String tipos[] = {"Spinner", "Cubo de Rubik", "Sillas", "Smartwatch", "Transmisor FM", "RubberDuck"};
-    int flags[] = {R.drawable.spinner, R.drawable.rubik, R.drawable.sillas, R.drawable.smartwatch, R.drawable.radio, R.drawable.pato};
+    String tipos[] = {"Spinner", "Cubo de Rubik", "Sillas", "Smartwatch", "Mousepads", "RubberDuck", "Spinner", "Cubo de Rubik", "Sillas", "Smartwatch", "Mousepads", "RubberDuck,"};
+    int flags[] = {R.drawable.spinner, R.drawable.rubik, R.drawable.sillas, R.drawable.smartwatch, R.drawable.alfombrilla, R.drawable.pato,R.drawable.spinner, R.drawable.rubik, R.drawable.sillas, R.drawable.smartwatch, R.drawable.alfombrilla, R.drawable.pato};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

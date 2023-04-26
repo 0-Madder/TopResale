@@ -15,7 +15,7 @@ public class UserManager {
         mAuth.createUserWithEmailAndPassword(textCorreo, textPswd);
     }
     public boolean usuariExistent (User user){
-
+        return true;
     }
 
 }
