@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.example.topresale.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LogInActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = LogInActivity.class.getSimpleName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
