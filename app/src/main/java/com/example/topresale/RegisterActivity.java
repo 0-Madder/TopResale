@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);
     }
 
-    public void crearUsuario(View view) {
+        public void crearUsuario(View view) {
         //Boolean para comprobar si los parámetros son correctos
         boolean parametrosCorrectos = true;
 
