@@ -16,7 +16,7 @@ plugins {
     id 'com.android.application' version '7.4.2' apply false
     id 'com.android.library' version '7.4.2' apply false
 }
-
+/*
 allprojects {
     repositories {
         // Make sure that you have the following two repositories
@@ -24,3 +24,4 @@ allprojects {
         mavenCentral()  // Maven Central repository
     }
 }
+*/
