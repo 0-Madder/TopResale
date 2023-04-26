@@ -27,11 +27,12 @@ public class LogInActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+        //Llamar al método del Modelo que se encarga del inicio de sesión:
+            // - Caso en que el usuario no exista (necesitamos base de datos)
+            // - Caso en que la contraseña no sea correcta (necesitamos la base de datos)
 
-        //Caso en que el usuario no exista (necesitamos base de datos)
 
 
-        //Caso en que la contraseña no sea correcta (necesitamos la base de datos)
     }
 
     //Redirecciona al usuario a la página de registro
