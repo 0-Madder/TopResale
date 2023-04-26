@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         listaTiposProducto = findViewById(R.id.tiposDeProducto_listView);
+        listaTiposProducto.setClickable(true);
 
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), tipos, flags);
 
