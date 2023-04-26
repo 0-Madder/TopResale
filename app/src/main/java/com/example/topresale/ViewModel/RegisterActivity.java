@@ -93,13 +93,10 @@ public class RegisterActivity extends AppCompatActivity {
             parametrosCorrectos = false;
         }
 
-        System.out.println("1");
+
         //Terminar actividad en caso de que todos los parámetros sean correcto. Se añadirá el usuario en la base de datos i en AUTH
         if(parametrosCorrectos){
-            System.out.println("2");
-            //userManager.inscriureUsuari(textoCorreo.getText().toString(), textoContra.getText().toString());
             userManager.inscriureUsuari(textoCorreo.getText().toString(),textoContra.getText().toString());
-            System.out.println("3");
             userManager.registrarUsuario(textoUsuario.getText().toString(),textoCorreo.getText().toString(),textoNombre.getText().toString(),textoContra.getText().toString());
             finish();
         }
