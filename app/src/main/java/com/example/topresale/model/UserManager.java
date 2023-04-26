@@ -13,11 +13,12 @@ public class UserManager {
     private FirebaseAuth mAuth;
 
     private FirebaseFirestore mdB;
-    private ArrayList<User> llistaUsuaris;
+    private ArrayList<User> llistaUsuaris = new ArrayList<>();
 
     public UserManager(FirebaseAuth mAuth, FirebaseFirestore mdB) {
-        this.mAuth = FirebaseAuth.getInstance();
-        this.mdB = FirebaseFirestore.getInstance();
+        this.mAuth = mAuth;
+        this.mdB = mdB;
+
     }
 
     //Tiene que coincidir el nombre de usuario con la contraseña

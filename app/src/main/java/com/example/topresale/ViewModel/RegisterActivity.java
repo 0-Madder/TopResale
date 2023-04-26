@@ -23,7 +23,11 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText textoContra;
     private EditText textoRepetirContra;
     private CheckBox checkBoxAceptarCondiciones;
-    private UserManager userManager;
+
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    private FirebaseFirestore mdB = FirebaseFirestore.getInstance();
+    private UserManager userManager = new UserManager(mAuth,mdB);
 
 
 
@@ -90,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Terminar actividad en caso de que todos los parámetros sean correcto. Se añadirá el usuario en la base de datos i en AUTH
         if(parametrosCorrectos){
-            userManager.inscriureUsuari(textoCorreo.getText().toString(), textoContra.getText().toString());
+            userManager.inscriureUsuari(textoCorreo.getText().toString(),textoContra.getText().toString());
             userManager.registrarUsuario(textoUsuario.getText().toString(),textoCorreo.getText().toString(),textoNombre.getText().toString(),textoContra.getText().toString());
             finish();
         }

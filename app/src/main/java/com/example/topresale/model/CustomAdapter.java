@@ -43,12 +43,16 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflater.inflate(R.layout.activity_aux, null);
+        view = inflater.inflate(R.layout.activity_auxiliar, null);
         TextView tipo = (TextView) view.findViewById(R.id.textView);
         ImageView icon = (ImageView) view.findViewById(R.id.icon);
         tipo.setText(listaTipos[i]);
         icon.setImageResource(fotos[i]);
         return view;
     }
+
+
+
+
 }
 
