@@ -79,6 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
         //Terminar actividad en caso de que todos los parámetros sean correcto. Se añadirá el usuario en la base de datos
         if(parametrosCorrectos){
             user.inscriureUsuari(textoCorreo.getText().toString(), textoContra.getText().toString());
+            user.
             finish();
         }
 
