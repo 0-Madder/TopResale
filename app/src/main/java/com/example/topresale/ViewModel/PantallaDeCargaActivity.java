@@ -1,4 +1,4 @@
-package com.example.topresale;
+package com.example.topresale.ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.WindowManager;
+
+import com.example.topresale.R;
+import com.example.topresale.ViewModel.LogInActivity;
 
 
 public class PantallaDeCargaActivity extends AppCompatActivity {

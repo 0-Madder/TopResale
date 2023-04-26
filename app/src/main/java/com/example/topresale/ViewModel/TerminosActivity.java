@@ -1,9 +1,11 @@
-package com.example.topresale;
+package com.example.topresale.ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+
+import com.example.topresale.R;
 
 public class TerminosActivity extends AppCompatActivity {
 

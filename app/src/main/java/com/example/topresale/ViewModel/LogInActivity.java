@@ -1,4 +1,4 @@
-package com.example.topresale;
+package com.example.topresale.ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.example.topresale.R;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -27,6 +29,7 @@ public class LogInActivity extends AppCompatActivity {
         finish();
 
         //Caso en que el usuario no exista (necesitamos base de datos)
+
 
         //Caso en que la contraseña no sea correcta (necesitamos la base de datos)
     }
