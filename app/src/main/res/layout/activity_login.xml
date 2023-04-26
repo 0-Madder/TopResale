@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.181"
-        app:srcCompat="@drawable/captura_realizada_el_2023_04_24_03_02_59" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/marcaTextView"
