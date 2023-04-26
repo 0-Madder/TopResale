@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         listaTiposProducto = findViewById(R.id.tiposDeProducto_listView);
 
-        CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), countryList, flags);
+        //CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), countryList, flags);
 
     }
 }

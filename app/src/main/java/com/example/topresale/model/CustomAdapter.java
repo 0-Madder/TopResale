@@ -44,9 +44,11 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.activity_main, null);
-        TextView country = (TextView) view.findViewById(R.id.textView);
-        ImageView icon = (ImageView) view.findViewById(R.id.icon);
-        country.setText(countryList[i]);
-        icon.setImageResource(flags[i]);
+        //TextView country = (TextView) view.findViewById(R.id.textView);
+        //ImageView icon = (ImageView) view.findViewById(R.id.icon);
+        //country.setText(countryList[i]);
+        //icon.setImageResource(flags[i]);
         return view;
     }
+}
+
