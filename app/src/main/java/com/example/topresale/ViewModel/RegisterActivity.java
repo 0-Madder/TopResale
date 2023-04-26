@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import com.example.topresale.R;
 import com.example.topresale.model.UserManager;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -37,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         textoNombre = findViewById(R.id.nombreCompleto_editText);
         textoCorreo = findViewById(R.id.correo_editText);
-        textoUsuario = findViewById(R.id.usuario_editText);
+        textoUsuario = findViewById(R.id.usuarioIniciSesio_editText);
         textoContra = findViewById(R.id.password_editText);
         textoRepetirContra = findViewById(R.id.repetirPassword_editText);
         checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);

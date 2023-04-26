@@ -20,6 +20,16 @@ public class UserManager {
         this.mdB = FirebaseFirestore.getInstance();
     }
 
+    //Tiene que coincidir el nombre de usuario con la contraseña
+    public boolean correctPswd(String username, String pswd) throws Exception {
+        User userLogIn = findUsuariByUsername(username);
+        if(userLogIn.getPswd().equals(pswd)){
+            return true; //Contrasenya correcta
+        }
+        return false; //Contrasenya incorrecta
+    }
+
+    //Afegeix l'ususari a la base de dades
     public void registrarUsuario(String nomComplet, String correo, String nomUser, String pswd){
         User u = new User(nomComplet,correo,nomUser,pswd);
         llistaUsuaris.add(u);
@@ -32,11 +42,12 @@ public class UserManager {
 
     }
 
+    //Afegeix ususari al AUTH
     public void inscriureUsuari(String textCorreo, String textPswd){
         mAuth.createUserWithEmailAndPassword(textCorreo, textPswd);
     }
 
-    //En cas que el username ja existeixi no permetrem el registre el nou usuari
+    //En cas que el username ja existeixi no permetrem el registre del nou usuari pero permetre iniciar sessió si la contraseña és correcta
     public boolean usernameExistent(String username){
         for(User u: llistaUsuaris){
             if(u.getNomUser().equalsIgnoreCase(username)){
@@ -56,17 +67,19 @@ public class UserManager {
         return false;
     }
 
-    /*public User findUsuaricorreu (String correu) throws Exception{
+    //Encontrar un usuario segun su correo
+    public User findUsuariByCorreu (String correu) throws Exception{
         for(User u : llistaUsuaris){
             if(u.getCorreo().equalsIgnoreCase(correu)){
                 return u;
             }
-
         }
         throw new Exception("Usuari per correu no trobat");
 
     }
-    public User findUsuarinom (String usuari) throws Exception{
+
+    //Encontrar un usuario segun su nombre de usuario
+    public User findUsuariByUsername (String usuari) throws Exception{
         for(User u : llistaUsuaris){
             if(u.getNomUser().equalsIgnoreCase(usuari)){
                 return u;
@@ -75,7 +88,6 @@ public class UserManager {
         }
         throw new Exception("Usuari per nom no trobat");
 
-    }*/
-
+    }
 
 }
