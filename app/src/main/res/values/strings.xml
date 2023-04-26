@@ -11,43 +11,23 @@
     <string name="loading">Cargando datos y recursos de la aplicacion...</string>
 
 
-    <string name="terminosText">Bienvenido a nuestra aplicación de búsqueda de productos al por mayor.
-        Antes de utilizar nuestros servicios, lea detenidamente los siguientes términos y condiciones.
-        Al acceder o utilizar nuestra aplicación, acepta estar legalmente vinculado por estos términos y condiciones.
-        Si no está de acuerdo con estos términos y condiciones, no utilice nuestra aplicación.
-\n \n
-    <b><i>Propósito de la aplicación:</i></b>
-\n
-    Nuestra aplicación tiene como objetivo proporcionar a nuestros usuarios una plataforma fácil de usar para encontrar productos al por mayor de una variedad de empresas vendedoras. No vendemos productos directamente, pero ofrecemos un servicio de búsqueda para facilitar la conexión entre compradores y vendedores.
-\n \n
-    <b><i>Información del usuario:</i></b>
-\n
-    Para utilizar nuestra aplicación, es posible que necesite registrarse y proporcionar información personal como su nombre, dirección de correo electrónico, número de teléfono y otra información relevante. Nos comprometemos a mantener esta información segura y protegida de acuerdo con nuestra Política de Privacidad.
-\n \n
-    <b><i>Precios y productos:</i></b>
-\n
-    Nos esforzamos por proporcionar información precisa y actualizada sobre los precios y productos disponibles en nuestra aplicación, pero no garantizamos que la información sea precisa y completa. Los precios y la disponibilidad pueden cambiar sin previo aviso. No somos responsables de los productos vendidos por los vendedores a través de nuestra aplicación. El comprador es responsable de verificar la calidad y las características de los productos antes de realizar una compra.
-\n \n
-   <b><i> Responsabilidad del usuario:</i></b>
-\n
-    Al utilizar nuestra aplicación, usted se compromete a utilizar nuestros servicios solo con fines legales y de acuerdo con estos términos y condiciones. Usted es responsable de cualquier actividad que realice en nuestra aplicación y se compromete a no utilizar nuestra aplicación para fines ilegales o fraudulentos.
-\n \n
-    <b><i>Propiedad intelectual:</i></b>
-\n
-    Todo el contenido, incluidos los textos, gráficos, imágenes, videos, logotipos y marcas comerciales, en nuestra aplicación son propiedad exclusiva de nuestra empresa o de nuestros proveedores. Usted no puede utilizar el contenido de nuestra aplicación sin nuestro permiso previo por escrito.
-\n \n
-    <b><i>Modificaciones:</i></b>
-\n
-    Nos reservamos el derecho de modificar o cambiar estos términos y condiciones en cualquier momento sin previo aviso. Los cambios se harán efectivos inmediatamente después de su publicación. Es su responsabilidad revisar regularmente estos términos y condiciones para estar al tanto de cualquier cambio.
-\n \n
-    <b><i>Terminación:</i></b>
-\n
-    Nos reservamos el derecho de suspender o terminar su acceso a nuestra aplicación en cualquier momento y sin previo aviso si viola estos términos y condiciones.
-\n \n
-    <b><i>Ley aplicable:</i></b>
-\n
-    Estos términos y condiciones se rigen por las leyes de [país] y cualquier disputa que surja en relación con estos términos y condiciones se resolverá exclusivamente en los tribunales de [ciudad/país].
-\n \n
-    Si tiene alguna pregunta o inquietud sobre estos términos y condiciones, contáctenos a través de nuestra página de contacto en la aplicación. Gracias por utilizar nuestra aplicación de búsqueda de productos al por mayor.</string>
+    <string name="terminosText">Bienvenido a nuestra aplicación de búsqueda de productos al por mayor. Antes de utilizar nuestros servicios, lea detenidamente los siguientes términos y condiciones.Al acceder o utilizar nuestra aplicación, acepta estar legalmente vinculado por estos términos y condiciones.Si no está de acuerdo con estos términos y condiciones, no utilice nuestra aplicación.
+\n<b><i>Propósito de la aplicación:</i></b>
+Nuestra aplicación tiene como objetivo proporcionar a nuestros usuarios una plataforma fácil de usar para encontrar productos al por mayor de una variedad de empresas vendedoras. No vendemos productos directamente, pero ofrecemos un servicio de búsqueda para facilitar la conexión entre compradores y vendedores.
+\n<b><i>Información del usuario:</i></b>
+Para utilizar nuestra aplicación, es posible que necesite registrarse y proporcionar información personal como su nombre, dirección de correo electrónico, número de teléfono y otra información relevante. Nos comprometemos a mantener esta información segura y protegida de acuerdo con nuestra Política de Privacidad.
+\n<b><i>Precios y productos:</i></b>
+Nos esforzamos por proporcionar información precisa y actualizada sobre los precios y productos disponibles en nuestra aplicación, pero no garantizamos que la información sea precisa y completa. Los precios y la disponibilidad pueden cambiar sin previo aviso. No somos responsables de los productos vendidos por los vendedores a través de nuestra aplicación. El comprador es responsable de verificar la calidad y las características de los productos antes de realizar una compra.
+\n<b><i> Responsabilidad del usuario:</i></b>
+Al utilizar nuestra aplicación, usted se compromete a utilizar nuestros servicios solo con fines legales y de acuerdo con estos términos y condiciones. Usted es responsable de cualquier actividad que realice en nuestra aplicación y se compromete a no utilizar nuestra aplicación para fines ilegales o fraudulentos.
+\n<b><i>Propiedad intelectual:</i></b>
+Todo el contenido, incluidos los textos, gráficos, imágenes, videos, logotipos y marcas comerciales, en nuestra aplicación son propiedad exclusiva de nuestra empresa o de nuestros proveedores. Usted no puede utilizar el contenido de nuestra aplicación sin nuestro permiso previo por escrito.
+\n<b><i>Modificaciones:</i></b>
+Nos reservamos el derecho de modificar o cambiar estos términos y condiciones en cualquier momento sin previo aviso. Los cambios se harán efectivos inmediatamente después de su publicación. Es su responsabilidad revisar regularmente estos términos y condiciones para estar al tanto de cualquier cambio.
+\n<b><i>Terminación:</i></b>
+Nos reservamos el derecho de suspender o terminar su acceso a nuestra aplicación en cualquier momento y sin previo aviso si viola estos términos y condiciones.
+\n<b><i>Ley aplicable:</i></b>
+Estos términos y condiciones se rigen por las leyes de [país] y cualquier disputa que surja en relación con estos términos y condiciones se resolverá exclusivamente en los tribunales de [ciudad/país].
+\nSi tiene alguna pregunta o inquietud sobre estos términos y condiciones, contáctenos a través de nuestra página de contacto en la aplicación. Gracias por utilizar nuestra aplicación de búsqueda de productos al por mayor.</string>
 
 </resources>

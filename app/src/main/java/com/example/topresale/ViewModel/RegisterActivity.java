@@ -1,4 +1,4 @@
-package com.example.topresale;
+package com.example.topresale.ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.topresale.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
