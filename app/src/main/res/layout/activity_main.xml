@@ -4,4 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewModel.MainActivity"/>
+    tools:context=".ViewModel.MainActivity">
+
+    <ImageView
+        android:id="@+id/perfil_ImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        android:background="#FFC107"
+        android:src="@android:drawable/ic_menu_my_calendar"
+        app:layout_constraintEnd_toStartOf="@+id/barraSuperior_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/barraSuperior_layout" />
+
+    <FrameLayout
+        android:id="@+id/barraSuperior_layout"
+        android:layout_width="0dp"
+        android:layout_height="58sp"
+        android:layout_marginStart="58dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <SearchView
+            android:id="@+id/barraDeBusqueda_searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </SearchView>
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/tiposDeProducto_listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:dividerHeight="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barraSuperior_layout" />
+
+    <TextView
+        android:id="@+id/ordenadoPor_textView"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ordenacion"
+        app:layout_constraintBottom_toTopOf="@+id/tiposDeProducto_listView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barraSuperior_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
