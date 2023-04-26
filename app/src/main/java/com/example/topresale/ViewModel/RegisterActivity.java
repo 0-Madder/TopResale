@@ -37,6 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
 
+        mAuth = FirebaseAuth.getInstance();
+        mDb = FirebaseFirestore.getInstance();
+
 
         textoNombre = findViewById(R.id.nombreCompleto_editText);
         textoCorreo = findViewById(R.id.correo_editText);
@@ -81,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Terminar actividad en caso de que todos los parámetros sean correcto
         if(parametrosCorrectos){
+            mAuth.createUserWithEmailAndPassword(textoCorreo.getText().toString(), textoContra.getText().toString());
 
             finish();
         }
