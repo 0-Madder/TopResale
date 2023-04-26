@@ -12,10 +12,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.topresale.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = RegisterActivity.class.getSimpleName();
+
+    private FirebaseAuth mAuth;
+
+    private FirebaseFirestore mDb;
     private EditText textoNombre;
     private EditText textoCorreo;
     private EditText textoUsuario;
@@ -31,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
 
+
         textoNombre = findViewById(R.id.nombreCompleto_editText);
         textoCorreo = findViewById(R.id.correo_editText);
         textoUsuario = findViewById(R.id.usuario_editText);
@@ -39,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);
     }
 
-    public void crearUsuario(View view) {
+        public void crearUsuario(View view) {
         //Boolean para comprobar si los parámetros son correctos
         boolean parametrosCorrectos = true;
 
