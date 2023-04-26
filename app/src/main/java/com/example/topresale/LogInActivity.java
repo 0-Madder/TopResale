@@ -16,14 +16,15 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
     }
 
     public void iniciarSesion(View view) {
         Log.d(LOG_TAG, "button_clicked");
-        Intent intent = new Intent(this, PantallaDeCargaActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
 
         //Caso en que el usuario no exista (necesitamos base de datos)
 
