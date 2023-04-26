@@ -12,23 +12,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.topresale.R;
+import com.example.topresale.model.UserManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = RegisterActivity.class.getSimpleName();
-
-    private FirebaseAuth mAuth;
-
-    private FirebaseFirestore mDb;
     private EditText textoNombre;
     private EditText textoCorreo;
     private EditText textoUsuario;
     private EditText textoContra;
     private EditText textoRepetirContra;
-
     private CheckBox checkBoxAceptarCondiciones;
+    private UserManager user;
+
 
 
     @Override
@@ -36,10 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
-
-        mAuth = FirebaseAuth.getInstance();
-        mDb = FirebaseFirestore.getInstance();
-
 
         textoNombre = findViewById(R.id.nombreCompleto_editText);
         textoCorreo = findViewById(R.id.correo_editText);
@@ -49,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);
     }
 
-        public void crearUsuario(View view) {
+    public void crearUsuario(View view) {
         //Boolean para comprobar si los parámetros son correctos
         boolean parametrosCorrectos = true;
 
@@ -71,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
             parametrosCorrectos = false;
         }
 
-        //En caso de que el nombre de usuario ya exista (necesitamos la base de datos)
+        //En caso de que el nombre de usuario ya exista (necesitamos leer la base de datos)
 
 
         //En caso de que no se hayan aceptado los terminos y condiciones
@@ -82,10 +76,9 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
-        //Terminar actividad en caso de que todos los parámetros sean correcto
+        //Terminar actividad en caso de que todos los parámetros sean correcto. Se añadirá el usuario en la base de datos
         if(parametrosCorrectos){
-            mAuth.createUserWithEmailAndPassword(textoCorreo.getText().toString(), textoContra.getText().toString());
-
+            user.inscriureUsuari(textoCorreo.getText().toString(), textoContra.getText().toString());
             finish();
         }
 
