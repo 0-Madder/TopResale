@@ -2,14 +2,17 @@ package com.example.topresale.ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.topresale.R;
 import com.example.topresale.model.CustomAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView listaTiposProducto;
     String tipos[] = {"Spinner", "Cubo de Rubik", "Sillas", "Smartwatch", "Mousepads", "RubberDuck", "Spinner", "Cubo de Rubik", "Sillas", "Smartwatch", "Mousepads", "RubberDuck,"};
@@ -22,14 +25,30 @@ public class MainActivity extends AppCompatActivity {
 
 
         listaTiposProducto = findViewById(R.id.tiposDeProducto_listView);
-        listaTiposProducto.setClickable(true);
+
 
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), tipos, flags);
 
         listaTiposProducto.setAdapter(customAdapter);
 
+        listaTiposProducto.setOnItemClickListener(
+                new AdapterView.OnItemClickListener()
+                {
+                    @Override
+                    public void onItemClick(AdapterView<?> arg0, View view,
+                                            int position, long id) {
+
+                        System.out.println(position);
+                        System.out.println(id);
+                    }
+                }
+        );
+
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+    }
 }
