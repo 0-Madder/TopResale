@@ -7,6 +7,7 @@ import android.view.WindowManager;
 
 public class TerminosActivity extends AppCompatActivity {
 
+    //Permite visualizar la página con los términos y condiciones
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
