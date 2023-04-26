@@ -34,11 +34,29 @@ public class UserManager {
 
     public void inscriureUsuari(String textCorreo, String textPswd){
         mAuth.createUserWithEmailAndPassword(textCorreo, textPswd);
-
-
     }
 
-    public User findUsuaricorreu (String correu) throws Exception{
+    //En cas que el username ja existeixi no permetrem el registre el nou usuari
+    public boolean usernameExistent(String username){
+        for(User u: llistaUsuaris){
+            if(u.getNomUser().equalsIgnoreCase(username)){
+                return true; //En caso que ya exista devuelve TRUE
+            }
+        }
+        return false; //EN caso de que no exista devuelve FALSE
+    }
+
+    //En cas que el correu de l'usuari que es registra ja tingui un compte associat no permetrem el seu registre
+    public boolean correuExistent(String correu){
+        for(User u:llistaUsuaris){
+            if(u.getCorreo().equalsIgnoreCase(correu)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*public User findUsuaricorreu (String correu) throws Exception{
         for(User u : llistaUsuaris){
             if(u.getCorreo().equalsIgnoreCase(correu)){
                 return u;
@@ -57,7 +75,7 @@ public class UserManager {
         }
         throw new Exception("Usuari per nom no trobat");
 
-    }
+    }*/
 
 
 }

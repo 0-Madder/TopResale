@@ -25,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText textoContra;
     private EditText textoRepetirContra;
     private CheckBox checkBoxAceptarCondiciones;
-    private UserManager user;
+    private UserManager userManager;
 
 
 
@@ -46,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
     public void crearUsuario(View view) {
         //Boolean para comprobar si los parámetros son correctos
         boolean parametrosCorrectos = true;
+        String correu = textoCorreo.getText().toString();
+        String username = textoUsuario.getText().toString();
 
         //En caso de que Contraseña != Repite la contraseña
         if(!textoContra.getText().toString().equals(textoRepetirContra.getText().toString())){
@@ -65,10 +67,22 @@ public class RegisterActivity extends AppCompatActivity {
             parametrosCorrectos = false;
         }
 
-        //En caso de que el nombre de usuario ya exista (necesitamos leer la base de datos)
+        //En caso de que el nombre de usuario ya exista
+        if(userManager.usernameExistent(username)){
+            Toast toast = Toast.makeText(this, "Este nombre de usuario ya esta en uso.", Toast.LENGTH_SHORT);
+            toast.show();;
+            parametrosCorrectos = false;
+        }
+
+        //En caso de que ya exista otra cuenta asociada a este correo
+        if(userManager.correuExistent(correu)){
+            Toast toast = Toast.makeText(this, "Este correo ya tiene una cuenta asociada.", Toast.LENGTH_SHORT);
+            toast.show();;
+            parametrosCorrectos = false;
+        }
 
 
-        //En caso de que no se hayan aceptado los terminos y condiciones
+            //En caso de que no se hayan aceptado los terminos y condiciones
         if(!checkBoxAceptarCondiciones.isChecked()){
             Toast toast = Toast.makeText(this, "Acepte los términos y condiciones.", Toast.LENGTH_SHORT);
             toast.show();
@@ -76,10 +90,10 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
-        //Terminar actividad en caso de que todos los parámetros sean correcto. Se añadirá el usuario en la base de datos
+        //Terminar actividad en caso de que todos los parámetros sean correcto. Se añadirá el usuario en la base de datos i en AUTH
         if(parametrosCorrectos){
-            user.inscriureUsuari(textoCorreo.getText().toString(), textoContra.getText().toString());
-            user.registrarUsuario(textoNombre.getText().toString(),textoCorreo.getText().toString(),textoUsuario.getText().toString(),textoContra.getText().toString());
+            userManager.inscriureUsuari(textoCorreo.getText().toString(), textoContra.getText().toString());
+            userManager.registrarUsuario(textoUsuario.getText().toString(),textoCorreo.getText().toString(),textoNombre.getText().toString(),textoContra.getText().toString());
             finish();
         }
 
