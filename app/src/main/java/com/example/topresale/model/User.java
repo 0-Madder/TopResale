@@ -4,12 +4,12 @@ public class User {
 
     //Atributs -> nomComplet, correo, nomUser, pswd
 
+    private String id;
     private String nomComplet;
     private String correo;
     private String nomUser;
     private String pswd;
 
-    private String id;
 
 
 

@@ -70,6 +70,6 @@ public class Producte {
             mitjana += pe.getModa();
             cont++;
         }
-        setMitjanaModa(mitjana/cont);
+        this.setMitjanaModa(mitjana/cont);
     }
 }
