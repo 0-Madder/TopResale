@@ -11,11 +11,11 @@ public class ProducteEspecific {
     private String estadistica;
     private ArrayList<Valoracio> llistaValoracio = new ArrayList<>();
     private String link;
-    private int moda;
+    private float moda;
 
 
 
-    public ProducteEspecific(float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, int moda) {
+    public ProducteEspecific(float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, float moda) {
         this.preuB = preuB;
         this.preuC = preuC;
         this.preuV = preuV;
@@ -89,11 +89,11 @@ public class ProducteEspecific {
     public void setLink(String link) {
         this.link = link;
     }
-    public int getModa() {
+    public float getModa() {
         return moda;
     }
 
-    public void setModa(int moda) {
+    public void setModa(float moda) {
         this.moda = moda;
     }
     public void addValoracio(String tipus, String valor){

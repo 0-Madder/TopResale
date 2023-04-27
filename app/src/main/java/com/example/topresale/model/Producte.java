@@ -6,12 +6,15 @@ public class Producte {
     private ArrayList<ProducteEspecific> llistaProdEspe;
     private String name;
     private String foto;
+    private float mitjanaModa;
     private boolean tendencia;
 
     public Producte(ArrayList<ProducteEspecific> llistaProdEspe, String name, String foto, boolean tendencia) {
         this.llistaProdEspe = llistaProdEspe;
         this.name = name;
         this.foto = foto;
+        calcularMitjanaModa();
+        this.mitjanaModa = getMitjanaModa();
         this.tendencia = tendencia;
     }
 
@@ -21,6 +24,14 @@ public class Producte {
 
     public void setLlistaProdEspe(ArrayList<ProducteEspecific> llistaProdEspe) {
         this.llistaProdEspe = llistaProdEspe;
+    }
+
+    public float getMitjanaModa() {
+        return mitjanaModa;
+    }
+
+    public void setMitjanaModa(float mitjanaModa) {
+        this.mitjanaModa = mitjanaModa;
     }
 
     public String getName() {
@@ -50,5 +61,15 @@ public class Producte {
     public void addProductEspecific(float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, int moda){
         ProducteEspecific producteEspecific = new ProducteEspecific(preuB,preuC,preuV,descripcio,foto,estadistica,link,moda);
         llistaProdEspe.add(producteEspecific);
+    }
+
+    public void calcularMitjanaModa(){
+        float mitjana = 0;
+        float cont = 0;
+        for(ProducteEspecific pe : llistaProdEspe){
+            mitjana += pe.getModa();
+            cont++;
+        }
+        setMitjanaModa(mitjana/cont);
     }
 }
