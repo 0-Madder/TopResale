@@ -32,14 +32,15 @@ public class UserManager {
 
     //Afegeix l'ususari a la base de dades
     public void registrarUsuario(String nomComplet, String correo, String nomUser, String pswd){
-        User u = new User(nomComplet,correo,nomUser,pswd);
-        llistaUsuaris.add(u);
         Map<String,Object> signedUpUser = new HashMap<>();
-        signedUpUser.put("Nom", nomComplet);
-        signedUpUser.put("Correu",correo);
-        signedUpUser.put("Usuari",nomUser);
-        signedUpUser.put("Contrasenya",pswd);
-        mdB.collection("Usuaris").document().set(signedUpUser);
+        signedUpUser.put("nomComplet", nomComplet);
+        signedUpUser.put("correo",correo);
+        signedUpUser.put("nomUser",nomUser);
+        signedUpUser.put("pswd",pswd);
+        mdB.collection("User").document(mAuth.getCurrentUser().getUid()).set(signedUpUser);
+
+        User u = new User(nomComplet,correo,nomUser,pswd,mAuth.getCurrentUser().getUid());
+        llistaUsuaris.add(u);
 
     }
 

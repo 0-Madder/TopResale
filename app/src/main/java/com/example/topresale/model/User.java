@@ -9,11 +9,16 @@ public class User {
     private String nomUser;
     private String pswd;
 
-    public User(String nomComplet, String correo, String nomUser, String pswd) {
+    private String id;
+
+
+
+    public User(String nomComplet, String correo, String nomUser, String pswd, String id) {
         this.nomComplet = nomComplet;
         this.correo = correo;
         this.nomUser = nomUser;
         this.pswd = pswd;
+        this.id = id;
     }
 
     public String getNomComplet() {
@@ -46,5 +51,13 @@ public class User {
 
     public void setPswd(String pswd) {
         this.pswd = pswd;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
