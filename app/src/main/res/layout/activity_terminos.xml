@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewModel.TerminosActivity">
+    tools:context=".viewmodel.TerminosActivity">
 
     <ImageView
         android:id="@+id/logoImageView"
@@ -30,14 +30,14 @@
         app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
 
     <ScrollView
-        android:layout_width="385dp"
-        android:layout_height="508dp"
+        android:layout_width="337dp"
+        android:layout_height="505dp"
         android:layout_below="@id/tituloTerminos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tituloTerminos"
-        app:layout_constraintVertical_bias="0.528">
+        app:layout_constraintVertical_bias="0.464">
 
 
         <TextView

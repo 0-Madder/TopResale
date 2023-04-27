@@ -1,4 +1,4 @@
-package com.example.topresale.ViewModel;
+package com.example.topresale.viewmodel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import com.example.topresale.R;
 import com.example.topresale.model.UserManager;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.example.topresale.viewmodel.TerminosActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 

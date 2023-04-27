@@ -1,4 +1,4 @@
-package com.example.topresale.ViewModel;
+package com.example.topresale.viewmodel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,10 +9,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import com.example.topresale.viewmodel.MainActivity;
+import com.example.topresale.viewmodel.RegisterActivity;
 import com.example.topresale.R;
 import com.example.topresale.model.UserManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -21,7 +24,10 @@ public class LogInActivity extends AppCompatActivity {
     private EditText textoPswd;
     private EditText textoUsername;
 
-    private UserManager userManager;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    private FirebaseFirestore mdB = FirebaseFirestore.getInstance();
+    private UserManager userManager = new UserManager(mAuth,mdB);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +73,10 @@ public class LogInActivity extends AppCompatActivity {
             }
         }
 
+
         //En caso de que los parámetros sean correctos se iniciará la sesión
         if(parametrosCorrectos){
+            userManager.iniciarSessio(textoUsername.getText().toString(), textoPswd.getText().toString());
             finish();
         }
 
