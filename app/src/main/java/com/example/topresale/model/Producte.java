@@ -9,8 +9,8 @@ public class Producte {
     private float mitjanaModa;
     private boolean tendencia;
 
-    public Producte(ArrayList<ProducteEspecific> llistaProdEspe, String name, String foto, boolean tendencia) {
-        this.llistaProdEspe = llistaProdEspe;
+    public Producte(String name, String foto, boolean tendencia) {
+        this.llistaProdEspe = new ArrayList<ProducteEspecific>();
         this.name = name;
         this.foto = foto;
         calcularMitjanaModa();
@@ -58,8 +58,8 @@ public class Producte {
         this.tendencia = tendencia;
     }
 
-    public void addProductEspecific(float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, int moda){
-        ProducteEspecific producteEspecific = new ProducteEspecific(preuB,preuC,preuV,descripcio,foto,estadistica,link,moda);
+    public void addProductEspecific(String nameProd, String id, float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, float moda){
+        ProducteEspecific producteEspecific = new ProducteEspecific(nameProd, id, preuB,preuC,preuV,descripcio,foto,estadistica,link,moda);
         llistaProdEspe.add(producteEspecific);
     }
 

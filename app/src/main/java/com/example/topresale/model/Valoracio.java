@@ -7,12 +7,21 @@ public class Valoracio {
      */
 
     private String tipusValoracio;
-
     private String valorValoracio;
+    private String idProdEspecific;
 
-    public Valoracio(String tipusValoracio, String valorValoracio) {
+    public Valoracio(String tipusValoracio, String valorValoracio, String idProdEspecific) {
         this.tipusValoracio = tipusValoracio;
         this.valorValoracio = valorValoracio;
+        this.idProdEspecific = idProdEspecific;
+    }
+
+    public String getIdProdEspecific() {
+        return idProdEspecific;
+    }
+
+    public void setIdProdEspecific(String idProdEspecific) {
+        this.idProdEspecific = idProdEspecific;
     }
 
     public String getTipusValoracio() {

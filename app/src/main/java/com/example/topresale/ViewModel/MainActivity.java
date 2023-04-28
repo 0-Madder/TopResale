@@ -1,4 +1,4 @@
-package com.example.topresale.ViewModel;
+package com.example.topresale.viewmodel;
 
 import androidx.appcompat.app.AppCompatActivity;
 

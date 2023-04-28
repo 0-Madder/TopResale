@@ -3,6 +3,9 @@ package com.example.topresale.model;
 import java.util.ArrayList;
 
 public class ProducteEspecific {
+
+    private String id;
+    private String nameProdcucte;
     private float preuB;
     private float preuC;
     private float preuV;
@@ -15,7 +18,10 @@ public class ProducteEspecific {
 
 
 
-    public ProducteEspecific(float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, float moda) {
+    public ProducteEspecific(String id, String nameProducte, float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, float moda) {
+
+        this.nameProdcucte = nameProducte;
+        this.id = id;
         this.preuB = preuB;
         this.preuC = preuC;
         this.preuV = preuV;
@@ -24,6 +30,21 @@ public class ProducteEspecific {
         this.estadistica = estadistica;
         this.link = link;
         this.moda = moda;
+    }
+
+    public String getNameProdcucte() {
+        return nameProdcucte;
+    }
+    public void setNameProdcucte(String nameProdcucte) {
+        this.nameProdcucte = nameProdcucte;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public float getPreuB() {
@@ -96,8 +117,8 @@ public class ProducteEspecific {
     public void setModa(float moda) {
         this.moda = moda;
     }
-    public void addValoracio(String tipus, String valor){
-        Valoracio valoracio = new Valoracio(tipus,valor);
+    public void addValoracio(String tipus, String valor, String idProdEsp){
+        Valoracio valoracio = new Valoracio(tipus,valor, idProdEsp);
         llistaValoracio.add(valoracio);
     }
     public float mitjana(){
