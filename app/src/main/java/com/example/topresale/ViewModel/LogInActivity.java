@@ -43,8 +43,10 @@ public class LogInActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         boolean parametrosCorrectos = true;
+
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
+
 
         // - Caso en el que algún parámetro este vacío
         if(textoUsername.getText().toString().equals("") || textoPswd.getText().toString().equals("")){
@@ -74,6 +76,8 @@ public class LogInActivity extends AppCompatActivity {
 
 
         //En caso de que los parámetros sean correctos se iniciará la sesión
+
+
         if(parametrosCorrectos){
             userManager.iniciarSessio(textoUsername.getText().toString(), textoPswd.getText().toString());
             finish();

@@ -1,5 +1,7 @@
 package com.example.topresale.model;
 
+import android.util.Log;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -8,6 +10,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -30,6 +33,7 @@ public class UserManager {
     public UserManager(FirebaseAuth mAuth, FirebaseFirestore mdB) {
         this.mAuth = mAuth;
         this.mdB = mdB;
+        this.activeUser = null;
 
     }
     public ArrayList<User> getLlistaUsuaris() {
@@ -80,12 +84,11 @@ public class UserManager {
 
     //En cas que el username ja existeixi no permetrem el registre del nou usuari pero permetre iniciar sessió si la contraseña és correcta
     public boolean usernameExistent(String username){
-        for(User u: llistaUsuaris){
-            if(u.getNomUser().equalsIgnoreCase(username)){
-                return true; //En caso que ya exista devuelve TRUE
-            }
+        User u = findUsuariByUsername(username);
+        if(u != null){
+            return true;
         }
-        return false; //EN caso de que no exista devuelve FALSE
+        return false;
     }
 
     //En cas que el correu de l'usuari que es registra ja tingui un compte associat no permetrem el seu registre
@@ -110,40 +113,49 @@ public class UserManager {
     }
 
     //Encontrar un usuario segun su nombre de usuario
-    public User findUsuariByUsername (String usuari) throws Exception{
-        for(User u : llistaUsuaris){
-            if(u.getNomUser().equalsIgnoreCase(usuari)){
-                return u;
+    public User findUsuariByUsername (String username) {
+        CollectionReference userRef = mdB.collection("User");
+        //Crea una consulta para buscar documentos que tengan el campo "userName" con el valor especificado
+        Query query = userRef.whereEqualTo("userName", username);
+        //Ejecuta la consulta y escucha el resultado
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                //Comprueba si se encontraron documentos
+                if (!task.getResult().isEmpty()) {
+                    //Se encontró al menos un documento con el campo "userName" con el valor especificado
+                    activeUser = task.getResult().getDocuments().get(0).toObject(User.class);
+                } else {
+                    activeUser = null;
+                    //No se encontró ningún documento con el campo "userName" con el valor especificado
+                    //Aquí puedes realizar las acciones necesarias si no se encuentra el usuario
+                }
+            } else {
+                //Ocurrió un error al ejecutar la consulta
+                activeUser = null
             }
-
-        }
-        throw new Exception("Usuari per nom no trobat");
-
+        });
+        return activeUser;
     }
 
     public void iniciarSessio(String nameUser, String pswd){
         // Obtener la colección de usuarios
-        CollectionReference usersRef = FirebaseFirestore.getInstance().collection("User");
+        CollectionReference usersRef = mdB.collection("User");
         // Obtener todos los documentos de la colección
-        usersRef.get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            // Iterar sobre todos los documentos de la colección
-                            for (QueryDocumentSnapshot d : task.getResult()) {
-                                // Obtener los datos del documento
-                                User u = d.toObject(User.class);
-                                // Hacer algo con los datos del usuario
-                                if (u.getNomUser().equals(nameUser) && u.getPswd().equals(pswd)){
-                                    activeUser = u;
-                                }
-                            }
-                        } else {
-                            // Manejar el error
-                        }
+        usersRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // Iterar sobre todos los documentos de la colección
+                for (QueryDocumentSnapshot d : task.getResult()) {
+                    // Obtener los datos del documento
+                    User u = d.toObject(User.class);
+                    // Hacer algo con los datos del usuario
+                    if (u.getNomUser().equals(nameUser) && u.getPswd().equals(pswd)){
+                        activeUser = u;
                     }
-                });
+                }
+            } else {
+                            // Manejar el error
+            }
+        });
         if (activeUser != null)
             mAuth.signInWithEmailAndPassword(activeUser.getCorreo(), activeUser.getPswd());
         else
