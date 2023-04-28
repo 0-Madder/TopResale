@@ -1,4 +1,4 @@
-package com.example.topresale.viewmodel;
+package com.example.topresale.ViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.topresale.viewmodel.MainActivity;
-import com.example.topresale.viewmodel.RegisterActivity;
+
 import com.example.topresale.R;
 import com.example.topresale.model.UserManager;
 import com.google.firebase.auth.FirebaseAuth;
