@@ -97,7 +97,13 @@ public class RegisterActivity extends AppCompatActivity {
         //Terminar actividad en caso de que todos los parámetros sean correcto. Se añadirá el usuario en la base de datos i en AUTH
         if(parametrosCorrectos){
             userManager.inscriureUsuari(textoCorreo.getText().toString(),textoContra.getText().toString());
-            userManager.registrarUsuario(textoUsuario.getText().toString(),textoCorreo.getText().toString(),textoNombre.getText().toString(),textoContra.getText().toString());
+            try {
+                userManager.registrarUsuario(textoUsuario.getText().toString(), textoCorreo.getText().toString(), textoNombre.getText().toString(), textoContra.getText().toString());
+            }
+            catch (Exception e){
+                Toast toast = Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT);
+                toast.show();
+            }
             finish();
         }
 

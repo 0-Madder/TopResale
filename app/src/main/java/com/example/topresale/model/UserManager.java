@@ -3,6 +3,7 @@ package com.example.topresale.model;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,22 +60,32 @@ public class UserManager {
     }
 
     //Afegeix l'ususari a la base de dades
-    public void registrarUsuario(String nomUser, String correo, String nomComplet, String pswd){
+    public void registrarUsuario(String nomUser, String correo, String nomComplet, String pswd) throws Exception{
         Map<String,Object> signedUpUser = new HashMap<>();
+        String id = mAuth.getCurrentUser().getUid();
         signedUpUser.put("nomComplet", nomComplet);
         signedUpUser.put("correo",correo);
         signedUpUser.put("nomUser",nomUser);
         signedUpUser.put("pswd",pswd);
-        signedUpUser.put("id",mAuth.getCurrentUser().getUid());
-        //mdB.collection("User").document(mAuth.getCurrentUser().getUid()).set(signedUpUser);
-        mdB.collection("User").document().set(signedUpUser);
+        signedUpUser.put("id",id);
 
-        User u = new User(nomComplet,correo,nomUser,pswd,mAuth.getCurrentUser().getUid());
-        llistaUsuaris.add(u);
-        for(User user : llistaUsuaris){
-            System.out.println(user.getNomUser() + " " + user.getPswd());
-        }
-
+        mdB.collection("User").document(id).set(signedUpUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Manejar éxito
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Manejar error
+                        try {
+                            throw new Exception("Resgistro NO completado");
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                });
     }
 
     //Afegeix ususari al AUTH
