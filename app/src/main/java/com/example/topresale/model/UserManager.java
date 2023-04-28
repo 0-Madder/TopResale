@@ -93,23 +93,36 @@ public class UserManager {
 
     //En cas que el correu de l'usuari que es registra ja tingui un compte associat no permetrem el seu registre
     public boolean correuExistent(String correu){
-        for(User u:llistaUsuaris){
-            if(u.getCorreo().equalsIgnoreCase(correu)){
-                return true;
-            }
+        User u = findUsuariByCorreu(correu);
+        if(u != null){
+            return true;
         }
         return false;
     }
 
     //Encontrar un usuario segun su correo
-    public User findUsuariByCorreu (String correu) throws Exception{
-        for(User u : llistaUsuaris){
-            if(u.getCorreo().equalsIgnoreCase(correu)){
-                return u;
+    public User findUsuariByCorreu (String correu){
+        CollectionReference userRef = mdB.collection("User");
+        //Crea una consulta para buscar documentos que tengan el campo "userName" con el valor especificado
+        Query query = userRef.whereEqualTo("correo", correu);
+        //Ejecuta la consulta y escucha el resultado
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                //Comprueba si se encontraron documentos
+                if (!task.getResult().isEmpty()) {
+                    //Se encontró al menos un documento con el campo "userName" con el valor especificado
+                    activeUser = task.getResult().getDocuments().get(0).toObject(User.class);
+                } else {
+                    activeUser = null;
+                    //No se encontró ningún documento con el campo "userName" con el valor especificado
+                    //Aquí puedes realizar las acciones necesarias si no se encuentra el usuario
+                }
+            } else {
+                //Ocurrió un error al ejecutar la consulta
+                activeUser = null;
             }
-        }
-        throw new Exception("Usuari per correu no trobat");
-
+        });
+        return activeUser;
     }
 
     //Encontrar un usuario segun su nombre de usuario
@@ -131,7 +144,7 @@ public class UserManager {
                 }
             } else {
                 //Ocurrió un error al ejecutar la consulta
-                activeUser = null
+                activeUser = null;
             }
         });
         return activeUser;
