@@ -13,6 +13,10 @@ public class User {
 
 
 
+
+    public User(){
+
+    }
     public User(String nomComplet, String correo, String nomUser, String pswd, String id) {
         this.nomComplet = nomComplet;
         this.correo = correo;

@@ -71,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
             parametrosCorrectos = false;
         }
 
+
         //En caso de que el nombre de usuario ya exista
         if(userManager.usernameExistent(username)){
             Toast toast = Toast.makeText(this, "Este nombre de usuario ya esta en uso.", Toast.LENGTH_SHORT);
@@ -101,8 +102,6 @@ public class RegisterActivity extends AppCompatActivity {
                 userManager.registrarUsuario(textoUsuario.getText().toString(), textoCorreo.getText().toString(), textoNombre.getText().toString(), textoContra.getText().toString());
             }
             catch (Exception e){
-                Toast toast = Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT);
-                toast.show();
             }
             finish();
         }

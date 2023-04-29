@@ -42,6 +42,8 @@ public class LogInActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "button_clicked");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
+
         boolean parametrosCorrectos = true;
 
         String username = textoUsername.getText().toString();
@@ -80,7 +82,7 @@ public class LogInActivity extends AppCompatActivity {
 
         if(parametrosCorrectos){
             userManager.iniciarSessio(textoUsername.getText().toString(), textoPswd.getText().toString());
-            finish();
+
         }
 
     }
