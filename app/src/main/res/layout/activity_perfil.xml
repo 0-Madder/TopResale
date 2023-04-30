@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewModel.PerfilActivity">
+
+    <ImageView
+        android:id="@+id/perfilIcon_imageView"
+        android:layout_width="116dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.091"
+        app:srcCompat="@drawable/perfil_icon" />
+
+    <TextView
+        android:id="@+id/bienvenido_textView"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Bienvenido ma gi"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perfilIcon_imageView" />
+
+    <ImageView
+        android:id="@+id/favoritos_imageView"
+        android:layout_width="53dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toStartOf="@+id/favoritos_textView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bienvenido_textView"
+        app:srcCompat="@drawable/favoritos_icon" />
+
+    <TextView
+        android:id="@+id/favoritos_textView"
+        android:layout_width="311dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:onClick="mostrarFavoritos"
+        android:text="@string/favoritos"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/favoritos_imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/favoritos_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/bienvenido_textView" />
+
+    <ImageView
+        android:id="@+id/configuracion_imageView"
+        android:layout_width="53dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/favoritos_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favoritos_imageView"
+        app:srcCompat="@drawable/ajustes_icon" />
+
+    <TextView
+        android:id="@+id/configuracion_textView"
+        android:layout_width="311dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:onClick="mostrarConfiguracion"
+        android:text="@string/configuracion"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/configuracion_imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/configuracion_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/favoritos_textView" />
+
+    <ImageView
+        android:id="@+id/ayuda_imageView"
+        android:layout_width="53dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/configuracion_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/configuracion_imageView"
+        app:srcCompat="@drawable/ayuda_icon" />
+
+    <TextView
+        android:id="@+id/ayuda_textView"
+        android:layout_width="311dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:onClick="mostrarAyuda"
+        android:text="@string/ayuda"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ayuda_imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ayuda_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/configuracion_textView" />
+
+    <ImageView
+        android:id="@+id/cerrarSesion_imageView"
+        android:layout_width="53dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/ayuda_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ayuda_imageView"
+        app:srcCompat="@drawable/logout_icon" />
+
+    <TextView
+        android:id="@+id/cerrarSesion_textView"
+        android:layout_width="311dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:onClick="cerrarSesion"
+        android:text="@string/cerrarSesion"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/cerrarSesion_imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cerrarSesion_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/ayuda_textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
