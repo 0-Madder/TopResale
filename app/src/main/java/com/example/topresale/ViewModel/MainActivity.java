@@ -3,6 +3,7 @@ package com.example.topresale.ViewModel;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,10 +63,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         switch (item.getItemId()){
             case R.id.perfil:
+                Intent intent1 = new Intent(this, PerfilActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.favoritos:
                 break;
             case R.id.ayuda:
+                break;
+            case R.id.cerrarSesion:
+                Intent intent = new Intent(this, LogInActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

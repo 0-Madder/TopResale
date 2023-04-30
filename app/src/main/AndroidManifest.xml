@@ -12,11 +12,11 @@
         android:theme="@style/Theme.TopResale"
         tools:targetApi="31">
         <activity
-            android:name=".activity_auxiliar"
-            android:exported="false" />
-        <activity
-            android:name=".RaroActivity"
-            android:exported="false" />
+            android:name=".ViewModel.PerfilActivity"
+            android:exported="false"
+            android:parentActivityName=".ViewModel.MainActivity"/>
+
+
         <activity
             android:name=".ViewModel.MainActivity"
             android:exported="false" />

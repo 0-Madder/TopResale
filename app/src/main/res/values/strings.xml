@@ -14,6 +14,7 @@
     <string name="favoritos">Favoritos</string>
     <string name="ayuda">Ayuda</string>
     <string name="cerrarSesion">Cerrar Sesion</string>
+    <string name="configuracion">Configuracion</string>
 
 
     <string name="terminosText">Bienvenido a nuestra aplicación de búsqueda de productos al por mayor. Antes de utilizar nuestros servicios, lea detenidamente los siguientes términos y condiciones.Al acceder o utilizar nuestra aplicación, acepta estar legalmente vinculado por estos términos y condiciones.Si no está de acuerdo con estos términos y condiciones, no utilice nuestra aplicación.
@@ -34,5 +35,14 @@ Nos reservamos el derecho de suspender o terminar su acceso a nuestra aplicació
 \n<b><i>Ley aplicable:</i></b>
 Estos términos y condiciones se rigen por las leyes de [país] y cualquier disputa que surja en relación con estos términos y condiciones se resolverá exclusivamente en los tribunales de [ciudad/país].
 \nSi tiene alguna pregunta o inquietud sobre estos términos y condiciones, contáctenos a través de nuestra página de contacto en la aplicación. Gracias por utilizar nuestra aplicación de búsqueda de productos al por mayor.</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 </resources>
