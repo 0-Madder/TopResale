@@ -12,11 +12,13 @@
         android:theme="@style/Theme.TopResale"
         tools:targetApi="31">
         <activity
+            android:name=".ViewModel.AyudaActivity"
+            android:exported="false"
+            android:parentActivityName=".ViewModel.PerfilActivity"/>
+        <activity
             android:name=".ViewModel.PerfilActivity"
             android:exported="false"
-            android:parentActivityName=".ViewModel.MainActivity"/>
-
-
+            android:parentActivityName=".ViewModel.MainActivity" />
         <activity
             android:name=".ViewModel.MainActivity"
             android:exported="false" />

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.topresale.R;
 import com.example.topresale.model.CustomAdapter;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         listaTiposProducto = findViewById(R.id.tiposDeProducto_listView);
@@ -67,12 +69,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(intent1);
                 break;
             case R.id.favoritos:
+
                 break;
             case R.id.ayuda:
+                Intent intent3 = new Intent(this, AyudaActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.cerrarSesion:
-                Intent intent = new Intent(this, LogInActivity.class);
-                startActivity(intent);
+                Intent intent4 = new Intent(this, LogInActivity.class);
+                startActivity(intent4);
                 finish();
                 break;
         }

@@ -26,7 +26,8 @@ public class PerfilActivity extends AppCompatActivity {
 
     public void mostrarAyuda(View view) {
 
-
+        Intent intent = new Intent(this, AyudaActivity.class);
+        startActivity(intent);
 
     }
 
