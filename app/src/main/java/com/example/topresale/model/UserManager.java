@@ -202,29 +202,9 @@ public class UserManager extends AppCompatActivity {
 
 
 
-    public void iniciarSessio(String nameUser, String pswd){
-        // Obtener la colección de usuarios
-        CollectionReference usersRef = mdB.collection("User");
-        // Obtener todos los documentos de la colección
-        usersRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                // Iterar sobre todos los documentos de la colección
-                for (QueryDocumentSnapshot d : task.getResult()) {
-                    // Obtener los datos del documento
-                    User u = d.toObject(User.class);
-                    // Hacer algo con los datos del usuario
-                    if (u.getNomUser().equals(nameUser) && u.getPswd().equals(pswd)){
-                        activeUser = u;
-                    }
-                }
-            } else {
-                            // Manejar el error
-            }
-        });
-        if (activeUser != null)
-            mAuth.signInWithEmailAndPassword(activeUser.getCorreo(), activeUser.getPswd());
-        else
-            System.out.println("No em iniciat sessio");
+    public void iniciarSessio(User u){
+        mAuth.signInWithEmailAndPassword(u.getCorreo(),u.getPswd());
+
     }
 
     /*public User findUserById(String id){

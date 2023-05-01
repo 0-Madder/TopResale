@@ -12,9 +12,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.topresale.R;
+import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -47,7 +50,18 @@ public class RegisterActivity extends AppCompatActivity {
         checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);
         mAuth = FirebaseAuth.getInstance();
         mdB = FirebaseFirestore.getInstance();
+        CollectionReference prodRef = mdB.collection("User");
         userManager = new UserManager(mAuth,mdB);
+        prodRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) { //Miro si es diferent a null
+                for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
+                    User u = document.toObject(User.class); //Paso el document a objecte Producte
+                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el Producte a la llista de productes
+                }
+            } else {
+
+            }
+        });
     }
 
     public void crearUsuario(View view) {
@@ -75,19 +89,19 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
-        //En caso de que el nombre de usuario ya exista
-        /*if(userManager.usernameExistent(username)){
+
+        if(userManager.usernameExistent(username)){
             Toast toast = Toast.makeText(this, "Este nombre de usuario ya esta en uso.", Toast.LENGTH_SHORT);
             toast.show();;
             parametrosCorrectos = false;
-        }*/
+        }
 
-        //En caso de que ya exista otra cuenta asociada a este correo
-        /*if(userManager.correuExistent(correu)){
+
+        if(userManager.correuExistent(correu)){
             Toast toast = Toast.makeText(this, "Este correo ya tiene una cuenta asociada.", Toast.LENGTH_SHORT);
             toast.show();;
             parametrosCorrectos = false;
-        }*/
+        }
 
 
         //En caso de que no se hayan aceptado los terminos y condiciones

@@ -71,7 +71,7 @@ public class LogInActivity extends AppCompatActivity {
         });
     }
 
-    public void iniciarSesion(View view) {
+    public  void iniciarSesion(View view) {
         Log.d(LOG_TAG, "button_clicked");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
