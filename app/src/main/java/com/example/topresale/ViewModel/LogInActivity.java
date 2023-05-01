@@ -1,7 +1,9 @@
 package com.example.topresale.ViewModel;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +13,20 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.topresale.R;
+import com.example.topresale.model.Producte;
+import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
 
 
 public class LogInActivity extends AppCompatActivity {
@@ -23,10 +36,16 @@ public class LogInActivity extends AppCompatActivity {
     private EditText textoPswd;
     private EditText textoUsername;
 
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private String psw_real;
 
-    private FirebaseFirestore mdB = FirebaseFirestore.getInstance();
-    private UserManager userManager = new UserManager(mAuth,mdB);
+    private FirebaseAuth mAuth;
+
+
+    private FirebaseFirestore mdB;
+    private UserManager userManager;
+
+    private Activity a;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,20 +55,40 @@ public class LogInActivity extends AppCompatActivity {
 
         textoPswd = findViewById(R.id.pswdInicioSesion_EditText);
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
+        mAuth = FirebaseAuth.getInstance();
+        mdB = FirebaseFirestore.getInstance();
+        CollectionReference prodRef = mdB.collection("User");
+        userManager = new UserManager(mAuth,mdB);
+        prodRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) { //Miro si es diferent a null
+                for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
+                    User u = document.toObject(User.class); //Paso el document a objecte Producte
+                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el Producte a la llista de productes
+
+                }
+            } else {
+
+            }
+        });
     }
 
     public void iniciarSesion(View view) {
         Log.d(LOG_TAG, "button_clicked");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        finish();
 
         boolean parametrosCorrectos = true;
+
 
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
 
 
+
+
+        if(psw_real.equals(pswd)){
+            System.out.println("kaka");
+        }
         // - Caso en el que algún parámetro este vacío
         if(textoUsername.getText().toString().equals("") || textoPswd.getText().toString().equals("")){
             Toast toast = Toast.makeText(this, "Es obligatorio rellenar todos los campos.", Toast.LENGTH_SHORT);
@@ -63,6 +102,7 @@ public class LogInActivity extends AppCompatActivity {
             toast.show();
             parametrosCorrectos = false;
         }
+
         else{
             // - Caso en que la contraseña no sea correcta (necesitamos la base de datos)
             try {
@@ -77,6 +117,8 @@ public class LogInActivity extends AppCompatActivity {
         }
 
 
+
+
         //En caso de que los parámetros sean correctos se iniciará la sesión
 
 
@@ -85,6 +127,9 @@ public class LogInActivity extends AppCompatActivity {
 
         }
 
+
+        finish();
+
     }
 
     //Redirecciona al usuario a la página de registro
@@ -92,6 +137,9 @@ public class LogInActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "button_clicked");
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+    }
+    public void setPsw_real(String psw_real) {
+        this.psw_real = psw_real;
     }
 
 }

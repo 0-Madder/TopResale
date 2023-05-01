@@ -1,7 +1,16 @@
 package com.example.topresale.model;
 
-import android.util.Log;
+import static android.content.ContentValues.TAG;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.WindowManager;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.topresale.R;
+import com.example.topresale.ViewModel.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -10,7 +19,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.EventListener.*;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -23,22 +35,27 @@ import java.util.Map;
 
 import javax.inject.Singleton;
 
-public class UserManager {
-
-
-
+public class UserManager extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
     private FirebaseFirestore mdB;
-    private ArrayList<User> llistaUsuaris = new ArrayList<>();
+    private ArrayList<User> llistaUsuaris;
 
     private User activeUser;
+
+
+
 
     public UserManager(FirebaseAuth mAuth, FirebaseFirestore mdB) {
         this.mAuth = mAuth;
         this.mdB = mdB;
-        this.activeUser = null;
+        llistaUsuaris = new ArrayList<>();
+
+
+
+
+
 
     }
     public ArrayList<User> getLlistaUsuaris() {
@@ -57,10 +74,15 @@ public class UserManager {
     //Tiene que coincidir el nombre de usuario con la contraseña
     public boolean correctPswd(String username, String pswd) throws Exception {
         User userLogIn = findUsuariByUsername(username);
-        if(userLogIn.getPswd().equals(pswd)){
-            return true; //Contrasenya correcta
+        if(userLogIn != null){
+            if(userLogIn.getPswd().equals(pswd)){
+                return true; //Contrasenya correcta
+            }
+            return false; //Contrasenya incorrecta
+
         }
-        return false; //Contrasenya incorrecta
+        return false;
+
     }
 
     //Afegeix l'ususari a la base de dades
@@ -73,7 +95,7 @@ public class UserManager {
         signedUpUser.put("pswd",pswd);
         signedUpUser.put("id",id);
 
-        mdB.collection("User").document(id).set(signedUpUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+        mdB.collection("User").document(nomUser).set(signedUpUser).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // Manejar éxito
@@ -127,6 +149,7 @@ public class UserManager {
                 if (!task.getResult().isEmpty()) {
                     //Se encontró al menos un documento con el campo "userName" con el valor especificado
                     activeUser = task.getResult().getDocuments().get(0).toObject(User.class);
+                    setActiveUser(task.getResult().getDocuments().get(0).toObject(User.class));
                 } else {
                     activeUser = null;
                     //No se encontró ningún documento con el campo "userName" con el valor especificado
@@ -144,7 +167,7 @@ public class UserManager {
     public User findUsuariByUsername (String username) {
         CollectionReference userRef = mdB.collection("User");
         //Crea una consulta para buscar documentos que tengan el campo "userName" con el valor especificado
-        Query query = userRef.whereEqualTo("userName", username);
+        Query query = userRef.whereEqualTo("nomUser",username);
         //Ejecuta la consulta y escucha el resultado
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -164,6 +187,8 @@ public class UserManager {
         });
         return activeUser;
     }
+
+
 
     public void iniciarSessio(String nameUser, String pswd){
         // Obtener la colección de usuarios

@@ -15,10 +15,19 @@ import android.widget.SearchView;
 
 import com.example.topresale.R;
 import com.example.topresale.model.CustomAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView listaTiposProducto;
+    private FirebaseFirestore mdb;
+    private FirebaseAuth mAuth;
+
+
+
+
     String tipos[] = {"Spinner", "Cubo de Rubik", "Sillas", "Smartwatch", "Mousepads", "RubberDuck", "Spinner", "Cubo de Rubik", "Sillas", "Smartwatch", "Mousepads", "RubberDuck,"};
     int flags[] = {R.drawable.spinner, R.drawable.rubik, R.drawable.sillas, R.drawable.smartwatch, R.drawable.alfombrilla, R.drawable.pato,R.drawable.spinner, R.drawable.rubik, R.drawable.sillas, R.drawable.smartwatch, R.drawable.alfombrilla, R.drawable.pato};
 
@@ -26,6 +35,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mdb = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+
+
+
 
 
 
@@ -49,6 +64,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
         );
 
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Cerrar la instancia de FirebaseFirestore
+        if (mdb != null) {
+            mdb.terminate();
+        }
     }
 
     @Override
