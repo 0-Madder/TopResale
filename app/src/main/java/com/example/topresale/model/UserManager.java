@@ -84,6 +84,7 @@ public class UserManager extends AppCompatActivity {
         signedUpUser.put("pswd",pswd);
         signedUpUser.put("id",id);
 
+
         mdB.collection("User").document(nomUser).set(signedUpUser).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
