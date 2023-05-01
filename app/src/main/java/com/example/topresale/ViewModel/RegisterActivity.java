@@ -114,7 +114,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void mostrarTerminosYCondiciones(View view) {
-
         Log.d(LOG_TAG, "button_clicked");
         Intent intent = new Intent(this, TerminosActivity.class);
         startActivity(intent);

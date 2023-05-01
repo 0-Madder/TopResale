@@ -75,34 +75,24 @@ public class LogInActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "button_clicked");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
-        /*
-
         boolean parametrosCorrectos = true;
-
-
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
-
-
-
-
-
-
         User u = userManager.findUsuariByUsername(username);
+
         // - Caso en el que algún parámetro este vacío
-        if(username.equals("") || pswd.equals("")){
+        if(username.isEmpty()|| pswd.isEmpty()){
             Toast toast = Toast.makeText(this, "Es obligatorio rellenar todos los campos.", Toast.LENGTH_SHORT);
             toast.show();
             parametrosCorrectos = false;
         }
         // - Caso en que el usuario no exista
-        else if(u.getNomUser()==null){
+        else if(u == null){
             Toast toast = Toast.makeText(this, "No existe el usuario.", Toast.LENGTH_SHORT);
             toast.show();
             parametrosCorrectos = false;
         }
-        if (!u.getPswd().equals(pswd)){
+        else if (!u.getPswd().equals(pswd)){
             Toast toast = Toast.makeText(this, "Contraseña incorrecta.", Toast.LENGTH_SHORT);
             toast.show();
             parametrosCorrectos = false;
@@ -113,13 +103,14 @@ public class LogInActivity extends AppCompatActivity {
             userManager.iniciarSessio(u);
             Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
             toast.show();
-            //finish();
+            finish();
+        }
+        else{
+            Intent intent2 = new Intent(this, LogInActivity.class);
+            startActivity(intent2);
         }
 
-         */
 
-
-        finish();
 
     }
 
@@ -129,8 +120,6 @@ public class LogInActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
-    public void setPsw_real(String psw_real) {
-        this.psw_real = psw_real;
-    }
+
 
 }

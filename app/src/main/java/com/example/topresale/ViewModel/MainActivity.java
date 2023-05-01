@@ -36,22 +36,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
         mdb = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
-
-
-
-
-
-
         listaTiposProducto = findViewById(R.id.tiposDeProducto_listView);
-
-
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), tipos, flags);
-
         listaTiposProducto.setAdapter(customAdapter);
-
         listaTiposProducto.setOnItemClickListener(
                 new AdapterView.OnItemClickListener()
                 {
