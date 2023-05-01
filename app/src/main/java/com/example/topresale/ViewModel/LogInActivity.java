@@ -86,49 +86,36 @@ public class LogInActivity extends AppCompatActivity {
 
 
 
-        if(psw_real.equals(pswd)){
-            System.out.println("kaka");
-        }
+
+
+        User u = userManager.findUsuariByUsername(username);
         // - Caso en el que algún parámetro este vacío
-        if(textoUsername.getText().toString().equals("") || textoPswd.getText().toString().equals("")){
+        if(username.equals("") || pswd.equals("")){
             Toast toast = Toast.makeText(this, "Es obligatorio rellenar todos los campos.", Toast.LENGTH_SHORT);
             toast.show();
             parametrosCorrectos = false;
         }
-
         // - Caso en que el usuario no exista
-        if(!userManager.usernameExistent(username)){
+        else if(u.getNomUser()==null){
             Toast toast = Toast.makeText(this, "No existe el usuario.", Toast.LENGTH_SHORT);
             toast.show();
             parametrosCorrectos = false;
         }
-
-        else{
-            // - Caso en que la contraseña no sea correcta (necesitamos la base de datos)
-            try {
-                if(!userManager.correctPswd(username, pswd)){
-                    Toast toast = Toast.makeText(this, "Contraseña o usuario incorrectos", Toast.LENGTH_SHORT);
-                    toast.show();
-                    parametrosCorrectos = false;
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e); //No saltarà nunca dado que si el usuario no existe esta parte del código no se ejecutará
-            }
+        if (!u.getPswd().equals(pswd)){
+            Toast toast = Toast.makeText(this, "Contraseña incorrecta.", Toast.LENGTH_SHORT);
+            toast.show();
+            parametrosCorrectos = false;
         }
-
-
-
 
         //En caso de que los parámetros sean correctos se iniciará la sesión
-
-
         if(parametrosCorrectos){
-            userManager.iniciarSessio(textoUsername.getText().toString(), textoPswd.getText().toString());
-
+            userManager.iniciarSessio(u);
+            Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
+            toast.show();
+            //finish();
         }
 
-
-        finish();
+        //finish();
 
     }
 

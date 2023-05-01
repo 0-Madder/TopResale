@@ -95,7 +95,8 @@ public class UserManager extends AppCompatActivity {
         signedUpUser.put("pswd",pswd);
         signedUpUser.put("id",id);
 
-        mdB.collection("User").document(nomUser).set(signedUpUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+        mdB.collection("User").document(nomUser).set(signedUpUser);
+                /*.addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // Manejar éxito
@@ -111,7 +112,7 @@ public class UserManager extends AppCompatActivity {
                             throw new RuntimeException(ex);
                         }
                     }
-                });
+                });*/
     }
 
     //Afegeix ususari al AUTH
@@ -122,7 +123,7 @@ public class UserManager extends AppCompatActivity {
     //En cas que el username ja existeixi no permetrem el registre del nou usuari pero permetre iniciar sessió si la contraseña és correcta
     public boolean usernameExistent(String username){
         User u = findUsuariByUsername(username);
-        if(u != null){
+        if(u.getNomUser() != null){
             return true;
         }
         return false;
@@ -131,7 +132,7 @@ public class UserManager extends AppCompatActivity {
     //En cas que el correu de l'usuari que es registra ja tingui un compte associat no permetrem el seu registre
     public boolean correuExistent(String correu){
         User u = findUsuariByCorreu(correu);
-        if(u != null){
+        if(u.getCorreo() != null){
             return true;
         }
         return false;
@@ -139,32 +140,26 @@ public class UserManager extends AppCompatActivity {
 
     //Encontrar un usuario segun su correo
     public User findUsuariByCorreu (String correu){
-        CollectionReference userRef = mdB.collection("User");
-        //Crea una consulta para buscar documentos que tengan el campo "userName" con el valor especificado
-        Query query = userRef.whereEqualTo("correo", correu);
-        //Ejecuta la consulta y escucha el resultado
-        query.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                //Comprueba si se encontraron documentos
-                if (!task.getResult().isEmpty()) {
-                    //Se encontró al menos un documento con el campo "userName" con el valor especificado
-                    activeUser = task.getResult().getDocuments().get(0).toObject(User.class);
-                    setActiveUser(task.getResult().getDocuments().get(0).toObject(User.class));
-                } else {
-                    activeUser = null;
-                    //No se encontró ningún documento con el campo "userName" con el valor especificado
-                    //Aquí puedes realizar las acciones necesarias si no se encuentra el usuario
-                }
-            } else {
-                //Ocurrió un error al ejecutar la consulta
-                activeUser = null;
+        User user = new User();
+        for (User u : getLlistaUsuaris()){
+            if(u.getCorreo().equals(correu)){
+                user = u;
             }
-        });
-        return activeUser;
+        }
+        return user;
     }
 
     //Encontrar un usuario segun su nombre de usuario
     public User findUsuariByUsername (String username) {
+        User user = new User();
+        for (User u : getLlistaUsuaris()){
+            if(u.getNomUser().equals(username)){
+                user = u;
+            }
+        }
+        return user;
+    }
+    /*public User findUsuariByUsername (String username) {
         CollectionReference userRef = mdB.collection("User");
         //Crea una consulta para buscar documentos que tengan el campo "userName" con el valor especificado
         Query query = userRef.whereEqualTo("nomUser",username);
@@ -186,10 +181,13 @@ public class UserManager extends AppCompatActivity {
             }
         });
         return activeUser;
+    }*/
+
+
+    public void iniciarSessio(User user){
+        mAuth.signInWithEmailAndPassword(user.getCorreo(),user.getPswd());
     }
-
-
-
+    /*
     public void iniciarSessio(String nameUser, String pswd){
         // Obtener la colección de usuarios
         CollectionReference usersRef = mdB.collection("User");
@@ -214,6 +212,8 @@ public class UserManager extends AppCompatActivity {
         else
             System.out.println("No em iniciat sessio");
     }
+
+     */
 
     public User findUserById(String id){
         DocumentReference docRef = mdB.collection("User").document(id);

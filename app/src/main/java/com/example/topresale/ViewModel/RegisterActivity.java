@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
         textoContra = findViewById(R.id.password_editText);
         textoRepetirContra = findViewById(R.id.repetirPassword_editText);
         checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);
+        userManager = new UserManager(mAuth, mdB);
     }
 
     public void crearUsuario(View view) {
@@ -73,19 +74,18 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         //En caso de que el nombre de usuario ya exista
-        /*if(userManager.usernameExistent(username)){
+        if(userManager.usernameExistent(username)){
             Toast toast = Toast.makeText(this, "Este nombre de usuario ya esta en uso.", Toast.LENGTH_SHORT);
             toast.show();;
             parametrosCorrectos = false;
-        }*/
+        }
 
         //En caso de que ya exista otra cuenta asociada a este correo
-        /*if(userManager.correuExistent(correu)){
+        if(userManager.correuExistent(correu)){
             Toast toast = Toast.makeText(this, "Este correo ya tiene una cuenta asociada.", Toast.LENGTH_SHORT);
             toast.show();;
             parametrosCorrectos = false;
-        }*/
-
+        }
 
             //En caso de que no se hayan aceptado los terminos y condiciones
         if(!checkBoxAceptarCondiciones.isChecked()){
