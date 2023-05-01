@@ -36,15 +36,13 @@ public class LogInActivity extends AppCompatActivity {
     private EditText textoPswd;
     private EditText textoUsername;
 
-    private String psw_real;
-
     private FirebaseAuth mAuth;
 
 
     private FirebaseFirestore mdB;
     private UserManager userManager;
 
-    private Activity a;
+
 
 
     @Override
@@ -95,12 +93,12 @@ public class LogInActivity extends AppCompatActivity {
             parametrosCorrectos = false;
         }
         // - Caso en que el usuario no exista
-        else if(u.getNomUser()==null){
+        else if(u == null){
             Toast toast = Toast.makeText(this, "No existe el usuario.", Toast.LENGTH_SHORT);
             toast.show();
             parametrosCorrectos = false;
         }
-        if (!u.getPswd().equals(pswd)){
+        else if (!u.getPswd().equals(pswd)){
             Toast toast = Toast.makeText(this, "Contraseña incorrecta.", Toast.LENGTH_SHORT);
             toast.show();
             parametrosCorrectos = false;
@@ -111,10 +109,11 @@ public class LogInActivity extends AppCompatActivity {
             userManager.iniciarSessio(u);
             Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
             toast.show();
-            //finish();
+            finish();
         }
 
-        //finish();
+
+
 
     }
 
@@ -124,8 +123,6 @@ public class LogInActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
-    public void setPsw_real(String psw_real) {
-        this.psw_real = psw_real;
-    }
+
 
 }

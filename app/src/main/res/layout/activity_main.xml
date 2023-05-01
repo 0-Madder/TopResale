@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="gravity"
     tools:context=".ViewModel.MainActivity">
 
     <SearchView
         android:id="@+id/busqueda_searchBar"
         android:layout_width="0dp"
-        android:layout_height="45sp"
+        android:layout_height="48dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
