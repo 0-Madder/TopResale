@@ -36,34 +36,25 @@ import java.util.Map;
 import javax.inject.Singleton;
 
 public class UserManager extends AppCompatActivity {
-
     private FirebaseAuth mAuth;
-
     private FirebaseFirestore mdB;
     private ArrayList<User> llistaUsuaris;
-
     private User activeUser;
-
-
-
 
     public UserManager(FirebaseAuth mAuth, FirebaseFirestore mdB) {
         this.mAuth = mAuth;
         this.mdB = mdB;
         llistaUsuaris = new ArrayList<>();
-
-
-
-
-
-
     }
+
     public ArrayList<User> getLlistaUsuaris() {
         return llistaUsuaris;
     }
+
     public void setLlistaUsuaris(ArrayList<User> llistaUsuaris) {
         this.llistaUsuaris = llistaUsuaris;
     }
+
     public User getActiveUser() {
         return activeUser;
     }
@@ -79,10 +70,8 @@ public class UserManager extends AppCompatActivity {
                 return true; //Contrasenya correcta
             }
             return false; //Contrasenya incorrecta
-
         }
         return false;
-
     }
 
     //Afegeix l'ususari a la base de dades
@@ -137,6 +126,27 @@ public class UserManager extends AppCompatActivity {
         return false;
     }
 
+    //Encontrar un usuario segun su nombre de usuario
+    public User findUsuariByUsername(String username){
+        for(User u: llistaUsuaris){
+            if(u.getNomUser().equals(username)){
+                return u;
+            }
+        }
+        return null;
+    }
+
+    //Encontrar un usuario segun su correo electrónico
+    public User findUsuariByCorreu(String correo){
+        for(User u: llistaUsuaris){
+            if(u.getCorreo().equals(correo)){
+                return u;
+            }
+        }
+        return null;
+    }
+
+    /*
     //Encontrar un usuario segun su correo
     public User findUsuariByCorreu (String correu){
         CollectionReference userRef = mdB.collection("User");
@@ -161,8 +171,9 @@ public class UserManager extends AppCompatActivity {
             }
         });
         return activeUser;
-    }
+    }*/
 
+    /*
     //Encontrar un usuario segun su nombre de usuario
     public User findUsuariByUsername (String username) {
         CollectionReference userRef = mdB.collection("User");
@@ -186,7 +197,7 @@ public class UserManager extends AppCompatActivity {
             }
         });
         return activeUser;
-    }
+    }*/
 
 
 
@@ -215,7 +226,7 @@ public class UserManager extends AppCompatActivity {
             System.out.println("No em iniciat sessio");
     }
 
-    public User findUserById(String id){
+    /*public User findUserById(String id){
         DocumentReference docRef = mdB.collection("User").document(id);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -235,6 +246,6 @@ public class UserManager extends AppCompatActivity {
             }
         });
         return getActiveUser();
-    }
+    }*/
 
 }

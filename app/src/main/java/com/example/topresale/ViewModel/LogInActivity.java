@@ -64,7 +64,6 @@ public class LogInActivity extends AppCompatActivity {
                 for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
                     User u = document.toObject(User.class); //Paso el document a objecte Producte
                     userManager.getLlistaUsuaris().add(u);  //Afegeixo el Producte a la llista de productes
-
                 }
             } else {
 

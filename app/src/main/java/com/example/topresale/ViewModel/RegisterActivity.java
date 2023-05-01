@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
         }*/
 
 
-            //En caso de que no se hayan aceptado los terminos y condiciones
+        //En caso de que no se hayan aceptado los terminos y condiciones
         if(!checkBoxAceptarCondiciones.isChecked()){
             Toast toast = Toast.makeText(this, "Acepte los términos y condiciones.", Toast.LENGTH_SHORT);
             toast.show();
@@ -105,7 +105,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
             finish();
         }
-
     }
 
     public void mostrarTerminosYCondiciones(View view) {
