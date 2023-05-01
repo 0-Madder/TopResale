@@ -58,7 +58,7 @@ public class LogInActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mdB = FirebaseFirestore.getInstance();
         CollectionReference prodRef = mdB.collection("User");
-        userManager = new UserManager(mAuth,mdB);
+        userManager = UserManager.getInstance();
         prodRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) { //Miro si es diferent a null
                 for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte

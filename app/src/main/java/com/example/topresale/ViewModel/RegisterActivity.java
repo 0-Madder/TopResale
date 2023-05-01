@@ -50,18 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);
         mAuth = FirebaseAuth.getInstance();
         mdB = FirebaseFirestore.getInstance();
-        CollectionReference prodRef = mdB.collection("User");
-        userManager = new UserManager(mAuth,mdB);
-        prodRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) { //Miro si es diferent a null
-                for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
-                    User u = document.toObject(User.class); //Paso el document a objecte Producte
-                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el Producte a la llista de productes
-                }
-            } else {
-
-            }
-        });
+        userManager = UserManager.getInstance();
     }
 
     public void crearUsuario(View view) {

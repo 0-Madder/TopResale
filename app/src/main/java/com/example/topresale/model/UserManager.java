@@ -41,10 +41,19 @@ public class UserManager extends AppCompatActivity {
     private ArrayList<User> llistaUsuaris;
     private User activeUser;
 
-    public UserManager(FirebaseAuth mAuth, FirebaseFirestore mdB) {
-        this.mAuth = mAuth;
-        this.mdB = mdB;
+    private static UserManager userManager;
+
+    private UserManager() {
+        this.mAuth = FirebaseAuth.getInstance();
+        this.mdB = FirebaseFirestore.getInstance();
         llistaUsuaris = new ArrayList<>();
+    }
+
+    public static UserManager getInstance(){
+        if(userManager==null){
+            userManager = new UserManager();
+        }
+        return userManager;
     }
 
     public ArrayList<User> getLlistaUsuaris() {
@@ -102,6 +111,8 @@ public class UserManager extends AppCompatActivity {
                         }
                     }
                 });
+        User u = new User(nomComplet, correo, nomUser, pswd, id);
+        llistaUsuaris.add(u);
     }
 
     //Afegeix ususari al AUTH
