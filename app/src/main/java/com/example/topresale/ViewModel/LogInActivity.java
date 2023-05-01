@@ -76,6 +76,8 @@ public class LogInActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
+        /*
+
         boolean parametrosCorrectos = true;
 
 
@@ -114,7 +116,10 @@ public class LogInActivity extends AppCompatActivity {
             //finish();
         }
 
-        //finish();
+         */
+
+
+        finish();
 
     }
 
