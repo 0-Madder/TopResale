@@ -10,6 +10,8 @@
     <string name="terminosHeader">Terminos y Condiciones de Usuario</string>
     <string name="loading">Cargando datos y recursos de la aplicacion...</string>
     <string name="ordenacion">Ordenado por: </string>
+    <string name="ordenadoTopTrending">Top Trending </string>
+
     <string name="perfil">Perfil</string>
     <string name="favoritos">Favoritos</string>
     <string name="ayuda">Ayuda</string>
