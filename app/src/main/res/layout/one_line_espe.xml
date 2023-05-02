@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/oneLineProduct"
+    android:id="@+id/oneLineProductEspecific"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFC672"
@@ -22,17 +22,20 @@
 
     <TextView
         android:id="@+id/nombreProductoEspecifico_textView"
-        android:layout_width="194dp"
-        android:layout_height="59dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:gravity="center"
         android:text="TextView"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/productoEspecifico_imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/productoEspecifico_imageView"
-        app:layout_constraintTop_toTopOf="@+id/productoEspecifico_imageView" />
+        app:layout_constraintTop_toTopOf="@+id/productoEspecifico_imageView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/divider"
@@ -43,4 +46,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productoEspecifico_imageView" />
+
+    <Button
+        android:id="@+id/comprar_button"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Comprar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/productoEspecifico_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/nombreProductoEspecifico_textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,10 +56,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Producte airpods = new Producte("Airpods", "https://upload.wikimedia.org/wikipedia/commons/d/d2/AirPods_3rd_generation.jpg", true);
 
         listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
-        listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
+        listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza}));
 
+    }
 
-
+    private void llenaDeProductosEspecificos(){
+        for(Producte producto : listaProductos){
+            producto.addProductEspecific("Spinner barato", "Spinner barato", (float) 1.02, (float) 1.03, (float) 1.04, "Spinner bakano", "https://api.time.com/wp-content/uploads/2017/05/fidget-spinner4.jpg",
+                    "12", "url", (float) 20.2);
+        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ordenTextView.setText("Ordenado por ");
 
         llenaLaLista();
-        mdB = FirebaseFirestore.getInstance();
+        llenaDeProductosEspecificos();
+        mdb = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         producteManager = ProducteManager.getInstance();
@@ -92,7 +98,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setAdapter(mAdapter);
 
         producteManager = ProducteManager.getInstance();
+        CollectionReference prodRef = mdb.collection("Producte");
+        prodRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) { //Miro si es diferent a null
+                for (QueryDocumentSnapshot docProd : task.getResult()) { //Recorro tots els documents de la coleccio Producte
+                    //Paso els valors necessaris del document a parametres per crear un objecte Producte
+                    Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
+                    producteManager.getLlistaProducte().add(p);  //Afegeixo el Producte a la llista de productes
+                    //producteManager.inicialitzarProductesEspecifics(p);
+                    //p.calcularMitjanaModa();
+                }
 
+            }
+            else {
+                System.out.println("Hola existo");
+            }
+        });
+        //producteManager.inicialitzarProductes();
     }
 
 
@@ -102,8 +124,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onDestroy();
 
         // Cerrar la instancia de FirebaseFirestore
-        if (mdB != null) {
-            mdB.terminate();
+        if (mdb != null) {
+            mdb.terminate();
         }
     }
 
