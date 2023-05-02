@@ -29,6 +29,7 @@ public class PantallaDeCargaActivity extends AppCompatActivity {
         userManager.inicialitzarUsuaris();
         producteManager.inicialitzarProductes();
 
+
         new CountDownTimer(5000, 1000) {
             public void onFinish() {
                 Log.d(LOG_TAG, "button_clicked");

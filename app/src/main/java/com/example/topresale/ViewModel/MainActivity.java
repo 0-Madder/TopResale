@@ -98,23 +98,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setAdapter(mAdapter);
 
         producteManager = ProducteManager.getInstance();
-        CollectionReference prodRef = mdB.collection("Producte");
-        prodRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) { //Miro si es diferent a null
-                for (QueryDocumentSnapshot docProd : task.getResult()) { //Recorro tots els documents de la coleccio Producte
-                    //Paso els valors necessaris del document a parametres per crear un objecte Producte
-                    Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
-                    producteManager.getLlistaProducte().add(p);  //Afegeixo el Producte a la llista de productes
-                    //producteManager.inicialitzarProductesEspecifics(p);
-                    //p.calcularMitjanaModa();
-                }
+        producteManager.inicialitzarModes();
 
-            }
-            else {
-                System.out.println("Hola existo");
-            }
-        });
-        //producteManager.inicialitzarProductes();
     }
 
 

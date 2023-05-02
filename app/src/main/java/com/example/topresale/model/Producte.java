@@ -1,5 +1,9 @@
 package com.example.topresale.model;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -102,4 +106,5 @@ public class Producte implements Serializable {
             return p2trending - p1trending;
         }
     };
+
 }

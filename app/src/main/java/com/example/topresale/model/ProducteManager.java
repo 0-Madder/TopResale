@@ -99,7 +99,7 @@ public class ProducteManager {
                     llistaProducte.add(p);  //Afegeixo el Producte a la llista de productes
                     inicialitzarProductesEspecifics(p);
 
-                    p.calcularMitjanaModa();
+
                 }
 
             }
@@ -107,6 +107,11 @@ public class ProducteManager {
                 System.out.println("Hola existo");
             }
         });
+    }
+    public void inicialitzarModes(){
+        for(Producte p: llistaProducte){
+            p.calcularMitjanaModa();
+        }
     }
 
 }
