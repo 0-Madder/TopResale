@@ -1,5 +1,8 @@
 package com.example.topresale.ViewModel;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +19,9 @@ import com.example.topresale.R;
 import com.example.topresale.model.Producte;
 import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,6 +30,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -72,9 +78,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public  void iniciarSesion(View view) {
-        Log.d(LOG_TAG, "button_clicked");
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
         boolean parametrosCorrectos = true;
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
@@ -100,15 +104,15 @@ public class LogInActivity extends AppCompatActivity {
 
         //En caso de que los parámetros sean correctos se iniciará la sesión
         if(parametrosCorrectos){
+            Log.d(LOG_TAG, "button_clicked");
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             userManager.iniciarSessio(u);
             Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
             toast.show();
             finish();
         }
-        else{
-            Intent intent2 = new Intent(this, LogInActivity.class);
-            startActivity(intent2);
-        }
+
 
 
 
