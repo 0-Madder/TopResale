@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private TextView ordenTextView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
-    private ListView listaTiposProducto;
     private FirebaseFirestore mdb;
     private FirebaseAuth mAuth;
     private String modosDeOrdenacion[] = {"A -> Z", "Z -> A", "Tendencias"};
@@ -56,8 +54,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Producte airpods = new Producte("Airpods", "https://upload.wikimedia.org/wikipedia/commons/d/d2/AirPods_3rd_generation.jpg", true);
 
         listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
-        listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
+        listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza}));
 
+    }
+
+    private void llenaDeProductosEspecificos(){
+        for(Producte producto : listaProductos){
+            producto.addProductEspecific("Spinner barato", "Spinner barato", (float) 1.02, (float) 1.03, (float) 1.04, "Spinner bakano", "https://api.time.com/wp-content/uploads/2017/05/fidget-spinner4.jpg",
+                    "12", "url", (float) 20.2);
+        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ordenTextView.setText("Ordenado por ");
 
         llenaLaLista();
+        llenaDeProductosEspecificos();
         mdb = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 

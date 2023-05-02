@@ -1,11 +1,13 @@
 package com.example.topresale.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 
-public class ProducteEspecific {
+public class ProducteEspecific implements Serializable {
 
     private String id;
-    private String nameProdcucte;
+    private String nameProducte;
     private float preuB;
     private float preuC;
     private float preuV;
@@ -22,7 +24,7 @@ public class ProducteEspecific {
 
     public ProducteEspecific(String id, String nameProducte, float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, float moda) {
 
-        this.nameProdcucte = nameProducte;
+        this.nameProducte = nameProducte;
         this.id = id;
         this.preuB = preuB;
         this.preuC = preuC;
@@ -34,11 +36,11 @@ public class ProducteEspecific {
         this.moda = moda;
     }
 
-    public String getNameProdcucte() {
-        return nameProdcucte;
+    public String getName() {
+        return nameProducte;
     }
     public void setNameProdcucte(String nameProdcucte) {
-        this.nameProdcucte = nameProdcucte;
+        this.nameProducte = nameProdcucte;
     }
 
     public String getId() {
@@ -137,5 +139,12 @@ public class ProducteEspecific {
         }
         return mitjan / contador;
     }
+
+    public static Comparator<ProducteEspecific> ProducteBeneficioComparator = new Comparator<ProducteEspecific>() {
+        @Override
+        public int compare(ProducteEspecific p1, ProducteEspecific p2) {
+            return p1.getName().compareTo(p2.getName());
+        }
+    };
 
 }
