@@ -24,7 +24,7 @@ public class ProducteManager {
     private FirebaseAuth mAuth;
 
     private FirebaseFirestore mdB;
-    private ArrayList<Producte> llistaProducte = new ArrayList<>();
+    private ArrayList<Producte> llistaProducte;
     private static ProducteManager producteManager;
 
     private ProducteManager() {

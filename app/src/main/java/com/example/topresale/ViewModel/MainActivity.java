@@ -60,12 +60,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mdB = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
+
         producteManager = ProducteManager.getInstance();
         producteManager.inicialitzarModes();
         ordenTextView = findViewById(R.id.productoEspecifico_textView);
         ordenTextView.setText("Ordenado por ");
         llenaLaLista();
-        llenaDeProductosEspecificos();
+        //llenaDeProductosEspecificos();
         recyclerView = findViewById(R.id.productos_recyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -93,12 +94,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    /*
     private void llenaDeProductosEspecificos(){
         for(Producte producto : listaProductos){
             producto.addProductEspecific("Spinner barato", "Spinner barato", (float) 1.02, (float) 1.03, (float) 1.04, "Spinner bakano", "https://api.time.com/wp-content/uploads/2017/05/fidget-spinner4.jpg",
                     "12", "url", (float) 20.2);
         }
     }
+
+     */
 
 
 
