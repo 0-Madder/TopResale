@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         llenaLaLista();
         llenaDeProductosEspecificos();
-        mdb = FirebaseFirestore.getInstance();
+        mdB = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         producteManager = ProducteManager.getInstance();
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setAdapter(mAdapter);
 
         producteManager = ProducteManager.getInstance();
-        CollectionReference prodRef = mdb.collection("Producte");
+        CollectionReference prodRef = mdB.collection("Producte");
         prodRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) { //Miro si es diferent a null
                 for (QueryDocumentSnapshot docProd : task.getResult()) { //Recorro tots els documents de la coleccio Producte
@@ -124,8 +124,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onDestroy();
 
         // Cerrar la instancia de FirebaseFirestore
-        if (mdb != null) {
-            mdb.terminate();
+        if (mdB != null) {
+            mdB.terminate();
         }
     }
 
