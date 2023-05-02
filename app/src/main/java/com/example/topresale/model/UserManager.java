@@ -183,8 +183,7 @@ public class UserManager{
         String id = mAuth.getCurrentUser().getUid();
         userHelp.put(id, ayuda);
 
-
-        mdB.collection("Ayuda").document(nomUser).set(userHelp).addOnSuccessListener(new OnSuccessListener<Void>() {
+        mdB.collection("Ayuda").document(mAuth.getCurrentUser().getEmail()).set(userHelp).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // Manejar éxito
@@ -195,7 +194,7 @@ public class UserManager{
                     public void onFailure(@NonNull Exception e) {
                         // Manejar error
                         try {
-                            throw new Exception("Resgistro NO completado");
+                            throw new Exception("Pregunta NO enviada");
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
