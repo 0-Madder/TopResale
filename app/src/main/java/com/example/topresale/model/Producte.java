@@ -1,9 +1,10 @@
 package com.example.topresale.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Producte {
+public class Producte implements Serializable {
     private ArrayList<ProducteEspecific> llistaProdEspe;
     private String name;
     private String foto;

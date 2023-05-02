@@ -14,17 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.topresale.R;
-import com.example.topresale.model.Producte;
+import com.example.topresale.model.ProducteEspecific;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAdapter.MyViewHolder> {
 
-    List<Producte> producteList;
+    List<ProducteEspecific> producteEspecificList;
     Context context;
 
-    public RecyclerViewAdapter(List<Producte> producteList, Context context) {
-        this.producteList = producteList;
+    public RecyclerView2nAdapter(List<ProducteEspecific> producteEspecificList, Context context) {
+        this.producteEspecificList = producteEspecificList;
         this.context = context;
     }
 
@@ -32,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.one_line, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.one_line_espe, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
 
         return holder;
@@ -41,14 +41,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-        holder.nombreProducto.setText(producteList.get(position).getName());
-        Glide.with(this.context).load(producteList.get(position).getFoto()).into(holder.fotoProducto);
+        holder.nombreProducto.setText(producteEspecificList.get(position).getName());
+        Glide.with(this.context).load(producteEspecificList.get(position).getFoto()).into(holder.fotoProducto);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ProductoEspecificoActivity.class);
-                intent.putExtra("producto", producteList.get(holder.getAdapterPosition()));
-                context.startActivity(intent);
+                System.out.println("siuuuuuuuuuu");
             }
         });
 
@@ -56,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return producteList.size();
+        return producteEspecificList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -69,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(itemView);
             fotoProducto = itemView.findViewById(R.id.productoEspecifico_imageView);
             nombreProducto = itemView.findViewById(R.id.nombreProductoEspecifico_textView);
-            parentLayout = itemView.findViewById(R.id.oneLineProduct);
+            parentLayout = itemView.findViewById(R.id.oneLineProductEspecific);
         }
     }
 }
