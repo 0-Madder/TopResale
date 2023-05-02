@@ -73,7 +73,7 @@ public class ProducteManager {
     }
     public void inicialitzarProductesEspecifics(Producte p){
         CollectionReference prodEspeRef = mdB.collection("ProducteEspecific");
-        prodEspeRef.get().addOnCompleteListener(task -> {
+        prodEspeRef.whereEqualTo("nameProd", p.getName()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) { //Miro si es diferent a null
                 for (QueryDocumentSnapshot docProdEspe : task.getResult()) {
                     if (p.getName().equalsIgnoreCase(docProdEspe.getString("nameProd"))) {
@@ -98,6 +98,7 @@ public class ProducteManager {
                     Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
                     llistaProducte.add(p);  //Afegeixo el Producte a la llista de productes
                     inicialitzarProductesEspecifics(p);
+
                     p.calcularMitjanaModa();
                 }
 

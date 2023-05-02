@@ -18,6 +18,7 @@
         app:srcCompat="@drawable/ayuda_icon" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="337dp"
         android:layout_height="405dp"
         android:layout_below="@+id/ayudaIcon_imageView"
@@ -32,7 +33,7 @@
             android:layout_width="337dp"
             android:layout_height="250dp"
             android:gravity="center"
-            android:text= "@string/ayudaText"
+            android:text="@string/ayudaText"
             app:layout_constraintBottom_toTopOf="@+id/duda_editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,12 +46,15 @@
         android:id="@+id/duda_editText"
         android:layout_width="247dp"
         android:layout_height="64dp"
+        android:layout_marginTop="9dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
+        android:hint="Escribe tu duda"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/enviar_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <Button
         android:id="@+id/enviar_button"

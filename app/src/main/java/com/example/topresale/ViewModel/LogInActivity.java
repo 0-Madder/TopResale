@@ -97,9 +97,7 @@ public class LogInActivity extends AppCompatActivity {
             toast.show();
             finish();
         }
-        else{
 
-        }
     }
 
     //Redirecciona al usuario a la página de registro
