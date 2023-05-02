@@ -65,12 +65,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mAdapter = new RecyclerViewAdapter(listaProductos, this);
         recyclerView.setAdapter(mAdapter);
-
-
-
-
-
     }
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -83,10 +80,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_desplegable, menu);
-
         return true;
     }
 
@@ -116,6 +111,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    public void addToFavorite(){
+
+    }
+
+    public void removeFromFavorite(){
 
     }
 }
