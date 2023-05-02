@@ -39,7 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         holder.nombreProducto.setText(producteList.get(position).getName());
         Glide.with(this.context).load(producteList.get(position).getFoto()).into(holder.fotoProducto);
@@ -47,7 +47,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ProductoEspecificoActivity.class);
-
+                intent.putExtra("url", producteList.get(holder.getAdapterPosition()).getFoto());
+                System.out.println(producteList.get(holder.getAdapterPosition()).getName());
+                intent.putExtra("nombre", producteList.get(holder.getAdapterPosition()).getName());
                 context.startActivity(intent);
             }
         });

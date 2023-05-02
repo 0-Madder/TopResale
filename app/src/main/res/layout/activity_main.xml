@@ -29,7 +29,10 @@
         android:id="@+id/productoEspecifico_textView"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
         android:text="@string/ordenacion"
+        android:textColor="#03A9F4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/busqueda_searchBar" />
 

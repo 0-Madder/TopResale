@@ -10,6 +10,7 @@
         android:id="@+id/productoEspecifico_textView"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:text="Producto: "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

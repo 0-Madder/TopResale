@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
-    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

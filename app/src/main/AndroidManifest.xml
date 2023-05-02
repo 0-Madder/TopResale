@@ -14,7 +14,7 @@
         android:theme="@style/Theme.TopResale"
         tools:targetApi="31">
         <activity
-            android:name=".ProductoEspecificoActivity"
+            android:name=".ViewModel.ProductoEspecificoActivity"
             android:exported="false" />
         <activity
             android:name=".ViewModel.AyudaActivity"
