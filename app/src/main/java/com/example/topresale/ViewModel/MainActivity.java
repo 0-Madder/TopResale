@@ -2,7 +2,6 @@ package com.example.topresale.ViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.topresale.R;
 import com.example.topresale.model.Producte;
@@ -28,13 +28,17 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private List<Producte> listaProductos = new ArrayList<Producte>();
+    static final String CURRENTUSER = "Current user is";
+    String username;
     private RecyclerView recyclerView;
+    private TextView ordenTextView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private ListView listaTiposProducto;
     private FirebaseFirestore mdb;
     private FirebaseAuth mAuth;
+    private String modosDeOrdenacion[] = {"A -> Z", "Z -> A", "Tendencias"};
 
     private void llenaLaLista(){
         Producte spinner = new Producte("Spinner", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Fidget_spinner_red%2C_cropped.jpg", false);
@@ -52,6 +56,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra(MainActivity.CURRENTUSER);
+
+
+
+        ordenTextView = findViewById(R.id.productoEspecifico_textView);
+        ordenTextView.setText("Ordenado por " + modosDeOrdenacion[2]);
 
         llenaLaLista();
         mdb = FirebaseFirestore.getInstance();
@@ -96,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         switch (item.getItemId()){
             case R.id.perfil:
                 Intent intent1 = new Intent(this, PerfilActivity.class);
+                intent1.putExtra(CURRENTUSER, username);
                 startActivity(intent1);
                 break;
             case R.id.favoritos:

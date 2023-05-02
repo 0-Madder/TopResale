@@ -37,6 +37,7 @@ public class LogInActivity extends AppCompatActivity {
     private EditText textoUsername;
 
     private String psw_real;
+    static final String CURRENTUSER = "Current user is";
 
     private FirebaseAuth mAuth;
 
@@ -44,7 +45,6 @@ public class LogInActivity extends AppCompatActivity {
     private FirebaseFirestore mdB;
     private UserManager userManager;
 
-    private Activity a;
 
 
     @Override
@@ -52,6 +52,8 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+
+
 
         textoPswd = findViewById(R.id.pswdInicioSesion_EditText);
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
@@ -73,8 +75,7 @@ public class LogInActivity extends AppCompatActivity {
 
     public  void iniciarSesion(View view) {
         Log.d(LOG_TAG, "button_clicked");
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
         boolean parametrosCorrectos = true;
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
@@ -101,9 +102,15 @@ public class LogInActivity extends AppCompatActivity {
         //En caso de que los parámetros sean correctos se iniciará la sesión
         if(parametrosCorrectos){
             userManager.iniciarSessio(u);
-            Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
-            toast.show();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra(CURRENTUSER, username);
+            startActivity(intent);
             finish();
+        }
+
+        else{
+            textoUsername.setText("");
+            textoPswd.setText("");
         }
 
 
