@@ -57,6 +57,38 @@ public class ProducteManager {
         return null;
     }
 
+    public void inicialitzarValoracions(ProducteEspecific pE){
+        CollectionReference valoracioRef = mdB.collection("Valoracio");
+        valoracioRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) { //Miro si es diferent a null
+                    for (QueryDocumentSnapshot docVal : task.getResult()) {
+                        if (pE.getId().equals(docVal.getString("idProdEspe"))) {
+                            pE.addValoracio(docVal.getString("tipusValoracio"), docVal.getString("valorValoracio"), docVal.getString("idProdEspe"));
+                        }
+                    }
+                }
+                else {
+                }
+            });
+    }
+    public void inicialitzarProductesEspecifics(Producte p){
+        CollectionReference prodEspeRef = mdB.collection("ProducteEspecific");
+        prodEspeRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) { //Miro si es diferent a null
+                for (QueryDocumentSnapshot docProdEspe : task.getResult()) {
+                    if (p.getName().equalsIgnoreCase(docProdEspe.getString("nameProd"))) {
+                        ProducteEspecific pE = new ProducteEspecific(docProdEspe.getString("id"), docProdEspe.getString("nameProd"), (float) docProdEspe.getLong("preuB"),
+                                (float) docProdEspe.getLong("preuC"), (float) docProdEspe.getLong("preuV"), docProdEspe.getString("descripcio"), docProdEspe.getString("foto"),
+                                docProdEspe.getString("estadistica"), docProdEspe.getString("link"), (float) docProdEspe.getLong("moda"));
+                        p.addProductEspecific(pE);
+                        this.inicialitzarValoracions(pE);
+                    }
+                }
+            } else {
+
+            }
+        });
+    }
     public void inicialitzarProductes() {
         CollectionReference prodRef = mdB.collection("Producte");
         prodRef.get().addOnCompleteListener(task -> {
@@ -65,40 +97,13 @@ public class ProducteManager {
                     //Paso els valors necessaris del document a parametres per crear un objecte Producte
                     Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
                     llistaProducte.add(p);  //Afegeixo el Producte a la llista de productes
-
-                    CollectionReference prodEspeRef = mdB.collection("ProducteEspecific");
-                    prodEspeRef.get().addOnCompleteListener(taska -> {
-                        if (taska.isSuccessful()) { //Miro si es diferent a null
-                            for (QueryDocumentSnapshot docProdEspe : taska.getResult()) {
-                                if (p.getName().equalsIgnoreCase(docProdEspe.getString("nameProd"))) {
-                                    ProducteEspecific pE = new ProducteEspecific(docProdEspe.getString("id"), docProdEspe.getString("nameProd"), (float) docProdEspe.getLong("preuB"),
-                                            (float) docProdEspe.getLong("preuC"), (float) docProdEspe.getLong("preuV"), docProdEspe.getString("descripcio"), docProdEspe.getString("foto"),
-                                            docProdEspe.getString("estadistica"), docProdEspe.getString("link"), (float) docProdEspe.getLong("moda"));
-                                    p.addProductEspecific(pE);
-                                    CollectionReference valoracioRef = mdB.collection("Valoracio");
-                                    valoracioRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<QuerySnapshot> taskas) {
-                                            if (taskas.isSuccessful()) { //Miro si es diferent a null
-                                                for (QueryDocumentSnapshot docVal : taskas.getResult()) {
-                                                    if (pE.getId().equals(docVal.getString("idProdEspe"))) {
-                                                        Valoracio v = docVal.toObject(Valoracio.class);
-                                                        pE.addValoracio(docVal.getString("tipusValoracio"), docVal.getString("valorValoracio"), docVal.getString("idProdEspe"));
-                                                    }
-                                                }
-                                            } else {
-                                            }
-                                        }
-                                    });
-
-                                }
-                            }
-                        } else {
-                        }
-                        p.calcularMitjanaModa();
-                    });
+                    this.inicialitzarProductesEspecifics(p);
+                    p.calcularMitjanaModa();
                 }
-            } else {
+
+            }
+            else {
+                System.out.println("Hola existo");
             }
         });
     }
