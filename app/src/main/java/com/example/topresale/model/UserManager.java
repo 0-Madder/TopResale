@@ -158,8 +158,8 @@ public class UserManager extends AppCompatActivity {
     }
 
     public void inicialitzarUsuaris(){
-        CollectionReference prodRef = mdB.collection("User");
-        prodRef.get().addOnCompleteListener(task -> {
+        CollectionReference userRef = mdB.collection("User");
+        userRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) { //Miro si es diferent a null
                 for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
                     User u = document.toObject(User.class); //Paso el document a objecte Producte

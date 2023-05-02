@@ -15,11 +15,16 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.topresale.R;
 import com.example.topresale.model.Producte;
+import com.example.topresale.model.ProducteEspecific;
+import com.example.topresale.model.ProducteManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,13 +33,18 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private List<Producte> listaProductos = new ArrayList<Producte>();
+    static final String CURRENTUSER = "Current user is";
+    String username;
     private RecyclerView recyclerView;
+    private TextView ordenTextView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private ListView listaTiposProducto;
     private FirebaseFirestore mdb;
     private FirebaseAuth mAuth;
+    private String modosDeOrdenacion[] = {"A -> Z", "Z -> A", "Tendencias"};
+    private ProducteManager producteManager;
 
     private void llenaLaLista(){
         Producte spinner = new Producte("Spinner", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Fidget_spinner_red%2C_cropped.jpg", false);
@@ -53,6 +63,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        username = intent.getStringExtra(MainActivity.CURRENTUSER);
+
+
+
+        ordenTextView = findViewById(R.id.productoEspecifico_textView);
+        ordenTextView.setText("Ordenado por " + modosDeOrdenacion[2]);
+
         llenaLaLista();
         mdb = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -65,9 +83,29 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mAdapter = new RecyclerViewAdapter(listaProductos, this);
         recyclerView.setAdapter(mAdapter);
+
+        producteManager = ProducteManager.getInstance();
+        CollectionReference prodRef = mdb.collection("Producte");
+        prodRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) { //Miro si es diferent a null
+                for (QueryDocumentSnapshot docProd : task.getResult()) { //Recorro tots els documents de la coleccio Producte
+                    //Paso els valors necessaris del document a parametres per crear un objecte Producte
+                    Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
+                    producteManager.getLlistaProducte().add(p);  //Afegeixo el Producte a la llista de productes
+                    //producteManager.inicialitzarProductesEspecifics(p);
+                    //p.calcularMitjanaModa();
+                }
+
+            }
+            else {
+                System.out.println("Hola existo");
+            }
+        });
+        //producteManager.inicialitzarProductes();
     }
 
 
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -80,8 +118,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_desplegable, menu);
+
         return true;
     }
 
@@ -91,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         switch (item.getItemId()){
             case R.id.perfil:
                 Intent intent1 = new Intent(this, PerfilActivity.class);
+                intent1.putExtra(CURRENTUSER, username);
                 startActivity(intent1);
                 break;
             case R.id.favoritos:

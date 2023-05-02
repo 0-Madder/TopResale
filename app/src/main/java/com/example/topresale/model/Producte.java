@@ -1,6 +1,7 @@
 package com.example.topresale.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Producte {
     private ArrayList<ProducteEspecific> llistaProdEspe;
@@ -77,4 +78,27 @@ public class Producte {
         }
         this.setMitjanaModa(mitjana/cont);
     }
+
+    public static Comparator<Producte> ProducteAZComparator = new Comparator<Producte>() {
+        @Override
+        public int compare(Producte p1, Producte p2) {
+            return p1.getName().compareTo(p2.getName());
+        }
+    };
+
+    public static Comparator<Producte> ProducteZAComparator = new Comparator<Producte>() {
+        @Override
+        public int compare(Producte p1, Producte p2) {
+            return p2.getName().compareTo(p1.getName());
+        }
+    };
+
+    public static Comparator<Producte> ProducteTrendingComparator = new Comparator<Producte>() {
+        @Override
+        public int compare(Producte p1, Producte p2) {
+            int p1trending = p1.isTendencia() ? 1:0;
+            int p2trending = p2.isTendencia() ? 1:0;
+            return p1trending - p2trending;
+        }
+    };
 }

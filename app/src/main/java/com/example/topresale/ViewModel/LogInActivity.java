@@ -37,10 +37,15 @@ public class LogInActivity extends AppCompatActivity {
     private EditText textoUsername;
 
     private String psw_real;
+    static final String CURRENTUSER = "Current user is";
 
     private FirebaseAuth mAuth;
+
+
     private FirebaseFirestore mdB;
     private UserManager userManager;
+
+
 
 
     @Override
@@ -49,15 +54,19 @@ public class LogInActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+
+
         textoPswd = findViewById(R.id.pswdInicioSesion_EditText);
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
         mAuth = FirebaseAuth.getInstance();
         mdB = FirebaseFirestore.getInstance();
+        CollectionReference prodRef = mdB.collection("User");
         userManager = UserManager.getInstance();
         userManager.inicialitzarUsuaris();
     }
 
     public  void iniciarSesion(View view) {
+        Log.d(LOG_TAG, "button_clicked");
 
         boolean parametrosCorrectos = true;
         String username = textoUsername.getText().toString();
@@ -84,17 +93,21 @@ public class LogInActivity extends AppCompatActivity {
 
         //En caso de que los parámetros sean correctos se iniciará la sesión
         if(parametrosCorrectos){
-            Log.d(LOG_TAG, "button_clicked");
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
             userManager.iniciarSessio(u);
-            Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
-            toast.show();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra(CURRENTUSER, username);
+            startActivity(intent);
             finish();
         }
-        else{
 
+        else{
+            textoUsername.setText("");
+            textoPswd.setText("");
         }
+
+
+
+
     }
 
     //Redirecciona al usuario a la página de registro
