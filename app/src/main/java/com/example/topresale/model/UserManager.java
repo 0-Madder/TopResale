@@ -228,6 +228,7 @@ public class UserManager extends AppCompatActivity {
 
     public void iniciarSessio(User u){
         mAuth.signInWithEmailAndPassword(u.getCorreo(),u.getPswd());
+        mAuth.getCurrentUser();
 
     }
 

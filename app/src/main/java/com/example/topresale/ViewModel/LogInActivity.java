@@ -58,9 +58,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public  void iniciarSesion(View view) {
-        Log.d(LOG_TAG, "button_clicked");
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
         boolean parametrosCorrectos = true;
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
@@ -86,14 +84,16 @@ public class LogInActivity extends AppCompatActivity {
 
         //En caso de que los parámetros sean correctos se iniciará la sesión
         if(parametrosCorrectos){
+            Log.d(LOG_TAG, "button_clicked");
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             userManager.iniciarSessio(u);
             Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
             toast.show();
             finish();
         }
         else{
-            Intent intent2 = new Intent(this, LogInActivity.class);
-            startActivity(intent2);
+
         }
     }
 
