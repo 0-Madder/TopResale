@@ -28,6 +28,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private FirebaseFirestore mdb;
     private FirebaseAuth mAuth;
     private String modosDeOrdenacion[] = {"A -> Z", "Z -> A", "Tendencias"};
+    private int cnt = 0;
     private ProducteManager producteManager;
 
     private void llenaLaLista(){
@@ -156,4 +158,34 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
+    public void cambiarOrden(View view) {
+
+        if(cnt + 1 > modosDeOrdenacion.length - 1){
+            cnt = 0;
+        }
+        else{
+            cnt +=1;
+        }
+
+        ordenTextView.setText("Ordenado por " + modosDeOrdenacion[cnt]);
+
+        switch (cnt){
+            case 0:
+                Collections.sort(listaProductos, Producte.ProducteAZComparator);
+                mAdapter.notifyDataSetChanged();
+                break;
+            case 1:
+                Collections.sort(listaProductos, Producte.ProducteZAComparator);
+                mAdapter.notifyDataSetChanged();
+                break;
+            case 2:
+                Collections.sort(listaProductos, Producte.ProducteTrendingComparator);
+                mAdapter.notifyDataSetChanged();
+                break;
+
+        }
+
+
+
+    }
 }

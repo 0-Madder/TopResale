@@ -17,6 +17,8 @@ public class AyudaActivity extends AppCompatActivity {
 
     public void enviarDudas(View view) {
 
+
+
         finish();
 
     }

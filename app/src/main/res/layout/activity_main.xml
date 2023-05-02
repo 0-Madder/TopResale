@@ -33,6 +33,7 @@
         android:layout_marginTop="5dp"
         android:text="@string/ordenacion"
         android:textColor="#03A9F4"
+        android:onClick="cambiarOrden"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/busqueda_searchBar" />
 
