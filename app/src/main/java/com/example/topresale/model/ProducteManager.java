@@ -64,6 +64,7 @@ public class ProducteManager{
                                     p.addProductEspecific((String) pE.get("nameProd"), (String) pE.get("id"), (float) pE.get("preuB"), (float) pE.get("preuC"), (float) pE.get("preuV"), (String) pE.get("descripcio"),
                                             (String) pE.get("foto"), (String) pE.get("estadistica"), (String) pE.get("link"), (float) pE.get("moda"));
 
+
                                 }
                             }
                             //Un cop ja hagi creat i afegit tots els prodEsp del producte recorro tots els productesEsp
