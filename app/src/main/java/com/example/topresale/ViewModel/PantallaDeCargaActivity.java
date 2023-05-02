@@ -9,17 +9,25 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import com.example.topresale.R;
+import com.example.topresale.model.ProducteManager;
+import com.example.topresale.model.UserManager;
 
 
 public class PantallaDeCargaActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = LogInActivity.class.getSimpleName();
+    private UserManager userManager;
+    private ProducteManager producteManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_pantalla_de_carga);
+        userManager = UserManager.getInstance();
+        producteManager = ProducteManager.getInstance();
+        userManager.inicialitzarUsuaris();
+        producteManager.inicialitzarProductes();
 
         new CountDownTimer(5000, 1000) {
             public void onFinish() {

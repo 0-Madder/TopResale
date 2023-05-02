@@ -35,7 +35,7 @@ import java.util.Map;
 
 import javax.inject.Singleton;
 
-public class UserManager extends AppCompatActivity {
+public class UserManager{
     private FirebaseAuth mAuth;
     private FirebaseFirestore mdB;
     private ArrayList<User> llistaUsuaris;

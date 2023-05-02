@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private RecyclerView.LayoutManager layoutManager;
 
     private ListView listaTiposProducto;
-    private FirebaseFirestore mdb;
+    private FirebaseFirestore mdB;
     private FirebaseAuth mAuth;
     private ProducteManager producteManager;
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         llenaLaLista();
-        mdb = FirebaseFirestore.getInstance();
+        mdB = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         recyclerView = findViewById(R.id.productos_recyclerView);
@@ -72,23 +72,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setAdapter(mAdapter);
 
         producteManager = ProducteManager.getInstance();
-        CollectionReference prodRef = mdb.collection("Producte");
-        prodRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) { //Miro si es diferent a null
-                for (QueryDocumentSnapshot docProd : task.getResult()) { //Recorro tots els documents de la coleccio Producte
-                    //Paso els valors necessaris del document a parametres per crear un objecte Producte
-                    Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
-                    producteManager.getLlistaProducte().add(p);  //Afegeixo el Producte a la llista de productes
-                    //producteManager.inicialitzarProductesEspecifics(p);
-                    //p.calcularMitjanaModa();
-                }
-
-            }
-            else {
-                System.out.println("Hola existo");
-            }
-        });
-        //producteManager.inicialitzarProductes();
+        producteManager.inicialitzarProductes();
     }
 
 
@@ -97,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onDestroy();
 
         // Cerrar la instancia de FirebaseFirestore
-        if (mdb != null) {
-            mdb.terminate();
+        if (mdB != null) {
+            mdB.terminate();
         }
     }
 

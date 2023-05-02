@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.topresale.R;
 import com.example.topresale.model.Producte;
+import com.example.topresale.model.ProducteManager;
 import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +42,7 @@ public class LogInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore mdB;
     private UserManager userManager;
+    private ProducteManager producteManager;
 
 
     @Override
@@ -53,8 +55,10 @@ public class LogInActivity extends AppCompatActivity {
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
         mAuth = FirebaseAuth.getInstance();
         mdB = FirebaseFirestore.getInstance();
+        producteManager = ProducteManager.getInstance();
         userManager = UserManager.getInstance();
-        userManager.inicialitzarUsuaris();
+
+
     }
 
     public  void iniciarSesion(View view) {
@@ -63,6 +67,7 @@ public class LogInActivity extends AppCompatActivity {
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
         User u = userManager.findUsuariByUsername(username);
+
 
         // - Caso en el que algún parámetro este vacío
         if(username.isEmpty()|| pswd.isEmpty()){

@@ -81,7 +81,7 @@ public class ProducteManager {
                                 (float) docProdEspe.getLong("preuC"), (float) docProdEspe.getLong("preuV"), docProdEspe.getString("descripcio"), docProdEspe.getString("foto"),
                                 docProdEspe.getString("estadistica"), docProdEspe.getString("link"), (float) docProdEspe.getLong("moda"));
                         p.addProductEspecific(pE);
-                        this.inicialitzarValoracions(pE);
+                        inicialitzarValoracions(pE);
                     }
                 }
             } else {
@@ -97,7 +97,7 @@ public class ProducteManager {
                     //Paso els valors necessaris del document a parametres per crear un objecte Producte
                     Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
                     llistaProducte.add(p);  //Afegeixo el Producte a la llista de productes
-                    this.inicialitzarProductesEspecifics(p);
+                    inicialitzarProductesEspecifics(p);
                     p.calcularMitjanaModa();
                 }
 
