@@ -23,5 +23,13 @@ public class PerfilUser{
 
         }
     }
+    public void addToFavorite(ProducteEspecific producteEspecific){
+        favoritos.add(producteEspecific);
+    }
+    public void removeFromFavorite(ProducteEspecific producteEspecific){
+        favoritos.remove(producteEspecific);
+    }
+
+
 
 }

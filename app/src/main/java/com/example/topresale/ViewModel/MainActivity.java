@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(intent1);
                 break;
             case R.id.favoritos:
-
+                //Intent de productes especifics i cridem al mètode que mostra els preferits
                 break;
             case R.id.ayuda:
                 Intent intent3 = new Intent(this, AyudaActivity.class);
@@ -114,11 +114,5 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void addToFavorite(){
 
-    }
-
-    public void removeFromFavorite(){
-
-    }
 }
