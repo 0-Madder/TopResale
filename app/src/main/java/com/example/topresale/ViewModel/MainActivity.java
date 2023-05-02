@@ -49,11 +49,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ProducteManager producteManager;
 
     private void llenaLaLista(){
-        Producte spinner = new Producte("Spinner", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Fidget_spinner_red%2C_cropped.jpg", false);
+        Producte spinner = new Producte("Spinner", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Fidget_spinner_red%2C_cropped.jpg", true);
         Producte duck = new Producte("Pato de goma", "https://upload.wikimedia.org/wikipedia/commons/1/14/Rubber_Duck_%288374802487%29.jpg", false);
         Producte rubik = new Producte("Cubo de rubik", "https://upload.wikimedia.org/wikipedia/commons/6/61/Rubiks_cube_solved.jpg", false);
         Producte taza = new Producte("Taza de cafe", "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG", false);
-        Producte airpods = new Producte("Airpods", "https://upload.wikimedia.org/wikipedia/commons/d/d2/AirPods_3rd_generation.jpg", false);
+        Producte airpods = new Producte("Airpods", "https://upload.wikimedia.org/wikipedia/commons/d/d2/AirPods_3rd_generation.jpg", true);
 
         listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
         listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
         ordenTextView = findViewById(R.id.productoEspecifico_textView);
-        ordenTextView.setText("Ordenado por " + modosDeOrdenacion[2]);
+        ordenTextView.setText("Ordenado por ");
 
         llenaLaLista();
         mdb = FirebaseFirestore.getInstance();

@@ -98,7 +98,7 @@ public class Producte {
         public int compare(Producte p1, Producte p2) {
             int p1trending = p1.isTendencia() ? 1:0;
             int p2trending = p2.isTendencia() ? 1:0;
-            return p1trending - p2trending;
+            return p2trending - p1trending;
         }
     };
 }
