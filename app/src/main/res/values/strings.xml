@@ -46,4 +46,14 @@ Estos términos y condiciones se rigen por las leyes de [país] y cualquier disp
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
+    <string name="ayudaText">
+\n<b><i>1. ¿Cómo puedo buscar productos en la aplicación?</i></b>
+En la pantalla de inicio, deberías ver una barra de búsqueda. Puedes escribir el nombre del producto que estás buscando en ella y presionar el botón de búsqueda para encontrar los resultados relevantes. También puedes utilizar los filtros para refinar tu búsqueda por distintas categorías.
+\n<b><i>2. ¿Cómo puedo realizar una compra?</i></b>
+Después de encontrar un producto que te interese, deberías ver un botón "Comprar". Haz clic en él y sigue las instrucciones para completar el proceso de compra. Asegúrate de revisar y confirmar los detalles de la orden antes de realizar el pago.
+\n<b><i>3. ¿Cómo puedo ver el historial de mis compras?</i></b>
+En la página de perfil, deberías ver un historial de compras que incluye los detalles de tus compras anteriores. Si tienes algún problema con una compra, puedes utilizar esta sección para rastrear tu historial y resolver cualquier problema.
+\n<b><i>4. ¿Cómo puedo cambiar mis datos personales?</i></b>
+En la página de perfil, deberías ver un botón "Configurar". Haz clic en él para actualizar tu información personal, como tu nombre, dirección de correo electrónico, número de teléfono, etc.</string>
+\n
 </resources>
