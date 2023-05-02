@@ -48,24 +48,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private int cnt = 0;
     private ProducteManager producteManager;
 
-    private void llenaLaLista(){
-        Producte spinner = new Producte("Spinner", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Fidget_spinner_red%2C_cropped.jpg", true);
-        Producte duck = new Producte("Pato de goma", "https://upload.wikimedia.org/wikipedia/commons/1/14/Rubber_Duck_%288374802487%29.jpg", false);
-        Producte rubik = new Producte("Cubo de rubik", "https://upload.wikimedia.org/wikipedia/commons/6/61/Rubiks_cube_solved.jpg", false);
-        Producte taza = new Producte("Taza de cafe", "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG", false);
-        Producte airpods = new Producte("Airpods", "https://upload.wikimedia.org/wikipedia/commons/d/d2/AirPods_3rd_generation.jpg", true);
 
-        listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
-        listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza}));
-
-    }
-
-    private void llenaDeProductosEspecificos(){
-        for(Producte producto : listaProductos){
-            producto.addProductEspecific("Spinner barato", "Spinner barato", (float) 1.02, (float) 1.03, (float) 1.04, "Spinner bakano", "https://api.time.com/wp-content/uploads/2017/05/fidget-spinner4.jpg",
-                    "12", "url", (float) 20.2);
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,32 +57,47 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         Intent intent = getIntent();
         username = intent.getStringExtra(MainActivity.CURRENTUSER);
-
-
-
-        ordenTextView = findViewById(R.id.productoEspecifico_textView);
-        ordenTextView.setText("Ordenado por ");
-
-        llenaLaLista();
-        llenaDeProductosEspecificos();
         mdB = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
         producteManager = ProducteManager.getInstance();
-        producteManager.inicialitzarProductes();
-
+        producteManager.inicialitzarModes();
+        ordenTextView = findViewById(R.id.productoEspecifico_textView);
+        ordenTextView.setText("Ordenado por ");
+        llenaLaLista();
+        llenaDeProductosEspecificos();
         recyclerView = findViewById(R.id.productos_recyclerView);
         recyclerView.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
         mAdapter = new RecyclerViewAdapter(listaProductos, this);
         recyclerView.setAdapter(mAdapter);
 
-        producteManager = ProducteManager.getInstance();
-        producteManager.inicialitzarModes();
 
+
+    }
+    private void llenaLaLista(){
+
+        /*
+        Producte spinner = new Producte("Spinner", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Fidget_spinner_red%2C_cropped.jpg", true);
+        Producte duck = new Producte("Pato de goma", "https://upload.wikimedia.org/wikipedia/commons/1/14/Rubber_Duck_%288374802487%29.jpg", false);
+        Producte rubik = new Producte("Cubo de rubik", "https://upload.wikimedia.org/wikipedia/commons/6/61/Rubiks_cube_solved.jpg", false);
+        Producte taza = new Producte("Taza de cafe", "https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG", false);
+        Producte airpods = new Producte("Airpods", "https://upload.wikimedia.org/wikipedia/commons/d/d2/AirPods_3rd_generation.jpg", true);
+
+        listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
+        listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza}));*/
+        listaProductos.addAll(producteManager.getLlistaProducte());
+        listaProductos.addAll(producteManager.getLlistaProducte());
+
+
+    }
+
+    private void llenaDeProductosEspecificos(){
+        for(Producte producto : listaProductos){
+            producto.addProductEspecific("Spinner barato", "Spinner barato", (float) 1.02, (float) 1.03, (float) 1.04, "Spinner bakano", "https://api.time.com/wp-content/uploads/2017/05/fidget-spinner4.jpg",
+                    "12", "url", (float) 20.2);
+        }
     }
 
 
