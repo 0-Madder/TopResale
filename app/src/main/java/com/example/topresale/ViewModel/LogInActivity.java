@@ -1,8 +1,5 @@
 package com.example.topresale.ViewModel;
 
-import static android.content.ContentValues.TAG;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,9 +16,7 @@ import com.example.topresale.R;
 import com.example.topresale.model.Producte;
 import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -30,7 +25,6 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -45,12 +39,8 @@ public class LogInActivity extends AppCompatActivity {
     private String psw_real;
 
     private FirebaseAuth mAuth;
-
-
     private FirebaseFirestore mdB;
     private UserManager userManager;
-
-    private Activity a;
 
 
     @Override
@@ -63,22 +53,14 @@ public class LogInActivity extends AppCompatActivity {
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
         mAuth = FirebaseAuth.getInstance();
         mdB = FirebaseFirestore.getInstance();
-        CollectionReference prodRef = mdB.collection("User");
         userManager = UserManager.getInstance();
-        prodRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) { //Miro si es diferent a null
-                for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
-                    User u = document.toObject(User.class); //Paso el document a objecte Producte
-                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el Producte a la llista de productes
-                }
-            } else {
-
-            }
-        });
+        userManager.inicialitzarUsuaris();
     }
 
     public  void iniciarSesion(View view) {
-
+        Log.d(LOG_TAG, "button_clicked");
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         boolean parametrosCorrectos = true;
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
@@ -104,18 +86,15 @@ public class LogInActivity extends AppCompatActivity {
 
         //En caso de que los parámetros sean correctos se iniciará la sesión
         if(parametrosCorrectos){
-            Log.d(LOG_TAG, "button_clicked");
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
             userManager.iniciarSessio(u);
             Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
             toast.show();
             finish();
         }
-
-
-
-
+        else{
+            Intent intent2 = new Intent(this, LogInActivity.class);
+            startActivity(intent2);
+        }
     }
 
     //Redirecciona al usuario a la página de registro

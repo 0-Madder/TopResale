@@ -13,8 +13,9 @@ public class Producte {
         this.llistaProdEspe = new ArrayList<ProducteEspecific>();
         this.name = name;
         this.foto = foto;
-        calcularMitjanaModa();
-        this.mitjanaModa = getMitjanaModa();
+        //calcularMitjanaModa();
+        //this.mitjanaModa = getMitjanaModa();
+        this.mitjanaModa = 0;
         this.tendencia = tendencia;
     }
 
@@ -62,6 +63,10 @@ public class Producte {
         ProducteEspecific producteEspecific = new ProducteEspecific(nameProd, id, preuB,preuC,preuV,descripcio,foto,estadistica,link,moda);
         llistaProdEspe.add(producteEspecific);
     }
+    public void addProductEspecific(ProducteEspecific pE){
+        llistaProdEspe.add(pE);
+    }
+
 
     public void calcularMitjanaModa(){
         float mitjana = 0;

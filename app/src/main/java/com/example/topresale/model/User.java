@@ -10,6 +10,8 @@ public class User {
     private String nomUser;
     private String pswd;
 
+    private PerfilUser perfilUser;
+
 
 
 
@@ -23,6 +25,8 @@ public class User {
         this.nomUser = nomUser;
         this.pswd = pswd;
         this.id = id;
+        this.perfilUser = new PerfilUser();
+
     }
 
     public String getNomComplet() {
