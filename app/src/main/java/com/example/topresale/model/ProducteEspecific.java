@@ -18,6 +18,8 @@ public class ProducteEspecific {
 
 
 
+
+
     public ProducteEspecific(String id, String nameProducte, float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, float moda) {
 
         this.nameProdcucte = nameProducte;

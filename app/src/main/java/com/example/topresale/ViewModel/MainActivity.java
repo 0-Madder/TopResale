@@ -16,6 +16,7 @@ import android.widget.SearchView;
 
 import com.example.topresale.R;
 import com.example.topresale.model.CustomAdapter;
+import com.example.topresale.model.ProducteManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ListView listaTiposProducto;
     private FirebaseFirestore mdb;
     private FirebaseAuth mAuth;
+    private ProducteManager producteManager;
 
 
 
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mdb = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        //Aixo d'aqui baix ns que és o si es el k s'ha de cambiar
         listaTiposProducto = findViewById(R.id.tiposDeProducto_listView);
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), tipos, flags);
         listaTiposProducto.setAdapter(customAdapter);
@@ -54,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     }
                 }
         );
-
-
+        producteManager = ProducteManager.getInstance();
+        producteManager.inicialitzarProductes();
     }
     @Override
     protected void onDestroy() {

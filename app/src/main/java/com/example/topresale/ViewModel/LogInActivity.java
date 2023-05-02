@@ -39,12 +39,8 @@ public class LogInActivity extends AppCompatActivity {
     private String psw_real;
 
     private FirebaseAuth mAuth;
-
-
     private FirebaseFirestore mdB;
     private UserManager userManager;
-
-    private Activity a;
 
 
     @Override
@@ -57,18 +53,8 @@ public class LogInActivity extends AppCompatActivity {
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
         mAuth = FirebaseAuth.getInstance();
         mdB = FirebaseFirestore.getInstance();
-        CollectionReference prodRef = mdB.collection("User");
         userManager = UserManager.getInstance();
-        prodRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) { //Miro si es diferent a null
-                for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
-                    User u = document.toObject(User.class); //Paso el document a objecte Producte
-                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el Producte a la llista de productes
-                }
-            } else {
-
-            }
-        });
+        userManager.inicialitzarUsuaris();
     }
 
     public  void iniciarSesion(View view) {
@@ -109,9 +95,6 @@ public class LogInActivity extends AppCompatActivity {
             Intent intent2 = new Intent(this, LogInActivity.class);
             startActivity(intent2);
         }
-
-
-
     }
 
     //Redirecciona al usuario a la página de registro
