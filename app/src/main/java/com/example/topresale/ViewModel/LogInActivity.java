@@ -30,31 +30,20 @@ import java.util.ArrayList;
 
 
 public class LogInActivity extends AppCompatActivity {
-
     private static final String LOG_TAG = LogInActivity.class.getSimpleName();
-
     private EditText textoPswd;
     private EditText textoUsername;
-
     private String psw_real;
     static final String CURRENTUSER = "Current user is";
-
     private FirebaseAuth mAuth;
-
-
     private FirebaseFirestore mdB;
     private UserManager userManager;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-
-
 
         textoPswd = findViewById(R.id.pswdInicioSesion_EditText);
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
@@ -98,16 +87,10 @@ public class LogInActivity extends AppCompatActivity {
             intent.putExtra(CURRENTUSER, username);
             startActivity(intent);
             finish();
-        }
-
-        else{
+        }else{
             textoUsername.setText("");
             textoPswd.setText("");
         }
-
-
-
-
     }
 
     //Redirecciona al usuario a la página de registro
