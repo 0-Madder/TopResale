@@ -72,13 +72,12 @@ public class UserManager extends AppCompatActivity {
     }
 
     //Tiene que coincidir el nombre de usuario con la contraseña
-    public boolean correctPswd(String username, String pswd) throws Exception {
+    public boolean correctPswd(String username, String pswd){
         User userLogIn = findUsuariByUsername(username);
         if(userLogIn != null){
             if(userLogIn.getPswd().equals(pswd)){
                 return true; //Contrasenya correcta
             }
-            return false; //Contrasenya incorrecta
         }
         return false;
     }
