@@ -171,87 +171,38 @@ public class UserManager{
         });
     }
 
-    /*
-    //Encontrar un usuario segun su correo
-    public User findUsuariByCorreu (String correu){
-        CollectionReference userRef = mdB.collection("User");
-        //Crea una consulta para buscar documentos que tengan el campo "userName" con el valor especificado
-        Query query = userRef.whereEqualTo("correo", correu);
-        //Ejecuta la consulta y escucha el resultado
-        query.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                //Comprueba si se encontraron documentos
-                if (!task.getResult().isEmpty()) {
-                    //Se encontró al menos un documento con el campo "userName" con el valor especificado
-                    activeUser = task.getResult().getDocuments().get(0).toObject(User.class);
-                    setActiveUser(task.getResult().getDocuments().get(0).toObject(User.class));
-                } else {
-                    activeUser = null;
-                    //No se encontró ningún documento con el campo "userName" con el valor especificado
-                    //Aquí puedes realizar las acciones necesarias si no se encuentra el usuario
-                }
-            } else {
-                //Ocurrió un error al ejecutar la consulta
-                activeUser = null;
-            }
-        });
-        return activeUser;
-    }*/
-
-    /*
-    //Encontrar un usuario segun su nombre de usuario
-    public User findUsuariByUsername (String username) {
-        CollectionReference userRef = mdB.collection("User");
-        //Crea una consulta para buscar documentos que tengan el campo "userName" con el valor especificado
-        Query query = userRef.whereEqualTo("nomUser",username);
-        //Ejecuta la consulta y escucha el resultado
-        query.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                //Comprueba si se encontraron documentos
-                if (!task.getResult().isEmpty()) {
-                    //Se encontró al menos un documento con el campo "userName" con el valor especificado
-                    activeUser = task.getResult().getDocuments().get(0).toObject(User.class);
-                } else {
-                    activeUser = null;
-                    //No se encontró ningún documento con el campo "userName" con el valor especificado
-                    //Aquí puedes realizar las acciones necesarias si no se encuentra el usuario
-                }
-            } else {
-                //Ocurrió un error al ejecutar la consulta
-                activeUser = null;
-            }
-        });
-        return activeUser;
-    }*/
-
-
-
     public void iniciarSessio(User u){
         mAuth.signInWithEmailAndPassword(u.getCorreo(),u.getPswd());
         mAuth.getCurrentUser();
 
     }
 
-    /*public User findUserById(String id){
-        DocumentReference docRef = mdB.collection("User").document(id);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                // Convertir los datos del documento en un objeto "User"
-                User user = documentSnapshot.toObject(User.class);
-                activeUser = user;
+    //AFegir a la base de dades les preguntes realitzades per l'usuari en el layout d'ajuda
+    public void addQuestion(String ayuda){
+        Map<String,Object> userHelp = new HashMap<>();
+        String id = mAuth.getCurrentUser().getUid();
+        userHelp.put(id, ayuda);
 
-                // Hacer algo con el objeto "User"
-                if (user != null) {
-                    // El objeto "User" ha sido creado correctamente y puedes acceder a sus atributos con los getters
-                    // Hacer algo con los atributos del objeto "User"...
-                } else {
-                    // El objeto "User" no se ha creado correctamente y debes manejar el caso de error
-                    // ...
-                }
-            }
-        });
-        return getActiveUser();
-    }*/
+
+        mdB.collection("Ayuda").document(nomUser).set(userHelp).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Manejar éxito
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Manejar error
+                        try {
+                            throw new Exception("Resgistro NO completado");
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                });
+    }
+
+
 
 }

@@ -17,16 +17,29 @@
         app:layout_constraintVertical_bias="0.048"
         app:srcCompat="@drawable/ayuda_icon" />
 
-    <TextView
-        android:id="@+id/preguntasFrecuentes_textView"
-        android:layout_width="375dp"
-        android:layout_height="409dp"
-        android:gravity="center"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/duda_editText"
+    <ScrollView
+        android:layout_width="337dp"
+        android:layout_height="405dp"
+        android:layout_below="@+id/ayudaIcon_imageView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ayudaIcon_imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/ayudaIcon_imageView"
+        app:layout_constraintVertical_bias="0.064">
+
+        <TextView
+            android:id="@+id/preguntasFrecuentes_textView"
+            android:layout_width="337dp"
+            android:layout_height="250dp"
+            android:gravity="center"
+            android:text= "@string/ayudaText"
+            app:layout_constraintBottom_toTopOf="@+id/duda_editText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ayudaIcon_imageView" />
+
+    </ScrollView>
+
 
     <EditText
         android:id="@+id/duda_editText"

@@ -3,22 +3,13 @@ package com.example.topresale.model;
 public class User {
 
     //Atributs -> nomComplet, correo, nomUser, pswd
-
     private String id;
     private String nomComplet;
     private String correo;
     private String nomUser;
     private String pswd;
-
     private PerfilUser perfilUser;
 
-
-
-
-
-    public User(){
-
-    }
     public User(String nomComplet, String correo, String nomUser, String pswd, String id) {
         this.nomComplet = nomComplet;
         this.correo = correo;
@@ -26,6 +17,10 @@ public class User {
         this.pswd = pswd;
         this.id = id;
         this.perfilUser = new PerfilUser();
+
+    }
+
+    public User(){
 
     }
 

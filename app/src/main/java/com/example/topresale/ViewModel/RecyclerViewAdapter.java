@@ -1,6 +1,7 @@
 package com.example.topresale.ViewModel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -37,10 +39,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         holder.nombreProducto.setText(producteList.get(position).getName());
         Glide.with(this.context).load(producteList.get(position).getFoto()).into(holder.fotoProducto);
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ProductoEspecificoActivity.class);
+                intent.putExtra("url", producteList.get(holder.getAdapterPosition()).getFoto());
+                System.out.println(producteList.get(holder.getAdapterPosition()).getName());
+                intent.putExtra("nombre", producteList.get(holder.getAdapterPosition()).getName());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -53,11 +65,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         ImageView fotoProducto;
         TextView nombreProducto;
+        ConstraintLayout parentLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             fotoProducto = itemView.findViewById(R.id.producto_imageView);
             nombreProducto = itemView.findViewById(R.id.nombreProducto_textView);
+            parentLayout = itemView.findViewById(R.id.oneLineProduct);
         }
     }
 }
