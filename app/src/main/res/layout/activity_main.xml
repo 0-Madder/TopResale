@@ -25,31 +25,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-    <ListView
-        android:id="@+id/tiposDeProducto_listView"
-        android:layout_width="389dp"
-        android:layout_height="600dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:divider="@color/white"
-        android:dividerHeight="5dp"
-        android:padding="2dp"
-        android:background="@color/carne"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ordenadoPor_textView" />
-
     <TextView
         android:id="@+id/ordenadoPor_textView"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:text="@string/ordenacion"
-        app:layout_constraintBottom_toTopOf="@+id/tiposDeProducto_listView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/busqueda_searchBar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productos_recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ordenadoPor_textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

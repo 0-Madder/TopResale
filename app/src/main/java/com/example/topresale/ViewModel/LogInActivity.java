@@ -105,10 +105,7 @@ public class LogInActivity extends AppCompatActivity {
             toast.show();
             finish();
         }
-        else{
-            Intent intent2 = new Intent(this, LogInActivity.class);
-            startActivity(intent2);
-        }
+
 
 
 
