@@ -46,7 +46,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("siuuuuuuuuuu");
+                System.out.println(producteEspecificList.get(holder.getAdapterPosition()).getDescripcio());
             }
         });
 
