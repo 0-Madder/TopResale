@@ -12,7 +12,7 @@ public class Producte implements Serializable {
     private ArrayList<ProducteEspecific> llistaProdEspe;
     private String name;
     private String foto;
-    private float mitjanaModa;
+    private int mitjanaModa;
     private boolean tendencia;
 
     public Producte(String name, String foto, boolean tendencia) {
@@ -37,7 +37,7 @@ public class Producte implements Serializable {
         return mitjanaModa;
     }
 
-    public void setMitjanaModa(float mitjanaModa) {
+    public void setMitjanaModa(int mitjanaModa) {
         this.mitjanaModa = mitjanaModa;
     }
 
@@ -81,7 +81,9 @@ public class Producte implements Serializable {
             mitjana += pe.getModa();
             cont++;
         }
-        this.setMitjanaModa(mitjana/cont);
+
+        int media = Math.round(mitjana/cont);
+        this.setMitjanaModa(media);
     }
 
     public static Comparator<Producte> ProducteAZComparator = new Comparator<Producte>() {
@@ -101,9 +103,7 @@ public class Producte implements Serializable {
     public static Comparator<Producte> ProducteTrendingComparator = new Comparator<Producte>() {
         @Override
         public int compare(Producte p1, Producte p2) {
-            int p1trending = p1.isTendencia() ? 1:0;
-            int p2trending = p2.isTendencia() ? 1:0;
-            return p2trending - p1trending;
+            return (int) (p2.getMitjanaModa() - p1.getMitjanaModa());
         }
     };
 

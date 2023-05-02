@@ -1,6 +1,8 @@
 package com.example.topresale.model;
 
-public class Valoracio {
+import java.io.Serializable;
+
+public class Valoracio implements Serializable {
     /*Hemos hecho una clase valoracion, cada producto especifico tendra un arraylist de todas las valoraciones
     de este producto, hay 2 tipos: de estrellas, o de opinion, esto lo decidira el string tipusValoracio. Si votamos con
     estrellas pasara a ser un valor float.

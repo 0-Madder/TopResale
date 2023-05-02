@@ -23,7 +23,7 @@ public class PerfilActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         bienvenido_textView = findViewById(R.id.bienvenido_textView);
-        String bienvenida = "Bienvenido a tu perfil " + intent.getStringExtra(MainActivity.CURRENTUSER);
+        String bienvenida = "Bienvenido a tu perfil " + intent.getStringExtra("usuario");
         bienvenido_textView.setText(bienvenida);
     }
 

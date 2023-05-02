@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        username = intent.getStringExtra(MainActivity.CURRENTUSER);
+        username = intent.getStringExtra("usuario");
         mdB = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         switch (item.getItemId()){
             case R.id.perfil:
                 Intent intent1 = new Intent(this, PerfilActivity.class);
-                intent1.putExtra(CURRENTUSER, username);
+                intent1.putExtra("usuario", username);
                 startActivity(intent1);
                 break;
             case R.id.favoritos:

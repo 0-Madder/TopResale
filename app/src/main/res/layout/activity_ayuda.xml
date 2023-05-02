@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:windowSoftInputMode="adjustPan"
     tools:context=".ViewModel.AyudaActivity">
 
     <ImageView
@@ -44,15 +45,14 @@
 
     <EditText
         android:id="@+id/duda_editText"
-        android:layout_width="242dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Escribe tu duda"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/enviar_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
@@ -60,11 +60,12 @@
         android:id="@+id/enviar_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:onClick="enviarDudas"
         android:text="@string/aceptar"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/duda_editText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -91,6 +91,7 @@ public class LogInActivity extends AppCompatActivity {
         if(parametrosCorrectos){
             Log.d(LOG_TAG, "button_clicked");
             Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("usuario", username);
             startActivity(intent);
             userManager.iniciarSessio(u);
             Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
