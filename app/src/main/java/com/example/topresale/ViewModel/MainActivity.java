@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
         listaProductos.addAll(Arrays.asList( new Producte[] {spinner, duck, rubik, taza, airpods}));
 
+
+
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         llenaLaLista();
         mdB = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+        producteManager = ProducteManager.getInstance();
+        producteManager.inicialitzarProductes();
 
         recyclerView = findViewById(R.id.productos_recyclerView);
         recyclerView.setHasFixedSize(true);
