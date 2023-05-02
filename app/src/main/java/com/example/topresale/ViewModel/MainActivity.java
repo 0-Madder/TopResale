@@ -2,6 +2,7 @@ package com.example.topresale.ViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,8 +19,12 @@ import android.widget.TextView;
 
 import com.example.topresale.R;
 import com.example.topresale.model.Producte;
+import com.example.topresale.model.ProducteEspecific;
+import com.example.topresale.model.ProducteManager;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private FirebaseFirestore mdb;
     private FirebaseAuth mAuth;
     private String modosDeOrdenacion[] = {"A -> Z", "Z -> A", "Tendencias"};
+    private ProducteManager producteManager;
 
     private void llenaLaLista(){
         Producte spinner = new Producte("Spinner", "https://upload.wikimedia.org/wikipedia/commons/f/f3/Fidget_spinner_red%2C_cropped.jpg", false);
@@ -78,8 +84,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mAdapter = new RecyclerViewAdapter(listaProductos, this);
         recyclerView.setAdapter(mAdapter);
 
+        producteManager = ProducteManager.getInstance();
+        CollectionReference prodRef = mdb.collection("Producte");
+        prodRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) { //Miro si es diferent a null
+                for (QueryDocumentSnapshot docProd : task.getResult()) { //Recorro tots els documents de la coleccio Producte
+                    //Paso els valors necessaris del document a parametres per crear un objecte Producte
+                    Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
+                    producteManager.getLlistaProducte().add(p);  //Afegeixo el Producte a la llista de productes
+                    //producteManager.inicialitzarProductesEspecifics(p);
+                    //p.calcularMitjanaModa();
+                }
 
-
+            }
+            else {
+                System.out.println("Hola existo");
+            }
+        });
+        //producteManager.inicialitzarProductes();
+    }
 
 
     }
@@ -129,6 +152,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    public void addToFavorite(){
+
+    }
+
+    public void removeFromFavorite(){
 
     }
 }

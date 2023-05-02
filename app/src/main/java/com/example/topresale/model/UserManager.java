@@ -72,13 +72,12 @@ public class UserManager extends AppCompatActivity {
     }
 
     //Tiene que coincidir el nombre de usuario con la contraseña
-    public boolean correctPswd(String username, String pswd) throws Exception {
+    public boolean correctPswd(String username, String pswd){
         User userLogIn = findUsuariByUsername(username);
         if(userLogIn != null){
             if(userLogIn.getPswd().equals(pswd)){
                 return true; //Contrasenya correcta
             }
-            return false; //Contrasenya incorrecta
         }
         return false;
     }
@@ -158,6 +157,20 @@ public class UserManager extends AppCompatActivity {
         return null;
     }
 
+    public void inicialitzarUsuaris(){
+        CollectionReference userRef = mdB.collection("User");
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) { //Miro si es diferent a null
+                for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
+                    User u = document.toObject(User.class); //Paso el document a objecte Producte
+                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el Producte a la llista de productes
+                }
+            } else {
+
+            }
+        });
+    }
+
     /*
     //Encontrar un usuario segun su correo
     public User findUsuariByCorreu (String correu){
@@ -215,6 +228,7 @@ public class UserManager extends AppCompatActivity {
 
     public void iniciarSessio(User u){
         mAuth.signInWithEmailAndPassword(u.getCorreo(),u.getPswd());
+        mAuth.getCurrentUser();
 
     }
 

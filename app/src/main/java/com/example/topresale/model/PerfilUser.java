@@ -2,12 +2,26 @@ package com.example.topresale.model;
 
 import java.util.ArrayList;
 
-public class PerfilUser extends User{
+public class PerfilUser{
 
     private ArrayList<ProducteEspecific> favoritos;
 
-    public PerfilUser(String nomComplet, String correo, String nomUser, String pswd, String id, ArrayList<ProducteEspecific> favoritos) {
-        super(nomComplet, correo, nomUser, pswd, id);
+    public PerfilUser() {
+        this.favoritos = new ArrayList<ProducteEspecific>();
+    }
+
+    public ArrayList<ProducteEspecific> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(ArrayList<ProducteEspecific> favoritos) {
         this.favoritos = favoritos;
     }
+
+    public void listFavorite(){
+        for(ProducteEspecific pe : favoritos){
+
+        }
+    }
+
 }
