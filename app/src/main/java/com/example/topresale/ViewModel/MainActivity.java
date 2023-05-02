@@ -186,4 +186,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     }
+
+    public void buscarProductos(View view) {
+
+
+
+    }
 }
