@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         recyclerView.setAdapter(mAdapter);
 
         producteManager = ProducteManager.getInstance();
-        producteManager.inicialitzarProductes();
+
     }
 
 

@@ -180,10 +180,12 @@ public class UserManager{
     //AFegir a la base de dades les preguntes realitzades per l'usuari en el layout d'ajuda
     public void addQuestion(String ayuda){
         Map<String,Object> userHelp = new HashMap<>();
-        String id = mAuth.getCurrentUser().getUid();
-        userHelp.put(id, ayuda);
+        String email = mAuth.getCurrentUser().getEmail();
 
-        mdB.collection("Ayuda").document(mAuth.getCurrentUser().getEmail()).set(userHelp).addOnSuccessListener(new OnSuccessListener<Void>() {
+        userHelp.put("Correu", email);
+        userHelp.put("Pregunta", ayuda);
+
+        mdB.collection("Ayuda").document(email).set(userHelp).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // Manejar éxito
