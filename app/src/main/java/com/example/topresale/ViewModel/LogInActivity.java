@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.topresale.R;
 import com.example.topresale.model.Producte;
+import com.example.topresale.model.ProducteManager;
 import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,15 +38,11 @@ public class LogInActivity extends AppCompatActivity {
     private EditText textoUsername;
 
     private String psw_real;
-    static final String CURRENTUSER = "Current user is";
 
     private FirebaseAuth mAuth;
-
-
     private FirebaseFirestore mdB;
     private UserManager userManager;
-
-
+    private ProducteManager producteManager;
 
 
     @Override
@@ -54,24 +51,23 @@ public class LogInActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-
-
         textoPswd = findViewById(R.id.pswdInicioSesion_EditText);
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
         mAuth = FirebaseAuth.getInstance();
         mdB = FirebaseFirestore.getInstance();
-        CollectionReference prodRef = mdB.collection("User");
+        producteManager = ProducteManager.getInstance();
         userManager = UserManager.getInstance();
-        userManager.inicialitzarUsuaris();
+
+
     }
 
     public  void iniciarSesion(View view) {
-        Log.d(LOG_TAG, "button_clicked");
 
         boolean parametrosCorrectos = true;
         String username = textoUsername.getText().toString();
         String pswd = textoPswd.getText().toString();
         User u = userManager.findUsuariByUsername(username);
+
 
         // - Caso en el que algún parámetro este vacío
         if(username.isEmpty()|| pswd.isEmpty()){
@@ -93,21 +89,17 @@ public class LogInActivity extends AppCompatActivity {
 
         //En caso de que los parámetros sean correctos se iniciará la sesión
         if(parametrosCorrectos){
-            userManager.iniciarSessio(u);
+            Log.d(LOG_TAG, "button_clicked");
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra(CURRENTUSER, username);
             startActivity(intent);
+            userManager.iniciarSessio(u);
+            Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
+            toast.show();
             finish();
         }
-
         else{
-            textoUsername.setText("");
-            textoPswd.setText("");
+
         }
-
-
-
-
     }
 
     //Redirecciona al usuario a la página de registro

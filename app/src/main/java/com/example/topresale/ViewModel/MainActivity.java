@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private TextView ordenTextView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private FirebaseFirestore mdb;
+
+    private ListView listaTiposProducto;
+    private FirebaseFirestore mdB;
     private FirebaseAuth mAuth;
     private String modosDeOrdenacion[] = {"A -> Z", "Z -> A", "Tendencias"};
     private int cnt = 0;
@@ -82,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         llenaDeProductosEspecificos();
         mdb = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+        producteManager = ProducteManager.getInstance();
+        producteManager.inicialitzarProductes();
 
         recyclerView = findViewById(R.id.productos_recyclerView);
         recyclerView.setHasFixedSize(true);

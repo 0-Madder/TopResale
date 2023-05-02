@@ -77,11 +77,11 @@ public class ProducteManager {
             if (task.isSuccessful()) { //Miro si es diferent a null
                 for (QueryDocumentSnapshot docProdEspe : task.getResult()) {
                     if (p.getName().equalsIgnoreCase(docProdEspe.getString("nameProd"))) {
-                        ProducteEspecific pE = new ProducteEspecific(docProdEspe.getString("id"), docProdEspe.getString("nameProd"), (float) docProdEspe.getLong("preuB"),
-                                (float) docProdEspe.getLong("preuC"), (float) docProdEspe.getLong("preuV"), docProdEspe.getString("descripcio"), docProdEspe.getString("foto"),
-                                docProdEspe.getString("estadistica"), docProdEspe.getString("link"), (float) docProdEspe.getLong("moda"));
+                        ProducteEspecific pE = new ProducteEspecific(docProdEspe.getString("id"), docProdEspe.getString("nameProd"), Float.parseFloat(docProdEspe.getString("preuB")),
+                                Float.parseFloat(docProdEspe.getString("preuC")), Float.parseFloat(docProdEspe.getString("preuV")), docProdEspe.getString("descripcio"), docProdEspe.getString("foto"),
+                                docProdEspe.getString("estadistica"), docProdEspe.getString("link"), Float.parseFloat(docProdEspe.getString("moda")));
                         p.addProductEspecific(pE);
-                        this.inicialitzarValoracions(pE);
+                        inicialitzarValoracions(pE);
                     }
                 }
             } else {
@@ -97,7 +97,7 @@ public class ProducteManager {
                     //Paso els valors necessaris del document a parametres per crear un objecte Producte
                     Producte p = new Producte(docProd.getString("name"), docProd.getString("foto"), docProd.getBoolean("tendencia"));
                     llistaProducte.add(p);  //Afegeixo el Producte a la llista de productes
-                    this.inicialitzarProductesEspecifics(p);
+                    inicialitzarProductesEspecifics(p);
                     p.calcularMitjanaModa();
                 }
 
