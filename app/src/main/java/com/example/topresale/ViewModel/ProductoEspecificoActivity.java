@@ -18,6 +18,8 @@ import com.example.topresale.R;
 import com.example.topresale.model.Producte;
 import com.example.topresale.model.ProducteEspecific;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProductoEspecificoActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
@@ -72,15 +74,20 @@ public class ProductoEspecificoActivity extends AppCompatActivity implements Ada
 
         switch (item.getItemId()){
             case R.id.topTrending:
-
+                Collections.sort(listaProductosEspecificos, ProducteEspecific.ProducteTrendingComparator);
+                mAdapter.notifyDataSetChanged();
                 break;
             case R.id.topBeneficion:
-                //Intent de productes especifics i cridem al mètode que mostra els preferits
+                Collections.sort(listaProductosEspecificos, ProducteEspecific.ProducteBeneficioComparator);
+                mAdapter.notifyDataSetChanged();
                 break;
             case R.id.masBaratos:
-
+                Collections.sort(listaProductosEspecificos, ProducteEspecific.ProductePrecioComparator);
+                mAdapter.notifyDataSetChanged();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

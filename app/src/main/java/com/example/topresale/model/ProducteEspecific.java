@@ -140,10 +140,41 @@ public class ProducteEspecific implements Serializable {
         return mitjan / contador;
     }
 
+
+    public static Comparator<ProducteEspecific> ProducteTrendingComparator = new Comparator<ProducteEspecific>() {
+        @Override
+        public int compare(ProducteEspecific p1, ProducteEspecific p2) {
+            return (int) (p2.getModa() - p1.getModa());
+        }
+    };
+
+    public static Comparator<ProducteEspecific> ProductePrecioComparator = new Comparator<ProducteEspecific>() {
+        @Override
+        public int compare(ProducteEspecific p1, ProducteEspecific p2) {
+            if(p2.getPreuC() - p1.getPreuC() < 0){
+                return 1;
+            }
+            if(p1.getPreuC() - p2.getPreuC() < 0){
+                return -1;
+            }
+            else{
+                return 0;
+            }
+        }
+    };
+
     public static Comparator<ProducteEspecific> ProducteBeneficioComparator = new Comparator<ProducteEspecific>() {
         @Override
         public int compare(ProducteEspecific p1, ProducteEspecific p2) {
-            return p1.getName().compareTo(p2.getName());
+            if(p2.getPreuB() - p1.getPreuB() < 0){
+                return -1;
+            }
+            if(p1.getPreuB() - p2.getPreuB() < 0){
+                return 1;
+            }
+            else{
+                return 0;
+            }
         }
     };
 

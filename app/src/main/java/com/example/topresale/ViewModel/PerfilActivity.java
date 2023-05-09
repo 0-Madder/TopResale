@@ -9,11 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.topresale.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PerfilActivity extends AppCompatActivity {
 
 
     private TextView bienvenido_textView;
+    private FirebaseAuth mAuth;
+    private String usuarioActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +24,12 @@ public class PerfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 
         Intent intent = getIntent();
+        if(intent.getStringExtra("usuario") != null){
+            usuarioActual = intent.getStringExtra("usuario");
+        }
 
         bienvenido_textView = findViewById(R.id.bienvenido_textView);
-        String bienvenida = "Bienvenido a tu perfil " + intent.getStringExtra("usuario");
+        String bienvenida = "Bienvenido a tu perfil " + usuarioActual;
         bienvenido_textView.setText(bienvenida);
     }
 
