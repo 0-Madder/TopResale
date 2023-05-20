@@ -9,7 +9,7 @@
     android:padding="0dp">
 
     <ImageView
-        android:id="@+id/productoEspecifico_imageView"
+        android:id="@+id/producto_imageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
@@ -21,18 +21,20 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/nombreProductoEspecifico_textView"
+        android:id="@+id/nombreProducto_textView"
         android:layout_width="194dp"
-        android:layout_height="59dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/productoEspecifico_imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/producto_imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/productoEspecifico_imageView"
-        app:layout_constraintTop_toTopOf="@+id/productoEspecifico_imageView" />
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toEndOf="@+id/producto_imageView"
+        app:layout_constraintTop_toTopOf="@+id/producto_imageView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/divider"
@@ -42,5 +44,17 @@
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productoEspecifico_imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/producto_imageView" />
+
+    <ImageView
+        android:id="@+id/tendenciaProducto_imageView"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/black"
+        android:padding="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/producto_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/nombreProducto_textView"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

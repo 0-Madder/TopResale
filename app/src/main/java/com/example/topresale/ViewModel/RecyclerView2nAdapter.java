@@ -46,7 +46,9 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(producteEspecificList.get(holder.getAdapterPosition()).getDescripcio());
+                Intent intent = new Intent(context, DetallesProductoEspecificoActivity.class);
+                intent.putExtra("producto", producteEspecificList.get(holder.getAdapterPosition()));
+                context.startActivity(intent);
             }
         });
 
@@ -65,8 +67,8 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            fotoProducto = itemView.findViewById(R.id.productoEspecifico_imageView);
-            nombreProducto = itemView.findViewById(R.id.nombreProductoEspecifico_textView);
+            fotoProducto = itemView.findViewById(R.id.producto_imageView);
+            nombreProducto = itemView.findViewById(R.id.nombreProducto_textView);
             parentLayout = itemView.findViewById(R.id.oneLineProductEspecific);
         }
     }

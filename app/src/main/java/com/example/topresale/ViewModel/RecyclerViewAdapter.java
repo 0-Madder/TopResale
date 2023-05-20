@@ -43,6 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.nombreProducto.setText(producteList.get(position).getName());
         Glide.with(this.context).load(producteList.get(position).getFoto()).into(holder.fotoProducto);
+        Glide.with(this.context).load(producteList.get(position).getFotoTendencia()).into(holder.fotoTendencia);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,13 +63,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         ImageView fotoProducto;
+        ImageView fotoTendencia;
         TextView nombreProducto;
         ConstraintLayout parentLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            fotoProducto = itemView.findViewById(R.id.productoEspecifico_imageView);
-            nombreProducto = itemView.findViewById(R.id.nombreProductoEspecifico_textView);
+            fotoProducto = itemView.findViewById(R.id.producto_imageView);
+            fotoTendencia = itemView.findViewById(R.id.tendenciaProducto_imageView);
+            nombreProducto = itemView.findViewById(R.id.nombreProducto_textView);
             parentLayout = itemView.findViewById(R.id.oneLineProduct);
         }
     }

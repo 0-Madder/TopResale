@@ -12,6 +12,7 @@ public class Producte implements Serializable {
     private ArrayList<ProducteEspecific> llistaProdEspe;
     private String name;
     private String foto;
+    private String fotoTendencia;
     private int mitjanaModa;
     private boolean tendencia;
 
@@ -51,6 +52,15 @@ public class Producte implements Serializable {
 
     public String getFoto() {
         return foto;
+    }
+
+    public String getFotoTendencia() {
+        return fotoTendencia;
+    }
+
+    public void setFotoTendencia(){
+        //si es tendencia poner foto verde
+        //si no es tendencia poner foto de la flechita roja
     }
 
     public void setFoto(String foto) {
