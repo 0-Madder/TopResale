@@ -17,6 +17,7 @@ public class Producte implements Serializable {
     private int mitjanaModa;
     private boolean tendencia;
 
+
     public Producte(String name, String foto, boolean tendencia) {
         this.llistaProdEspe = new ArrayList<ProducteEspecific>();
         this.name = name;
@@ -27,6 +28,7 @@ public class Producte implements Serializable {
         this.tendencia = tendencia;
         setFotoTendencia();
     }
+
 
     public ArrayList<ProducteEspecific> getLlistaProdEspe() {
         return llistaProdEspe;

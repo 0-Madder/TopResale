@@ -22,6 +22,8 @@ public class ProducteEspecific implements Serializable {
 
 
 
+
+
     public ProducteEspecific(String id, String nameProducte, float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, float moda) {
 
         this.nameProducte = nameProducte;
@@ -34,6 +36,7 @@ public class ProducteEspecific implements Serializable {
         this.estadistica = estadistica;
         this.link = link;
         this.moda = moda;
+
     }
 
     public String getName() {

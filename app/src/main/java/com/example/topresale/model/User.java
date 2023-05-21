@@ -63,4 +63,12 @@ public class User {
     public void setId(String id) {
         this.id = id;
     }
+
+    public PerfilUser getPerfilUser() {
+        return perfilUser;
+    }
+
+    public void setPerfilUser(PerfilUser perfilUser) {
+        this.perfilUser = perfilUser;
+    }
 }

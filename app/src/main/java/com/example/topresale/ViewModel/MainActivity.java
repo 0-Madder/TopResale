@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.topresale.R;
+import com.example.topresale.model.PerfilUser;
 import com.example.topresale.model.Producte;
 import com.example.topresale.model.ProducteEspecific;
 import com.example.topresale.model.ProducteManager;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ProducteManager producteManager;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
 
+
     }
     private void llenaLaLista(){
 
@@ -93,17 +97,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     }
-
-    /*
-    private void llenaDeProductosEspecificos(){
-        for(Producte producto : listaProductos){
-            producto.addProductEspecific("Spinner barato", "Spinner barato", (float) 1.02, (float) 1.03, (float) 1.04, "Spinner bakano", "https://api.time.com/wp-content/uploads/2017/05/fidget-spinner4.jpg",
-                    "12", "url", (float) 20.2);
-        }
-    }
-
-     */
-
 
 
     @Override

@@ -31,6 +31,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Singleton;
@@ -110,6 +111,7 @@ public class UserManager{
                         }
                     }
                 });
+
         User u = new User(nomComplet, correo, nomUser, pswd, id);
         llistaUsuaris.add(u);
     }
@@ -162,8 +164,17 @@ public class UserManager{
         userRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) { //Miro si es diferent a null
                 for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
-                    User u = document.toObject(User.class); //Paso el document a objecte Producte
-                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el Producte a la llista de productes
+                    User u = document.toObject(User.class); //Paso el document a objecte usuaris
+
+                    List<String> favs = (List<String>) document.get("favs");
+                    if(favs != null){
+                        PerfilUser pu = new PerfilUser();
+                        pu.setFavoritos(favs);
+                        u.setPerfilUser(pu);
+
+                    }
+
+                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el User a la llista de usuaris
                 }
             } else {
 

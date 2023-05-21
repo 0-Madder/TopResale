@@ -25,8 +25,8 @@ public class PantallaDeCargaActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_pantalla_de_carga);
         userManager = UserManager.getInstance();
-        producteManager = ProducteManager.getInstance();
         userManager.inicialitzarUsuaris();
+        producteManager = ProducteManager.getInstance();
         producteManager.inicialitzarProductes();
 
 
