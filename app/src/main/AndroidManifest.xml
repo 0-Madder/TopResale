@@ -21,6 +21,7 @@
         <activity
             android:name=".ViewModel.ProductoEspecificoActivity"
             android:exported="false"
+            android:launchMode="singleTop"
             android:parentActivityName=".ViewModel.MainActivity" />
         <activity
             android:name=".ViewModel.AyudaActivity"
@@ -29,9 +30,11 @@
         <activity
             android:name=".ViewModel.PerfilActivity"
             android:exported="false"
+            android:launchMode="singleTop"
             android:parentActivityName=".ViewModel.MainActivity" />
         <activity
             android:name=".ViewModel.MainActivity"
+            android:launchMode="singleTop"
             android:exported="false" />
         <activity
             android:name=".ViewModel.PantallaDeCargaActivity"

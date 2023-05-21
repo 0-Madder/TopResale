@@ -9,36 +9,43 @@
 
     <TextView
         android:id="@+id/descripcionProducto_textView"
-        android:layout_width="174dp"
-        android:layout_height="98dp"
+        android:layout_width="381dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="156dp"
+        android:gravity="center"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/productoEspecifico_imageView"
-        app:layout_constraintTop_toBottomOf="@+id/preuV_textView" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/productoEspecifico_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/productoEspecifico_imageView" />
 
     <TextView
         android:id="@+id/preuV_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="162dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
         android:text="TextView"
+        android:textColor="#4CAF50"
         app:layout_constraintBottom_toTopOf="@+id/descripcionProducto_textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/productoEspecifico_imageView"
-        app:layout_constraintTop_toBottomOf="@+id/preuC_textView" />
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toEndOf="@+id/productoEspecifico_imageView" />
 
     <TextView
         android:id="@+id/preuC_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="162dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="TextView"
+        android:textColor="#F44336"
         app:layout_constraintBottom_toTopOf="@+id/preuV_textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toEndOf="@+id/productoEspecifico_imageView"
-        app:layout_constraintTop_toBottomOf="@+id/preuB_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/preuB_textView"
+        app:layout_constraintVertical_bias="0.471" />
 
     <TextView
         android:id="@+id/tipoProducto_textView"
@@ -46,7 +53,10 @@
         android:layout_height="27dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/ratingBar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +64,8 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="214dp"
-        android:layout_height="41dp"
+        android:layout_width="147dp"
+        android:layout_height="22dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -66,30 +76,20 @@
         android:id="@+id/divider"
         android:layout_width="wrap_content"
         android:layout_height="8dp"
-        android:layout_marginTop="32dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productoEspecifico_imageView" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="wrap_content"
-        android:layout_height="8dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/descripcionProducto_textView" />
 
     <ImageView
         android:id="@+id/productoEspecifico_imageView"
-        android:layout_width="173dp"
+        android:layout_width="181dp"
         android:layout_height="181dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/black"
+        android:padding="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tipoProducto_textView"
         tools:srcCompat="@tools:sample/avatars" />
@@ -107,12 +107,14 @@
 
     <TextView
         android:id="@+id/preuB_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="163dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/preuC_textView"
+        android:textColor="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toEndOf="@+id/productoEspecifico_imageView"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

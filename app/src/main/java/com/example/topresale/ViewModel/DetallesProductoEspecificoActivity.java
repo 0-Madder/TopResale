@@ -38,10 +38,10 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
         descripcion = findViewById(R.id.descripcionProducto_textView);
 
         Glide.with(this).load(objeto.getFoto()).into(fotoProducto);
-        nombreProducto.setText(objeto.getName());
-        precioB.setText(Float.toString(objeto.getPreuB()));
-        precioV.setText(Float.toString(objeto.getPreuV()));
-        precioC.setText(Float.toString(objeto.getPreuC()));
+        nombreProducto.setText(objeto.getName().toUpperCase());
+        precioB.setText("Beneficio estimado por unidad: " + Float.toString(objeto.getPreuB()));
+        precioV.setText("Precio de compra por unidad: " + Float.toString(objeto.getPreuV()));
+        precioC.setText("Precio de aproximado por unidad: " + Float.toString(objeto.getPreuC()));
         descripcion.setText(objeto.getDescripcio());
 
 
