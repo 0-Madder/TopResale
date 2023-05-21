@@ -7,12 +7,29 @@
     android:background="#fff2cc"
     tools:context=".ViewModel.DetallesProductoEspecificoActivity">
 
+
+    <TextView
+        android:id="@+id/descripcionProductoBordes_textView"
+        android:layout_width="0dp"
+        android:layout_height="168dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/black"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productoEspecifico_imageView" />
+
+
     <TextView
         android:id="@+id/descripcionProducto_textView"
-        android:layout_width="373dp"
+        android:layout_width="0dp"
         android:layout_height="164dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="156dp"
+        android:layout_marginEnd="22dp"
         android:background="#fce5cd"
         android:gravity="center"
         android:text="TextView"
@@ -21,14 +38,17 @@
         app:layout_constraintStart_toStartOf="@+id/productoEspecifico_imageView"
         app:layout_constraintTop_toBottomOf="@+id/productoEspecifico_imageView" />
 
+
     <TextView
         android:id="@+id/preuV_textView"
         android:layout_width="162dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:background="#FFB1AC"
         android:gravity="center"
         android:text="TextView"
         android:textColor="#F44336"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
@@ -40,9 +60,11 @@
         android:layout_width="162dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:background="#BFFFC2"
         android:gravity="center"
         android:text="TextView"
         android:textColor="#4CAF50"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.53"
@@ -79,7 +101,8 @@
         android:transformPivotX="0dp"
         android:transformPivotY="0dp"
         app:layout_constraintStart_toEndOf="@+id/tipoProducto_textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <View
         android:id="@+id/divider"
@@ -109,9 +132,11 @@
         android:layout_width="163dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="#B2F3FB"
         android:gravity="center"
         android:text="TextView"
         android:textColor="#2196F3"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.512"
@@ -123,8 +148,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="TextView"
-        android:autoLink="web"
+        android:text="Link de compra"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descripcionProducto_textView" />

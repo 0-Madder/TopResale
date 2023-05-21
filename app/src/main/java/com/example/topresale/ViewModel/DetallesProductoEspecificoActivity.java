@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
 import android.text.style.UnderlineSpan;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,6 +53,17 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
         precioC.setText('\u2022' + " Precio de venta aproximado por unidad:   " + Float.toString(objeto.getPreuV()) + "€");
         descripcion.setText(objeto.getDescripcio());
         url.setText("Link de compra del producto: " + objeto.getLink());
+
+        url.setClickable(true);
+        url.setMovementMethod(LinkMovementMethod.getInstance());
+        String text = "<a ";
+        text += "href='";
+        text += objeto.getLink();
+        text += "'> Link de compra </a>";
+        url.setText(Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT));
+
+
+
 
 
 

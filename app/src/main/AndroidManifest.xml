@@ -15,9 +15,12 @@
         android:windowSoftInputMode="adjustResize"
         tools:targetApi="31">
         <activity
+            android:name=".FavoritosActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewModel.DetallesProductoEspecificoActivity"
             android:exported="false"
-            android:parentActivityName=".ViewModel.ProductoEspecificoActivity"/>
+            android:parentActivityName=".ViewModel.ProductoEspecificoActivity" />
         <activity
             android:name=".ViewModel.ProductoEspecificoActivity"
             android:exported="false"
@@ -34,8 +37,8 @@
             android:parentActivityName=".ViewModel.MainActivity" />
         <activity
             android:name=".ViewModel.MainActivity"
-            android:launchMode="singleTop"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTop" />
         <activity
             android:name=".ViewModel.PantallaDeCargaActivity"
             android:exported="true">
