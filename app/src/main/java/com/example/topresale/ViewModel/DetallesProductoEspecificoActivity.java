@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,10 +40,12 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
         descripcion = findViewById(R.id.descripcionProducto_textView);
 
         Glide.with(this).load(objeto.getFoto()).into(fotoProducto);
-        nombreProducto.setText(objeto.getName().toUpperCase());
-        precioB.setText("Beneficio estimado por unidad: \n" + Float.toString(objeto.getPreuB()));
-        precioV.setText("Precio de compra por unidad: \n" + Float.toString(objeto.getPreuV()));
-        precioC.setText("Precio de aproximado por unidad: \n" + Float.toString(objeto.getPreuC()));
+        SpannableString content = new SpannableString(objeto.getName().toUpperCase());
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        nombreProducto.setText(content);
+        precioB.setText('\u2022' + " Beneficio estimado por unidad:   " + Float.toString(objeto.getPreuB()) + "€");
+        precioV.setText('\u2022' + " Precio de compra por unidad:   " + Float.toString(objeto.getPreuC()) + "€");
+        precioC.setText('\u2022' + " Precio de venta aproximado por unidad:   " + Float.toString(objeto.getPreuV()) + "€");
         descripcion.setText(objeto.getDescripcio());
 
 
