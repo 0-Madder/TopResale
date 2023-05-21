@@ -64,11 +64,17 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="147dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        style="@android:attr/ratingBarStyleSmall"
+        android:layout_width="239dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="8dp"
+        android:isIndicator="true"
+        android:max="5"
+        android:scaleX=".5"
+        android:scaleY=".5"
+        android:transformPivotX="0dp"
+        android:transformPivotY="0dp"
         app:layout_constraintStart_toEndOf="@+id/tipoProducto_textView"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,6 +82,7 @@
         android:id="@+id/divider"
         android:layout_width="wrap_content"
         android:layout_height="8dp"
+        android:layout_marginTop="5dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -93,17 +100,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tipoProducto_textView"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/preuB_textView"

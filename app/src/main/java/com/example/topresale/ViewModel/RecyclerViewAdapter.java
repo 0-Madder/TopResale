@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.nombreProducto.setText(producteList.get(position).getName());
         Glide.with(this.context).load(producteList.get(position).getFoto()).into(holder.fotoProducto);
-        Glide.with(this.context).load(producteList.get(position).getFotoTendencia()).into(holder.fotoTendencia);
+        holder.fotoTendencia.setImageResource(producteList.get(position).getFotoTendencia());
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

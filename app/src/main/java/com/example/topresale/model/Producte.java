@@ -1,5 +1,6 @@
 package com.example.topresale.model;
 
+import com.example.topresale.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -12,7 +13,7 @@ public class Producte implements Serializable {
     private ArrayList<ProducteEspecific> llistaProdEspe;
     private String name;
     private String foto;
-    private String fotoTendencia;
+    private int fotoTendencia;
     private int mitjanaModa;
     private boolean tendencia;
 
@@ -24,6 +25,7 @@ public class Producte implements Serializable {
         //this.mitjanaModa = getMitjanaModa();
         this.mitjanaModa = 0;
         this.tendencia = tendencia;
+        setFotoTendencia();
     }
 
     public ArrayList<ProducteEspecific> getLlistaProdEspe() {
@@ -54,13 +56,18 @@ public class Producte implements Serializable {
         return foto;
     }
 
-    public String getFotoTendencia() {
+    public int getFotoTendencia() {
         return fotoTendencia;
     }
 
     public void setFotoTendencia(){
-        //si es tendencia poner foto verde
-        //si no es tendencia poner foto de la flechita roja
+
+        if(this.tendencia){
+            this.fotoTendencia = R.drawable.captura;
+        }
+        else{
+            this.fotoTendencia = R.drawable.captu1ra;
+        }
     }
 
     public void setFoto(String foto) {
