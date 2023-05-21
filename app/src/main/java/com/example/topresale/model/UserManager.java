@@ -86,12 +86,14 @@ public class UserManager{
     //Afegeix l'ususari a la base de dades
     public void registrarUsuario(String nomUser, String correo, String nomComplet, String pswd) throws Exception{
         Map<String,Object> signedUpUser = new HashMap<>();
+        List<String> favs = new ArrayList<>();
         String id = mAuth.getCurrentUser().getUid();
         signedUpUser.put("nomComplet", nomComplet);
         signedUpUser.put("correo",correo);
         signedUpUser.put("nomUser",nomUser);
         signedUpUser.put("pswd",pswd);
         signedUpUser.put("id",id);
+        signedUpUser.put("favs",favs);
 
 
         mdB.collection("User").document(nomUser).set(signedUpUser).addOnSuccessListener(new OnSuccessListener<Void>() {
