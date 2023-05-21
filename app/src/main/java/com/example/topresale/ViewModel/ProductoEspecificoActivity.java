@@ -19,7 +19,6 @@ import com.example.topresale.model.Producte;
 import com.example.topresale.model.ProducteEspecific;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class ProductoEspecificoActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
@@ -41,8 +40,8 @@ public class ProductoEspecificoActivity extends AppCompatActivity implements Ada
         listaProductosEspecificos = objeto.getLlistaProdEspe();
         System.out.println(listaProductosEspecificos);
 
-        recyclerView = findViewById(R.id.productos_recyclerView);
-        recyclerView = findViewById(R.id.productos_recyclerView);
+        recyclerView = findViewById(R.id.productosFavoritos_recyclerView);
+        recyclerView = findViewById(R.id.productosFavoritos_recyclerView);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);

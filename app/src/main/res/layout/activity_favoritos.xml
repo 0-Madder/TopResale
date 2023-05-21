@@ -4,6 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewModel.FavoritosActivity">
+    android:textAlignment="gravity"
+    android:windowSoftInputMode="adjustPan"
+    tools:context=".ViewModel.MainActivity">
+
+
+    <SearchView
+        android:id="@+id/busquedaFavoritos_searchBar"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:iconifiedByDefault="false"
+        android:onClick="buscarProductos"
+        android:queryBackground="@drawable/searchbar"
+        android:queryHint="Buscar categoria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_textView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productosFavoritos_recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/busquedaFavoritos_searchBar" />
+
+    <TextView
+        android:id="@+id/titulo_textView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@color/carne"
+        android:gravity="center"
+        android:text="Productos Favoritos"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

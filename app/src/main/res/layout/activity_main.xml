@@ -9,7 +9,7 @@
     tools:context=".ViewModel.MainActivity">
 
     <SearchView
-        android:id="@+id/busqueda_searchBar"
+        android:id="@+id/busquedaFavoritos_searchBar"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_centerHorizontal="true"
@@ -37,10 +37,10 @@
         android:textColor="#03A9F4"
         android:onClick="cambiarOrden"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/busqueda_searchBar" />
+        app:layout_constraintTop_toBottomOf="@+id/busquedaFavoritos_searchBar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/productos_recyclerView"
+        android:id="@+id/productosFavoritos_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"

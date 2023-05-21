@@ -2,7 +2,6 @@ package com.example.topresale.ViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,24 +17,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.topresale.R;
-import com.example.topresale.model.PerfilUser;
 import com.example.topresale.model.Producte;
-import com.example.topresale.model.ProducteEspecific;
 import com.example.topresale.model.ProducteManager;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private List<Producte> listaProductos = new ArrayList<Producte>();
-    static final String CURRENTUSER = "Current user is";
     String username;
     private RecyclerView recyclerView;
     private TextView ordenTextView;
@@ -70,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ordenTextView.setText("Ordenado por ");
         llenaLaLista();
         //llenaDeProductosEspecificos();
-        recyclerView = findViewById(R.id.productos_recyclerView);
+        recyclerView = findViewById(R.id.productosFavoritos_recyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -128,7 +121,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(intent1);
                 break;
             case R.id.favoritos:
-                //Intent de productes especifics i cridem al mètode que mostra els preferits
+                Intent intent2 = new Intent(this, FavoritosActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.ayuda:
                 Intent intent3 = new Intent(this, AyudaActivity.class);
