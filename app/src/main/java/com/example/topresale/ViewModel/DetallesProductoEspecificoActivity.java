@@ -24,6 +24,7 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
     private TextView precioV;
     private TextView precioC;
     private TextView descripcion;
+    private TextView url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
         precioV = findViewById(R.id.preuV_textView);
         precioC = findViewById(R.id.preuC_textView);
         descripcion = findViewById(R.id.descripcionProducto_textView);
+        url = findViewById(R.id.urlCompra_textView);
+
 
         Glide.with(this).load(objeto.getFoto()).into(fotoProducto);
         SpannableString content = new SpannableString(objeto.getName().toUpperCase());
@@ -47,6 +50,7 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
         precioV.setText('\u2022' + " Precio de compra por unidad:   " + Float.toString(objeto.getPreuC()) + "€");
         precioC.setText('\u2022' + " Precio de venta aproximado por unidad:   " + Float.toString(objeto.getPreuV()) + "€");
         descripcion.setText(objeto.getDescripcio());
+        url.setText("Link de compra del producto: " + objeto.getLink());
 
 
 
