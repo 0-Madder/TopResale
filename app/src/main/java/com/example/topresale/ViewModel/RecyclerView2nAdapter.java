@@ -2,9 +2,11 @@ package com.example.topresale.ViewModel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +45,15 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
         holder.nombreProducto.setText(producteEspecificList.get(position).getName());
         Glide.with(this.context).load(producteEspecificList.get(position).getFoto()).into(holder.fotoProducto);
+
+        holder.botonComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse(producteEspecificList.get(holder.getAdapterPosition()).getLink()); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                context.startActivity(intent);
+            }
+        });
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +65,8 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
     }
 
+
+
     @Override
     public int getItemCount() {
         return producteEspecificList.size();
@@ -64,12 +77,14 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         ImageView fotoProducto;
         TextView nombreProducto;
         ConstraintLayout parentLayout;
+        Button botonComprar;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             fotoProducto = itemView.findViewById(R.id.producto_imageView);
             nombreProducto = itemView.findViewById(R.id.nombreProducto_textView);
             parentLayout = itemView.findViewById(R.id.oneLineProductEspecific);
+            botonComprar = itemView.findViewById(R.id.comprar_button);
         }
     }
 }

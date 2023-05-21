@@ -22,7 +22,7 @@
         android:iconifiedByDefault="false"
         android:onClick="buscarProductos"
         android:queryBackground="@drawable/searchbar"
-        android:queryHint="Buscar categoria"
+        android:queryHint="Buscar favorito"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

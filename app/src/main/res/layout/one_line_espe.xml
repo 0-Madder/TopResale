@@ -52,6 +52,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:text="Comprar"
+        android:onClick="comprarProducto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/producto_imageView"
         app:layout_constraintTop_toBottomOf="@+id/nombreProducto_textView" />
