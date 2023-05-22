@@ -21,6 +21,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.EventListener.*;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
@@ -215,6 +216,18 @@ public class UserManager{
                         }
                     }
                 });
+    }
+    public void afegirFavs(String id){
+        final String productoId = id;
+        DocumentReference documentReference = mdB.collection("User").document(userManager.getActiveUser().getNomUser());
+        documentReference.update("favs", FieldValue.arrayUnion(id)).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                userManager.getActiveUser().getPerfilUser().addToFavorite(productoId);
+
+
+            }
+        });
     }
 
 

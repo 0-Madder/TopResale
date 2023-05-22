@@ -48,6 +48,7 @@ public class PerfilUser{
     }
     public void addToFavorite(String producteEspecific){
         favoritos.add(producteEspecific);
+
     }
     public void removeFromFavorite(String producteEspecific){
         favoritos.remove(producteEspecific);
@@ -102,6 +103,7 @@ public class PerfilUser{
 
 
     }
+
 
 
 

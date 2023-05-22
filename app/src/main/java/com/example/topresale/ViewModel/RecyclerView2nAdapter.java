@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.topresale.R;
 import com.example.topresale.model.ProducteEspecific;
+import com.example.topresale.model.UserManager;
 
 import java.util.List;
 
@@ -28,9 +29,12 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
     List<ProducteEspecific> producteEspecificList;
     Context context;
 
+    private UserManager userManager;
+
     public RecyclerView2nAdapter(List<ProducteEspecific> producteEspecificList, Context context) {
         this.producteEspecificList = producteEspecificList;
         this.context = context;
+        userManager = UserManager.getInstance();
     }
 
     @NonNull
@@ -54,8 +58,11 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         holder.botonFavoritos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked)
+                if (isChecked){
                     holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.billete2));
+                    userManager.afegirFavs(producteEspecificList.get(holder.getAdapterPosition()).getId());
+
+                }
                 else
                     holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete));
             }
