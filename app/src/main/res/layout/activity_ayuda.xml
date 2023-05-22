@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:windowSoftInputMode="adjustPan"
+    android:windowSoftInputMode="stateVisible"
+    android:isScrollContainer="false"
     tools:context=".ViewModel.AyudaActivity">
 
     <ImageView
@@ -31,8 +32,8 @@
 
         <TextView
             android:id="@+id/preguntasFrecuentes_textView"
-            android:layout_width="337dp"
-            android:layout_height="250dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/ayudaText"
             app:layout_constraintBottom_toTopOf="@+id/duda_editText"
@@ -45,11 +46,11 @@
 
     <EditText
         android:id="@+id/duda_editText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Escribe tu duda"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/enviar_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

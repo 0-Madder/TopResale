@@ -3,8 +3,10 @@ package com.example.topresale.ViewModel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Scroller;
 import android.widget.Toast;
 
 import com.example.topresale.R;
@@ -21,6 +23,10 @@ public class AyudaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ayuda);
         userManager = UserManager.getInstance();
         pregunta = findViewById(R.id.duda_editText);
+        pregunta.setScroller(new Scroller(this));
+        pregunta.setMaxLines(5);
+        pregunta.setVerticalScrollBarEnabled(true);
+        pregunta.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public void enviarDudas(View view) {
