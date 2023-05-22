@@ -63,7 +63,7 @@ public class ProducteManager {
                 if (task.isSuccessful()) { //Miro si es diferent a null
                     for (QueryDocumentSnapshot docVal : task.getResult()) {
                         if (pE.getId().equals(docVal.getString("idProdEspe"))) {
-                            pE.addValoracio(docVal.getString("tipusValoracio"), docVal.getString("valorValoracio"), docVal.getString("idProdEspe"));
+                            pE.addValoracio(docVal.getString("tipusValoracio"), docVal.getString("valorValoracio"), docVal.getString("idProdEspe"), docVal.getString("nameUser"));
                         }
                     }
                 }

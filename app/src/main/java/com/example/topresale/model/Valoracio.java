@@ -11,15 +11,25 @@ public class Valoracio implements Serializable {
     private String tipusValoracio;
     private String valorValoracio;
     private String idProdEspecific;
+    private String nameUser;
 
-    public Valoracio(String tipusValoracio, String valorValoracio, String idProdEspecific) {
+    public Valoracio(String tipusValoracio, String valorValoracio, String idProdEspecific, String nameUser) {
         this.tipusValoracio = tipusValoracio;
         this.valorValoracio = valorValoracio;
         this.idProdEspecific = idProdEspecific;
+        this.nameUser = nameUser;
     }
 
     public String getIdProdEspecific() {
         return idProdEspecific;
+    }
+
+    public String getNameUser() {
+        return nameUser;
+    }
+
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
     }
 
     public void setIdProdEspecific(String idProdEspecific) {

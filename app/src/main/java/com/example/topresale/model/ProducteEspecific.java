@@ -124,8 +124,8 @@ public class ProducteEspecific implements Serializable {
     public void setModa(float moda) {
         this.moda = moda;
     }
-    public void addValoracio(String tipus, String valor, String idProdEsp){
-        Valoracio valoracio = new Valoracio(tipus,valor, idProdEsp);
+    public void addValoracio(String tipus, String valor, String idProdEsp, String nameUser){
+        Valoracio valoracio = new Valoracio(tipus,valor, idProdEsp, nameUser);
         llistaValoracio.add(valoracio);
     }
     public float mitjana(){
