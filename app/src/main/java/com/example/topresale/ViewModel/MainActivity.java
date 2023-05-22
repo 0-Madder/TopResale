@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // Cerrar la instancia de FirebaseFirestore
         if (mdB != null) {
-            mdB.terminate();
+            //mdB.terminate();
         }
     }
 
