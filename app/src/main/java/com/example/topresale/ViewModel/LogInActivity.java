@@ -37,7 +37,6 @@ public class LogInActivity extends AppCompatActivity {
     private EditText textoPswd;
     private EditText textoUsername;
 
-    private String psw_real;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mdB;
@@ -94,6 +93,7 @@ public class LogInActivity extends AppCompatActivity {
             intent.putExtra("usuario", username);
             startActivity(intent);
             userManager.iniciarSessio(u);
+            userManager.setActiveUser(u);
             Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
             toast.show();
             finish();

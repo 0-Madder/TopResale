@@ -113,6 +113,22 @@ public class ProducteManager {
             p.calcularMitjanaModa();
         }
     }
+    public ProducteEspecific llistaProductesEspecifics(String id){
+
+        for(Producte p : llistaProducte){
+            for(ProducteEspecific pe: p.getLlistaProdEspe()){
+                if(id.equalsIgnoreCase(pe.getId())){
+                    return pe;
+                }
+
+
+                }
+            }
+        return null;
+        }
+
+
+
 
 }
 

@@ -7,8 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.topresale.R;
+import com.example.topresale.model.PerfilUser;
+import com.example.topresale.model.Producte;
 import com.example.topresale.model.ProducteEspecific;
 import com.example.topresale.model.ProducteManager;
+import com.example.topresale.model.User;
+import com.example.topresale.model.UserManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -25,6 +29,8 @@ public class FavoritosActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProducteManager producteManager;
 
+    private UserManager userManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,7 @@ public class FavoritosActivity extends AppCompatActivity {
 
         producteManager = ProducteManager.getInstance();
         producteManager.inicialitzarModes();
+        userManager = UserManager.getInstance();
         llenaLaLista();
         recyclerView = findViewById(R.id.productosFavoritos_recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -52,6 +59,28 @@ public class FavoritosActivity extends AppCompatActivity {
 
 
     private void llenaLaLista(){
+        User u = userManager.getActiveUser();
+        List<ProducteEspecific> llistaFavs = new ArrayList<>();
+        if(!u.getPerfilUser().getFavoritos().isEmpty()){
+            for(String id : u.getPerfilUser().getFavoritos()){
+                for(Producte p : producteManager.getLlistaProducte()){
+                    for(ProducteEspecific pe: p.getLlistaProdEspe()){
+                        if(id.equalsIgnoreCase(pe.getId())){
+                            llistaFavs.add(pe);
+                        }
+                    }
+                }
+
+            }
+        }
+        if(!llistaFavs.isEmpty()){
+            listaProductosFavoritos.addAll(llistaFavs);
+        }
+
+
+
+
+
 
 
 
