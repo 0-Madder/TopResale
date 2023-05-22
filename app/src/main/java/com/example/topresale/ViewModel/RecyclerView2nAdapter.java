@@ -50,7 +50,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         Glide.with(this.context).load(producteEspecificList.get(position).getFoto()).into(holder.fotoProducto);
 
 
-        holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.captur2222a));
+        holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete));
         holder.botonFavoritos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
