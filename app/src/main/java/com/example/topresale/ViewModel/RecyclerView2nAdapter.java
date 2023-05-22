@@ -55,6 +55,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
         holder.nombreProducto.setText(producteEspecificList.get(position).getName());
         Glide.with(this.context).load(producteEspecificList.get(position).getFoto()).into(holder.fotoProducto);
+        holder.idProducto = producteEspecificList.get(position).getId();
 
 
         holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete));
@@ -63,18 +64,14 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
         User u = userManager.findUsuariByCorreu(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         if(u.getPerfilUser().getFavoritos() != null){
-            for(ProducteEspecific pEspe : producteEspecificList){
-                for(String pFav : u.getPerfilUser().getFavoritos()){
-                    if(pFav.equals(pEspe.getId())){
-                        holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete2));
-                        holder.botonFavoritos.setChecked(true);
-                    }
-                    else{
 
-                    }
-                }
+            if(u.getPerfilUser().getFavoritos().contains(holder.idProducto)){
+                holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete2));
+                holder.botonFavoritos.setChecked(true);
             }
+
         }
+
         holder.botonFavoritos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -123,6 +120,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         ConstraintLayout parentLayout;
         Button botonComprar;
         ToggleButton botonFavoritos;
+        String idProducto;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
