@@ -34,6 +34,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
     List<ProducteEspecific> producteEspecificList;
     List<ProducteEspecific> originalProducteEspecificList;
+
     Context context;
 
     private UserManager userManager;

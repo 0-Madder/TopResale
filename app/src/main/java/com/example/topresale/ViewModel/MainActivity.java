@@ -36,8 +36,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private TextView ordenTextView;
     private RecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
-    private ListView listaTiposProducto;
     private FirebaseFirestore mdB;
     private FirebaseAuth mAuth;
     private String modosDeOrdenacion[] = {"A -> Z", "Z -> A", "Tendencias"};
@@ -179,11 +177,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void buscarProductos(View view) {
-
-
-
-    }
 
     @Override
     public boolean onQueryTextSubmit(String s) {
