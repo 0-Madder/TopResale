@@ -55,9 +55,9 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked)
-                    holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.captur23a));
+                    holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.billete2));
                 else
-                    holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.captur2222a));
+                    holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete));
             }
         });
 
