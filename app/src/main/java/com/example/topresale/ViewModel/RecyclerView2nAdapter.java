@@ -82,6 +82,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
                 }
                 else
                     holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete));
+                    userManager.removeFavs(producteEspecificList.get(holder.getAdapterPosition()).getId());
             }
         });
 

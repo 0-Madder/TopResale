@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:windowSoftInputMode="stateVisible"
     android:isScrollContainer="false"
-    tools:context=".ViewModel.AyudaActivity">a
+    tools:context=".ViewModel.AyudaActivity">
 
     <ImageView
         android:id="@+id/ayudaIcon_imageView"
