@@ -7,11 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -46,6 +49,18 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         holder.nombreProducto.setText(producteEspecificList.get(position).getName());
         Glide.with(this.context).load(producteEspecificList.get(position).getFoto()).into(holder.fotoProducto);
 
+
+        holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.captur2222a));
+        holder.botonFavoritos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                    holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context,R.drawable.captur23a));
+                else
+                    holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.captur2222a));
+            }
+        });
+
         holder.botonComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +93,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         TextView nombreProducto;
         ConstraintLayout parentLayout;
         Button botonComprar;
+        ToggleButton botonFavoritos;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,6 +101,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
             nombreProducto = itemView.findViewById(R.id.nombreProducto_textView);
             parentLayout = itemView.findViewById(R.id.oneLineProductEspecific);
             botonComprar = itemView.findViewById(R.id.comprar_button);
+            botonFavoritos = itemView.findViewById(R.id.favoritosButton);
         }
     }
 }
