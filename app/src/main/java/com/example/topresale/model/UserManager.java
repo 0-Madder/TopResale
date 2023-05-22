@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -225,6 +226,10 @@ public class UserManager{
                 @Override
                 public void onSuccess(Void unused) {
                     userManager.getActiveUser().getPerfilUser().addToFavorite(productoId);
+                }
+            });
+        }
+    }
 
 
     public String provesNovaContransenya(String antiga, String nova){
@@ -268,11 +273,6 @@ public class UserManager{
             } else {
             }
         });
-                }
-            });
-
-        }
-
     }
     public void removeFavs(String id){
         final String productoId = id;
@@ -286,7 +286,7 @@ public class UserManager{
             });
         }
     }
-    public boolean idfavs(String id){
+    public boolean idfavs (String id){
         for(String fav : activeUser.getPerfilUser().getFavoritos()){
             if(id.equalsIgnoreCase(fav)){
                 return true;
