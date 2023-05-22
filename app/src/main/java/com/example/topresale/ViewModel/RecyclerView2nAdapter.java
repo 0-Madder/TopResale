@@ -58,16 +58,19 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
 
         holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete));
+        holder.botonFavoritos.setChecked(false);
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        String email = mAuth.getCurrentUser().getEmail();
-        User u = userManager.findUsuariByCorreu(email);
+
+        User u = userManager.findUsuariByCorreu(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         if(u.getPerfilUser().getFavoritos() != null){
             for(ProducteEspecific pEspe : producteEspecificList){
                 for(String pFav : u.getPerfilUser().getFavoritos()){
                     if(pFav.equals(pEspe.getId())){
                         holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete2));
                         holder.botonFavoritos.setChecked(true);
+                    }
+                    else{
+
                     }
                 }
             }
