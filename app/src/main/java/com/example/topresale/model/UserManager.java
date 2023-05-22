@@ -219,15 +219,41 @@ public class UserManager{
     }
     public void afegirFavs(String id){
         final String productoId = id;
-        DocumentReference documentReference = mdB.collection("User").document(userManager.getActiveUser().getNomUser());
-        documentReference.update("favs", FieldValue.arrayUnion(id)).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                userManager.getActiveUser().getPerfilUser().addToFavorite(productoId);
+        if(!idfavs(id)){
+            DocumentReference documentReference = mdB.collection("User").document(userManager.getActiveUser().getNomUser());
+            documentReference.update("favs", FieldValue.arrayUnion(id)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    userManager.getActiveUser().getPerfilUser().addToFavorite(productoId);
 
 
+                }
+            });
+
+        }
+
+    }
+    public void removeFavs(String id){
+        final String productoId = id;
+        if(idfavs(id)){
+            DocumentReference documentReference = mdB.collection("User").document(userManager.getActiveUser().getNomUser());
+            documentReference.update("favs", FieldValue.arrayRemove(id)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    userManager.getActiveUser().getPerfilUser().removeFromFavorite(productoId);
+                }
+            });
+        }
+    }
+    public boolean idfavs(String id){
+        for(String fav : activeUser.getPerfilUser().getFavoritos()){
+            if(id.equalsIgnoreCase(fav)){
+                return true;
             }
-        });
+        }
+        return false;
+
+
     }
 
 
