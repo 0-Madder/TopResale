@@ -17,7 +17,6 @@ public class User {
         this.pswd = pswd;
         this.id = id;
         this.perfilUser = new PerfilUser();
-
     }
 
     public User(){

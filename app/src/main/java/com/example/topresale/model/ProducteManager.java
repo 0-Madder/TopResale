@@ -78,7 +78,10 @@ public class ProducteManager {
                 for (QueryDocumentSnapshot docProdEspe : task.getResult()) {
                     if (p.getName().equalsIgnoreCase(docProdEspe.getString("nameProd"))) {
                         ProducteEspecific pE = new ProducteEspecific(docProdEspe.getString("id"), docProdEspe.getString("nameProd"), Float.parseFloat(docProdEspe.getString("preuB")),
-                                Float.parseFloat(docProdEspe.getString("preuC")), Float.parseFloat(docProdEspe.getString("preuV")), docProdEspe.getString("descripcio"), docProdEspe.getString("foto"),
+                                Float.parseFloat(docProdEspe.getString("preuC")),
+                                //Float.parseFloat(docProdEspe.getString("preuV")),
+                                7.f,
+                                docProdEspe.getString("descripcio"), docProdEspe.getString("foto"),
                                 docProdEspe.getString("estadistica"), docProdEspe.getString("link"), Float.parseFloat(docProdEspe.getString("moda")));
                         p.addProductEspecific(pE);
                         inicialitzarValoracions(pE);
@@ -113,7 +116,7 @@ public class ProducteManager {
             p.calcularMitjanaModa();
         }
     }
-    public ProducteEspecific llistaProductesEspecifics(String id){
+    public ProducteEspecific findByIdProductesEspecifics(String id){
 
         for(Producte p : llistaProducte){
             for(ProducteEspecific pe: p.getLlistaProdEspe()){

@@ -20,7 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.topresale.R;
 import com.example.topresale.model.ProducteEspecific;
+import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
+import com.google.firebase.auth.EmailAuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 
@@ -55,6 +58,20 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
 
         holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete));
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String email = mAuth.getCurrentUser().getEmail();
+        User u = userManager.findUsuariByCorreu(email);
+        if(u.getPerfilUser().getFavoritos() != null){
+            for(ProducteEspecific pEspe : producteEspecificList){
+                for(String pFav : u.getPerfilUser().getFavoritos()){
+                    if(pFav.equals(pEspe.getId())){
+                        holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete2));
+                        holder.botonFavoritos.setChecked(true);
+                    }
+                }
+            }
+        }
         holder.botonFavoritos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

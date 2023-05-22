@@ -94,6 +94,7 @@ public class LogInActivity extends AppCompatActivity {
             startActivity(intent);
             userManager.iniciarSessio(u);
             userManager.setActiveUser(u);
+            //userManager.setActiveUser(u);
             Toast toast = Toast.makeText(this, "Sesión iniciada", Toast.LENGTH_SHORT);
             toast.show();
             finish();

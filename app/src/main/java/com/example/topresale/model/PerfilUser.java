@@ -18,12 +18,6 @@ public class PerfilUser{
 
     private ProducteManager producteManager;
 
-    public static PerfilUser getInstance() {
-        if (perfilUser == null) {
-            perfilUser = new PerfilUser();
-        }
-        return perfilUser;
-    }
 
     public PerfilUser() {
         this.favoritos = new ArrayList<String>();
@@ -88,23 +82,13 @@ public class PerfilUser{
             });
         }*/
     public void conversor(){
-        List<ProducteEspecific> llista_favs = new ArrayList<>();
         for(String id : favoritos){
-            if(producteManager.llistaProductesEspecifics(id) != null){
-                llista_favs.add(producteManager.llistaProductesEspecifics(id));
-
-
+            ProducteEspecific pEspe = producteManager.findByIdProductesEspecifics(id);
+            if(pEspe != null){
+                producteEspecifics.add(pEspe);
             }
         }
-        if(!llista_favs.isEmpty()){
-            setProducteEspecifics(llista_favs);
-        }
-
-
-
     }
-
-
 
 
 }

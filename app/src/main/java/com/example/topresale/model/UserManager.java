@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -41,14 +43,23 @@ public class UserManager{
     private FirebaseAuth mAuth;
     private FirebaseFirestore mdB;
     private ArrayList<User> llistaUsuaris;
+    private static UserManager userManager;
+
     private User activeUser;
 
-    private static UserManager userManager;
 
     private UserManager() {
         this.mAuth = FirebaseAuth.getInstance();
         this.mdB = FirebaseFirestore.getInstance();
         llistaUsuaris = new ArrayList<>();
+    }
+
+    public User getActiveUser() {
+        return activeUser;
+    }
+
+    public void setActiveUser(User activeUser) {
+        this.activeUser = activeUser;
     }
 
     public static UserManager getInstance(){
@@ -66,12 +77,6 @@ public class UserManager{
         this.llistaUsuaris = llistaUsuaris;
     }
 
-    public User getActiveUser() {
-        return activeUser;
-    }
-    public void setActiveUser(User activeUser) {
-        this.activeUser = activeUser;
-    }
 
     //Tiene que coincidir el nombre de usuario con la contraseña
     public boolean correctPswd(String username, String pswd){
@@ -167,28 +172,43 @@ public class UserManager{
         userRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) { //Miro si es diferent a null
                 for (QueryDocumentSnapshot document : task.getResult()) { //Recorro tots els documents de la coleccio Producte
-                    User u = document.toObject(User.class); //Paso el document a objecte usuaris
+                    //User u = document.toObject(User.class); //Paso el document a objecte usuaris
+                    User u = new User(document.getString("nomComplet"),document.getString("correo"),document.getString("nomUser"),document.getString("pswd"),document.getString("id"));
 
                     List<String> favs = (List<String>) document.get("favs");
-                    if(favs != null){
-                        PerfilUser pu = new PerfilUser();
-                        pu.setFavoritos(favs);
-                        u.setPerfilUser(pu);
 
+                    if(favs != null){
+                        for(String f: favs){
+                            System.out.println("Favorito: " + f);
+                            u.getPerfilUser().addToFavorite(f);
+                        }
+                        //u.getPerfilUser().setFavoritos(favs);
+                        u.getPerfilUser().conversor();
+                        for(ProducteEspecific pfav: u.getPerfilUser().getProducteEspecifics()){
+                            System.out.println("Favorito PRODESPE: " + pfav.getId());
+                        }
+                        for(String pfavS: u.getPerfilUser().getFavoritos()){
+                            System.out.println("Favorito STRINGS: " + pfavS);
+                        }
+                    }
+                    else{
+                        System.out.println("FAVS NO FUNCIONA BE");
                     }
 
-                    userManager.getLlistaUsuaris().add(u);  //Afegeixo el User a la llista de usuaris
+                    getLlistaUsuaris().add(u);  //Afegeixo el User a la llista de usuaris
+                    //inicialitzarFavs(u);
                 }
             } else {
 
             }
         });
     }
+    public void inicialitzarFavs(User u){
+
+    }
 
     public void iniciarSessio(User u){
         mAuth.signInWithEmailAndPassword(u.getCorreo(),u.getPswd());
-        mAuth.getCurrentUser();
-
     }
 
     //AFegir a la base de dades les preguntes realitzades per l'usuari en el layout d'ajuda
@@ -219,13 +239,60 @@ public class UserManager{
     }
     public void afegirFavs(String id){
         final String productoId = id;
-        DocumentReference documentReference = mdB.collection("User").document(userManager.getActiveUser().getNomUser());
+        String email = mAuth.getCurrentUser().getEmail();
+        User u = findUsuariByCorreu(email);
+        DocumentReference documentReference = mdB.collection("User").document(u.getNomUser());
         documentReference.update("favs", FieldValue.arrayUnion(id)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                userManager.getActiveUser().getPerfilUser().addToFavorite(productoId);
+                String email = mAuth.getCurrentUser().getEmail();
+                User u = findUsuariByCorreu(email);
+                u.getPerfilUser().addToFavorite(productoId);
+            }
+        });
+    }
 
 
+
+    public String provesNovaContransenya(String antiga, String nova){
+        String result = "correcte";
+        if(antiga.equals(nova)){
+            result = "La nueva contraseña es igual a la actual";
+        } else if (antiga.equals("")||nova.equals("")){
+            result = "Campo vacio";
+        } else if (nova.length()<6) {
+            result = "Contraseña nueva demasiado corta";
+
+        }
+        return result;
+    }
+    public void canviarContasenyaFireStore(String nova){
+        User u = getActiveUser();
+        DocumentReference userRef = mdB.collection("User").document(u.getNomUser());
+        Map<String, Object> actulitzar = new HashMap<>();
+        actulitzar.put("pswd", nova);
+        userRef.update(actulitzar).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Manejar error
+                        try {
+                            throw new Exception("Contrasña NO cambiada");
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                });
+    }
+    public void canviarContrasenyaFireAuth(String nova){
+        FirebaseUser user = mAuth.getCurrentUser();
+        user.updatePassword(nova).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+            } else {
             }
         });
     }

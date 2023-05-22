@@ -59,7 +59,8 @@ public class FavoritosActivity extends AppCompatActivity {
 
 
     private void llenaLaLista(){
-        User u = userManager.getActiveUser();
+        String email = mAuth.getCurrentUser().getEmail();
+        User u = userManager.findUsuariByCorreu(email);
         List<ProducteEspecific> llistaFavs = new ArrayList<>();
         if(!u.getPerfilUser().getFavoritos().isEmpty()){
             for(String id : u.getPerfilUser().getFavoritos()){
