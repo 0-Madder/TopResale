@@ -16,16 +16,21 @@ import com.bumptech.glide.Glide;
 import com.example.topresale.R;
 import com.example.topresale.model.Producte;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     List<Producte> producteList;
+    List<Producte> originalProducteList;
     Context context;
 
     public RecyclerViewAdapter(List<Producte> producteList, Context context) {
         this.producteList = producteList;
         this.context = context;
+        this.originalProducteList = new ArrayList<>();
+        originalProducteList.addAll(producteList);
     }
 
     @NonNull
@@ -58,6 +63,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {
         return producteList.size();
+    }
+
+    public void filter(String busqueda){
+
+        if(busqueda.length() == 0){
+            producteList.clear();
+            producteList.addAll(originalProducteList);
+        }
+
+        else{
+            producteList.clear();
+            List<Producte> collect = originalProducteList.stream().filter(i -> i.getName().toLowerCase().contains(busqueda)).collect(Collectors.toList());
+            producteList.addAll(collect);
+        }
+        notifyDataSetChanged();
+
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

@@ -19,17 +19,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.topresale.R;
+import com.example.topresale.model.Producte;
 import com.example.topresale.model.ProducteEspecific;
 import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
 import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAdapter.MyViewHolder> {
 
     List<ProducteEspecific> producteEspecificList;
+    List<ProducteEspecific> originalProducteEspecificList;
     Context context;
 
     private UserManager userManager;
@@ -38,6 +42,8 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
         this.producteEspecificList = producteEspecificList;
         this.context = context;
         userManager = UserManager.getInstance();
+        this.originalProducteEspecificList = new ArrayList<>();
+        originalProducteEspecificList.addAll(producteEspecificList);
     }
 
     @NonNull
@@ -111,6 +117,23 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
     @Override
     public int getItemCount() {
         return producteEspecificList.size();
+    }
+
+    public void filter(String busqueda){
+
+        if(busqueda.length() == 0){
+            producteEspecificList.clear();
+            producteEspecificList.addAll(originalProducteEspecificList);
+        }
+
+        else{
+            producteEspecificList.clear();
+            List<ProducteEspecific> collect = originalProducteEspecificList.stream().filter(i -> i.getDescripcio().toLowerCase().contains(busqueda)).collect(Collectors.toList());
+            producteEspecificList.addAll(collect);
+        }
+
+        notifyDataSetChanged();
+
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

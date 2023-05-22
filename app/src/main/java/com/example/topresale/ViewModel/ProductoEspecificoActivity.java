@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.topresale.R;
@@ -21,11 +22,12 @@ import com.example.topresale.model.ProducteEspecific;
 import java.util.Collections;
 import java.util.List;
 
-public class ProductoEspecificoActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class ProductoEspecificoActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, SearchView.OnQueryTextListener{
 
     private TextView producto;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private SearchView buscador;
+    private RecyclerView2nAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private  List<ProducteEspecific> listaProductosEspecificos;
 
@@ -40,6 +42,8 @@ public class ProductoEspecificoActivity extends AppCompatActivity implements Ada
         listaProductosEspecificos = objeto.getLlistaProdEspe();
         System.out.println(listaProductosEspecificos);
 
+        buscador = findViewById(R.id.busquedaEspecifica_searchBar);
+        buscador.setOnQueryTextListener(this);
         recyclerView = findViewById(R.id.productosFavoritos_recyclerView);
         recyclerView = findViewById(R.id.productosFavoritos_recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -89,4 +93,14 @@ public class ProductoEspecificoActivity extends AppCompatActivity implements Ada
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        mAdapter.filter(s);
+        return false;
+    }
 }

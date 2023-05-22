@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import com.example.topresale.R;
 import com.example.topresale.model.PerfilUser;
@@ -23,7 +24,8 @@ public class FavoritosActivity extends AppCompatActivity {
 
     private List<ProducteEspecific> listaProductosFavoritos = new ArrayList<ProducteEspecific>();
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private SearchView buscador;
+    private RecyclerView2nAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private FirebaseFirestore mdB;
     private FirebaseAuth mAuth;
@@ -87,4 +89,5 @@ public class FavoritosActivity extends AppCompatActivity {
 
 
     }
+
 }

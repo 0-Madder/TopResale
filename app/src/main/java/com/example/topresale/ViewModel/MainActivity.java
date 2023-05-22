@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.topresale.R;
@@ -26,13 +27,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, SearchView.OnQueryTextListener {
 
     private List<Producte> listaProductos = new ArrayList<Producte>();
     String username;
     private RecyclerView recyclerView;
+    private SearchView buscador;
     private TextView ordenTextView;
-    private RecyclerView.Adapter mAdapter;
+    private RecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     private ListView listaTiposProducto;
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         llenaLaLista();
         //llenaDeProductosEspecificos();
         recyclerView = findViewById(R.id.productosFavoritos_recyclerView);
+        buscador = findViewById(R.id.busqueda_searchBar);
+        buscador.setOnQueryTextListener(this);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -179,5 +183,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
 
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        mAdapter.filter(s);
+        return false;
     }
 }
