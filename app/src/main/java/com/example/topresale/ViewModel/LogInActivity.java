@@ -60,7 +60,7 @@ public class LogInActivity extends AppCompatActivity {
 
     }
 
-    public  void iniciarSesion(View view) {
+    public void iniciarSesion(View view) {
 
         boolean parametrosCorrectos = true;
         String username = textoUsername.getText().toString();

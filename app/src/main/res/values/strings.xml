@@ -18,6 +18,11 @@
     <string name="cerrarSesion">Cerrar Sesion</string>
     <string name="configuracion">Configuracion</string>
     <string name="aceptar">Aceptar</string>
+    <string name="valorar">Valorar este producto:</string>
+    <string name="clickE">Haz click para valorar:</string>
+    <string name="op_hint">Escribe tu opinion del producto</string>
+    <string name="clickO">OPINAR</string>
+
 
 
     <string name="terminosText">Bienvenido a nuestra aplicación de búsqueda de productos al por mayor. Antes de utilizar nuestros servicios, lea detenidamente los siguientes términos y condiciones.Al acceder o utilizar nuestra aplicación, acepta estar legalmente vinculado por estos términos y condiciones.Si no está de acuerdo con estos términos y condiciones, no utilice nuestra aplicación.

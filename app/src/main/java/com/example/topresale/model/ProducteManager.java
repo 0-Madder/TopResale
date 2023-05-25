@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -15,6 +17,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -124,6 +127,31 @@ public class ProducteManager {
             }
         }
         return null;
+    }
+
+    public void addValoracio(String tipus, String valor, String idProdEspe, String nameUser){
+        Map<String,Object> addOpinio = new HashMap<>();
+        addOpinio.put("tipusValoracio", tipus);
+        addOpinio.put("valorValoracio",valor);
+        addOpinio.put("idProdEspe",idProdEspe);
+        addOpinio.put("nameUser",nameUser);
+
+        mdB.collection("Valoracio").document().set(addOpinio).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                // Manejar l'éxit
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Manejar l´error
+                try {
+                    throw new Exception("Resgistro NO completado");
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });;
     }
 
 

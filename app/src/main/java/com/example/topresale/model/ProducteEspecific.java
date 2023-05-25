@@ -3,6 +3,9 @@ package com.example.topresale.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ProducteEspecific implements Serializable {
 
@@ -132,7 +135,7 @@ public class ProducteEspecific implements Serializable {
         float mitjan = 0.0f;
         float contador = 0.0f;
         for(Valoracio v: llistaValoracio){
-            if(v.getTipusValoracio().equalsIgnoreCase("Estrella")){
+            if(v.getTipusValoracio().equalsIgnoreCase("Estrelles")){
                 mitjan += v.cambiador(v.getValorValoracio());
                 contador++;
             }
