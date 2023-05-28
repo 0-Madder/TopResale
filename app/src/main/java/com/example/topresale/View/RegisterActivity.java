@@ -25,14 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText textoContra;
     private EditText textoRepetirContra;
     private CheckBox checkBoxAceptarCondiciones;
-
-    private FirebaseAuth mAuth;
-
-    private FirebaseFirestore mdB;
     private UserManager userManager;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         textoContra = findViewById(R.id.password_editText);
         textoRepetirContra = findViewById(R.id.repetirPassword_editText);
         checkBoxAceptarCondiciones = findViewById(R.id.aceptarTerminos_checkBox);
-        mAuth = FirebaseAuth.getInstance();
-        mdB = FirebaseFirestore.getInstance();
         userManager = UserManager.getInstance();
     }
 

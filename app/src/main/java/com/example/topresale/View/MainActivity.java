@@ -74,8 +74,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
     private void llenaLaLista(){
+
         listaProductos.addAll(producteManager.getLlistaProducte());
         listaProductos.addAll(producteManager.getLlistaProducte());
+
+
     }
 
 

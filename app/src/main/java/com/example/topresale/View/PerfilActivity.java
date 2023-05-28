@@ -14,7 +14,6 @@ public class PerfilActivity extends AppCompatActivity {
 
 
     private TextView bienvenido_textView;
-    private FirebaseAuth mAuth;
     private String usuarioActual;
 
     @Override
