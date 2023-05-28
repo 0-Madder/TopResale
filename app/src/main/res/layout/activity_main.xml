@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:textAlignment="gravity"
     android:windowSoftInputMode="adjustPan"
-    tools:context=".ViewModel.MainActivity">
+    tools:context=".View.MainActivity">
 
     <SearchView
         android:id="@+id/busqueda_searchBar"

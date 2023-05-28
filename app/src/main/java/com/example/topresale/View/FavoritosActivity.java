@@ -1,4 +1,4 @@
-package com.example.topresale.ViewModel;
+package com.example.topresale.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.widget.SearchView;
 
 import com.example.topresale.R;
-import com.example.topresale.model.PerfilUser;
 import com.example.topresale.model.Producte;
 import com.example.topresale.model.ProducteEspecific;
 import com.example.topresale.model.ProducteManager;

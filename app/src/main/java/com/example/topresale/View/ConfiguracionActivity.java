@@ -1,6 +1,5 @@
-package com.example.topresale.ViewModel;
+package com.example.topresale.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -13,7 +12,6 @@ import com.example.topresale.LogoutFragment;
 import com.example.topresale.R;
 import com.example.topresale.TerminosFragment;
 import com.example.topresale.databinding.ActivityConfiguracionBinding;
-import com.example.topresale.databinding.ActivityMainBinding;
 
 public class ConfiguracionActivity extends AppCompatActivity {
 

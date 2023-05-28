@@ -1,4 +1,4 @@
-package com.example.topresale.ViewModel;
+package com.example.topresale.View;
 
 import android.content.Context;
 import android.content.Intent;

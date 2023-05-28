@@ -1,8 +1,7 @@
-package com.example.topresale.ViewModel;
+package com.example.topresale.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -23,7 +21,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.topresale.R;
-import com.example.topresale.model.Producte;
 import com.example.topresale.model.ProducteEspecific;
 import com.example.topresale.model.ProducteManager;
 import com.example.topresale.model.UserManager;

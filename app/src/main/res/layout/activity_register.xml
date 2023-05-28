@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:windowSoftInputMode="adjustPan"
-    tools:context=".ViewModel.RegisterActivity">
+    tools:context=".View.RegisterActivity">
 
 
     <ImageView

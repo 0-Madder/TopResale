@@ -1,4 +1,4 @@
-package com.example.topresale.ViewModel;
+package com.example.topresale.View;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,11 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.topresale.R;
-import com.example.topresale.model.Producte;
 import com.example.topresale.model.ProducteEspecific;
 import com.example.topresale.model.User;
 import com.example.topresale.model.UserManager;
-import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;

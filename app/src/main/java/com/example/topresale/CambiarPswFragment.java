@@ -2,7 +2,6 @@ package com.example.topresale;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.topresale.ViewModel.ConfiguracionActivity;
 import com.example.topresale.model.UserManager;
 
 /**

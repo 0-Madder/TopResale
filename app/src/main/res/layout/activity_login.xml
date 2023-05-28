@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:textAlignment="gravity"
     android:windowSoftInputMode="adjustPan"
-    tools:context=".ViewModel.LogInActivity">
+    tools:context=".View.LogInActivity">
 
     <ImageView
         android:id="@+id/logoImageView"

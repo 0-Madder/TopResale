@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.topresale.ViewModel.LogInActivity;
+import com.example.topresale.View.LogInActivity;
 
 /**
  * A simple {@link Fragment} subclass.
