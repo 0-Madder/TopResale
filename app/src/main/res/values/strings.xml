@@ -24,7 +24,6 @@
     <string name="clickO">OPINAR</string>
 
 
-
     <string name="terminosText">Bienvenido a nuestra aplicación de búsqueda de productos al por mayor. Antes de utilizar nuestros servicios, lea detenidamente los siguientes términos y condiciones.Al acceder o utilizar nuestra aplicación, acepta estar legalmente vinculado por estos términos y condiciones.Si no está de acuerdo con estos términos y condiciones, no utilice nuestra aplicación.
 \n<b><i>Propósito de la aplicación:</i></b>
 Nuestra aplicación tiene como objetivo proporcionar a nuestros usuarios una plataforma fácil de usar para encontrar productos al por mayor de una variedad de empresas vendedoras. No vendemos productos directamente, pero ofrecemos un servicio de búsqueda para facilitar la conexión entre compradores y vendedores.
@@ -62,5 +61,7 @@ Después de encontrar un producto que te interese, deberías ver un botón "Comp
 Siempre es recomendable revisar la descripción del producto y las opiniones de otros compradores antes de realizar una compra. Además, algunos vendedores pueden ofrecer garantías o devoluciones de dinero en caso de que no estés satisfecho con el producto recibido. También puedes comunicarte directamente con el vendedor para obtener más información sobre el producto y su calidad antes de realizar la compra. En general, es importante investigar y tomar medidas para asegurarte de que estás comprando productos de calidad en la aplicación.
 \n<b><i>4. ¿Cómo puedo cambiar mis datos personales?</i></b>
 En la página de perfil, deberías ver un botón "Configurar". Haz clic en él para actualizar tu información personal, como tu nombre, dirección de correo electrónico, número de teléfono, etc.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     \n
 </resources>

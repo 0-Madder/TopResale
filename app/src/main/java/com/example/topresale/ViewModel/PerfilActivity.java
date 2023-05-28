@@ -47,6 +47,8 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
     public void mostrarConfiguracion(View view) {
+        Intent intent = new Intent(this, ConfiguracionActivity.class);
+        startActivity(intent);
     }
 
     public void mostrarFavoritos(View view) {
