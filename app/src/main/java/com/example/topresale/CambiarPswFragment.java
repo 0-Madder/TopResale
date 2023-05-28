@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.topresale.ViewModel.ConfiguracionActivity;
+import com.example.topresale.model.UserManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,10 +30,15 @@ public class CambiarPswFragment extends Fragment implements View.OnClickListener
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private String vContra;
+    private String nContra;
+    private String rContra;
     EditText viejaContra;
     EditText nuevaContra;
     EditText repiteContra;
     Button boton;
+    private UserManager userManager;
 
     public CambiarPswFragment() {
         // Required empty public constructor
@@ -59,6 +65,7 @@ public class CambiarPswFragment extends Fragment implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userManager = UserManager.getInstance();
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -86,8 +93,23 @@ public class CambiarPswFragment extends Fragment implements View.OnClickListener
 
 
     public void comprobar(){
+        vContra = viejaContra.getText().toString();
+        nContra = nuevaContra.getText().toString();
+        rContra = repiteContra.getText().toString();
 
-        Toast.makeText(getActivity(), "Password cambiada", Toast.LENGTH_SHORT).show();
+        String comprovar = userManager.provesNovaContransenya(vContra, nContra,rContra);
+
+        if(!comprovar.equalsIgnoreCase("correcte")){
+            Toast.makeText(getActivity(), comprovar, Toast.LENGTH_SHORT).show();
+        }else{
+            userManager.canviarContrasenyaFireAuth(nContra);
+            userManager.canviarContasenyaFireStore(nContra);
+            Toast.makeText(getActivity(), "Contraseña cambiada correctamente", Toast.LENGTH_SHORT).show();
+        }
+        viejaContra.setText("");
+        nuevaContra.setText("");
+        repiteContra.setText("");
+
 
 
     }
@@ -96,9 +118,7 @@ public class CambiarPswFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.confirmar_button:
-
                 comprobar();
-
                 break;
         }
     }

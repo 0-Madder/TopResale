@@ -232,26 +232,31 @@ public class UserManager{
     }
 
 
-    public String provesNovaContransenya(String antiga, String nova){
+    public String provesNovaContransenya(String antiga, String nova, String novaRepe){
         String result = "correcte";
         if(antiga.equals(nova)){
             result = "La nueva contraseña es igual a la actual";
-        } else if (antiga.equals("")||nova.equals("")){
-            result = "Campo vacio";
+        } else if (antiga.equals("")||nova.equals("")||nova.equals("novaRepe")){
+            result = "Hay algun campo vacio";
         } else if (nova.length()<6) {
             result = "Contraseña nueva demasiado corta";
 
+        }else if (!nova.equals(novaRepe)){
+            result = "Las contraseñas nuevas no coinciden";
+        }else if(!antiga.equals(userManager.getActiveUser().getPswd())){
+            result = "La contraseña actual no es correcta";
         }
         return result;
     }
     public void canviarContasenyaFireStore(String nova){
         User u = getActiveUser();
         DocumentReference userRef = mdB.collection("User").document(u.getNomUser());
-        Map<String, Object> actulitzar = new HashMap<>();
-        actulitzar.put("pswd", nova);
-        userRef.update(actulitzar).addOnSuccessListener(new OnSuccessListener<Void>() {
+        Map<String, Object> update = new HashMap<>();
+        update.put("pswd", nova);
+        userRef.update(update).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        u.setPswd(nova);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
