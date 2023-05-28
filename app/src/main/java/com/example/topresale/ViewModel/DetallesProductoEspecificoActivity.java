@@ -163,8 +163,9 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
     }
 
     public void notifyEstrelles(){
-        estrellesIndicador.setRating(objeto.mitjana());
-        estrellesText.setText(Float.toString(objeto.mitjana()));
+        String media = String.format("%.2f", objeto.mitjana());
+        estrellesIndicador.setRating(Float.parseFloat(media));
+        estrellesText.setText(media);
     }
 
 
