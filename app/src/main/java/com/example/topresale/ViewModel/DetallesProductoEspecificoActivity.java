@@ -149,8 +149,10 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
         if(allOpinions.equals(new SpannableStringBuilder())){
             opinions.setText("\n\n - No hay opiniones de este producto - \n\n");
         }else{
+            System.out.println(allOpinions);
             opinions.setText(allOpinions);
         }
+        //a
 
     }
 
