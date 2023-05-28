@@ -56,19 +56,6 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
         userManager = UserManager.getInstance();
         producteManager = ProducteManager.getInstance();
         objeto = (ProducteEspecific) intent.getSerializableExtra("producto");
-        /*SpannableStringBuilder allOpinions = new SpannableStringBuilder();
-        String op = "";
-        for (Valoracio v: objeto.getLlistaValoracio()){
-            if (v.getTipusValoracio().equals("Opinio")){
-                SpannableStringBuilder nameUser = new SpannableStringBuilder(" " + v.getNameUser());
-                nameUser.setSpan(new StyleSpan(Typeface.BOLD), 0, v.getNameUser().length() + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                allOpinions.append(nameUser);
-                op = ": " + v.getValorValoracio() + "\n";
-                allOpinions.append(op);
-            }
-        }
-
-         */
 
         myEstrelles = findViewById(R.id.valoraEstrelles_ratingBar);
         myEstrelles.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -166,8 +153,6 @@ public class DetallesProductoEspecificoActivity extends AppCompatActivity {
         estrellesIndicador.setRating(Float.parseFloat(media));
         estrellesText.setText(media);
     }
-
-
 
 
 }

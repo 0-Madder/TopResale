@@ -23,10 +23,8 @@ public class FavoritosActivity extends AppCompatActivity {
 
     private List<ProducteEspecific> listaProductosFavoritos = new ArrayList<ProducteEspecific>();
     private RecyclerView recyclerView;
-    private SearchView buscador;
     private RecyclerView2nAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private FirebaseFirestore mdB;
     private FirebaseAuth mAuth;
     private ProducteManager producteManager;
 
@@ -41,7 +39,6 @@ public class FavoritosActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        mdB = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
 

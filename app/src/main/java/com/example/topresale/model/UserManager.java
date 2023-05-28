@@ -22,7 +22,6 @@ public class UserManager{
     private FirebaseFirestore mdB;
     private ArrayList<User> llistaUsuaris;
     private User activeUser;
-
     private static UserManager userManager;
 
     private UserManager() {
@@ -277,7 +276,6 @@ public class UserManager{
             }
         }
         return false;
-
 
     }
 

@@ -24,14 +24,11 @@ import java.util.Map;
 
 public class ProducteManager {
 
-    private FirebaseAuth mAuth;
-
     private FirebaseFirestore mdB;
     private ArrayList<Producte> llistaProducte;
     private static ProducteManager producteManager;
 
     private ProducteManager() {
-        this.mAuth = FirebaseAuth.getInstance();
         this.mdB = FirebaseFirestore.getInstance();
         llistaProducte = new ArrayList<>();
     }
@@ -49,15 +46,6 @@ public class ProducteManager {
 
     public void setLlistaProducte(ArrayList<Producte> llistaProducte) {
         this.llistaProducte = llistaProducte;
-    }
-
-    public Producte findProdByName(String name) {
-        for (Producte p : llistaProducte) {
-            if (p.getName().equals(name)) {
-                return p;
-            }
-        }
-        return null;
     }
 
     public void inicialitzarValoracions(ProducteEspecific pE){

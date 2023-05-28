@@ -15,7 +15,7 @@ import com.example.topresale.databinding.ActivityConfiguracionBinding;
 
 public class ConfiguracionActivity extends AppCompatActivity {
 
-    ActivityConfiguracionBinding binding;
+    private ActivityConfiguracionBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

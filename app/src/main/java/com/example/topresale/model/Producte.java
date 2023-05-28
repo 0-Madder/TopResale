@@ -84,14 +84,9 @@ public class Producte implements Serializable {
         this.tendencia = tendencia;
     }
 
-    public void addProductEspecific(String nameProd, String id, float preuB, float preuC, float preuV, String descripcio, String foto, String estadistica, String link, float moda){
-        ProducteEspecific producteEspecific = new ProducteEspecific(nameProd, id, preuB,preuC,preuV,descripcio,foto,estadistica,link,moda);
-        llistaProdEspe.add(producteEspecific);
-    }
     public void addProductEspecific(ProducteEspecific pE){
         llistaProdEspe.add(pE);
     }
-
 
     public void calcularMitjanaModa(){
         float mitjana = 0;

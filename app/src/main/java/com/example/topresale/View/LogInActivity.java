@@ -24,12 +24,7 @@ public class LogInActivity extends AppCompatActivity {
 
     private EditText textoPswd;
     private EditText textoUsername;
-
-
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore mdB;
     private UserManager userManager;
-    private ProducteManager producteManager;
 
 
     @Override
@@ -40,9 +35,6 @@ public class LogInActivity extends AppCompatActivity {
 
         textoPswd = findViewById(R.id.pswdInicioSesion_EditText);
         textoUsername = findViewById(R.id.usuarioIniciSesio_editText);
-        mAuth = FirebaseAuth.getInstance();
-        mdB = FirebaseFirestore.getInstance();
-        producteManager = ProducteManager.getInstance();
         userManager = UserManager.getInstance();
 
 

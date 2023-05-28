@@ -18,10 +18,10 @@ public class User {
         this.id = id;
         this.perfilUser = new PerfilUser();
     }
-
     public User(){
 
     }
+
 
     public String getNomComplet() {
         return nomComplet;
