@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Leer terminos y condiciones"
+        android:icon="@drawable/baseline_text_snippet_24"
+        android:id="@+id/hoja"/>
+    <item android:title="Cambiar password"
+        android:icon="@drawable/baseline_lock_reset_24"
+        android:id="@+id/candado"/>
+    <item android:title="Cerrar sesion"
+        android:icon="@drawable/logout_icon"
+        android:id="@+id/puerta"/>
+</menu>
