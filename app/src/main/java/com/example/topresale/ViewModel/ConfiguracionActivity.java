@@ -24,7 +24,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityConfiguracionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new CambiarPswFragment());
+        replaceFragment(new TerminosFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 

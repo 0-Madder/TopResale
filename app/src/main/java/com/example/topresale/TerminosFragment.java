@@ -1,5 +1,6 @@
 package com.example.topresale;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +8,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.example.topresale.ViewModel.LogInActivity;
+import com.example.topresale.ViewModel.TerminosActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link TerminosFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TerminosFragment extends Fragment {
+public class TerminosFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +28,8 @@ public class TerminosFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Button boton;
 
     public TerminosFragment() {
         // Required empty public constructor
@@ -59,6 +66,24 @@ public class TerminosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_terminos, container, false);
+        View view = inflater.inflate(R.layout.fragment_terminos, container, false);
+
+        boton = view.findViewById(R.id.terminosF_button);
+        boton.setOnClickListener(this);
+
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.terminosF_button:
+
+                Intent intent = new Intent(getActivity(), TerminosActivity.class);
+                startActivity(intent);
+
+                break;
+        }
     }
 }

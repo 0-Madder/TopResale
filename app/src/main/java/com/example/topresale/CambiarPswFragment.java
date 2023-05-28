@@ -97,9 +97,7 @@ public class CambiarPswFragment extends Fragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.confirmar_button:
 
-                System.out.println("a");
                 comprobar();
-                System.out.println("b");
 
                 break;
         }

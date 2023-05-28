@@ -1,5 +1,6 @@
 package com.example.topresale;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,13 +8,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import com.example.topresale.ViewModel.LogInActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link LogoutFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LogoutFragment extends Fragment {
+public class LogoutFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +28,9 @@ public class LogoutFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ImageView salir;
+    Button boton;
 
     public LogoutFragment() {
         // Required empty public constructor
@@ -59,6 +67,27 @@ public class LogoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_logout, container, false);
+        View view = inflater.inflate(R.layout.fragment_logout, container, false);
+
+        salir = view.findViewById(R.id.logoutF_imageView);
+        boton = view.findViewById(R.id.logoutF_button);
+        boton.setOnClickListener(this);
+
+
+        return view;
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.logoutF_button:
+
+                Intent intent = new Intent(getActivity(), LogInActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+                break;
+        }
     }
 }

@@ -17,7 +17,8 @@
         tools:targetApi="31">
         <activity
             android:name=".ViewModel.ConfiguracionActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ViewModel.PerfilActivity"/>
         <activity
             android:name=".ViewModel.FavoritosActivity"
             android:exported="false"
