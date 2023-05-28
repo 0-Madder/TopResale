@@ -34,6 +34,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
     List<ProducteEspecific> producteEspecificList;
     List<ProducteEspecific> originalProducteEspecificList;
+    private boolean tocado = false;
 
     Context context;
 
@@ -79,6 +80,14 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
 
         }
 
+        holder.botonFavoritos.setOnClickListener(new CompoundButton.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tocado = true;
+            }
+
+        });
+
         holder.botonFavoritos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -87,12 +96,14 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
                     userManager.afegirFavs(producteEspecificList.get(holder.getAdapterPosition()).getId());
 
                 }
-                else{
+                else if(!isChecked && tocado){
                     holder.botonFavoritos.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.billete));
                     userManager.removeFavs(producteEspecificList.get(holder.getAdapterPosition()).getId());
+                    tocado = false;
                 }
             }
         });
+
 
         holder.botonComprar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +130,7 @@ public class RecyclerView2nAdapter extends RecyclerView.Adapter<RecyclerView2nAd
     public int getItemCount() {
         return producteEspecificList.size();
     }
+
 
     public void filter(String busqueda){
 
